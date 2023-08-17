@@ -1,0 +1,28 @@
+.filtericon {
+    color: aliceblue;
+    font-size:30px;
+    cursor: pointer;
+    padding-bottom: 5px;
+}
+
+.offcanvas-header{
+    height: 25vh;
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    background: linear-gradient(#0C1D36, #0f2b57);
+    color: white;
+}
+
+.logo2 {
+    height: 50px;
+}
+
+.sideHeader {
+    display: flex;
+    width: 100%;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+}
+
+

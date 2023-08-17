@@ -1,0 +1,16 @@
+.mapContainer{
+    height: 75vh;
+    width:100%;
+    position: absolute;
+    right: 0;    
+}
+
+.map {
+    height: 100%;
+    width:100%;
+  }
+
+.marker {
+    letter-spacing: 0.1em;
+}
+  

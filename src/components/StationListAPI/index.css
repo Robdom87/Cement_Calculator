@@ -1,0 +1,12 @@
+.sidebarContainer {
+    height: 75vh;
+    opacity: 1;
+}
+
+.addressDetails {
+    font-size: 0.75rem;
+}
+
+.offcanvas-body {
+    background: linear-gradient(#fad636, #f1db7a);
+}

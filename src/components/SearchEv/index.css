@@ -1,0 +1,25 @@
+.search {
+    background-color:rgb(2, 46, 55);
+    display: inline-flex;
+    font-size:30px;
+  }
+
+  .searchSection {
+    display: flex;
+    justify-content: center;
+    height: 5vh;
+    background-color: #0f2b57;
+  }
+
+  .location {
+    color: aliceblue;
+    font-size:30px;
+    cursor: pointer;
+    padding-bottom: 10px;
+  }
+
+  .go{
+    margin-bottom: 7px;
+  }
+
+  
