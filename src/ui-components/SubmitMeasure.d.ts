@@ -26,6 +26,8 @@ export declare type SubmitMeasureOverridesProps = {
     Button?: PrimitiveOverrideProps<ButtonProps>;
 } & EscapeHatchProps;
 export declare type SubmitMeasureProps = React.PropsWithChildren<Partial<FlexProps> & {
+    off?: String;
+} & {
     overrides?: SubmitMeasureOverridesProps | undefined | null;
 }>;
 export default function SubmitMeasure(props: SubmitMeasureProps): React.ReactElement;

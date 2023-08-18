@@ -6,7 +6,10 @@
 
 /* eslint-disable */
 import * as React from "react";
-import { getOverrideProps } from "@aws-amplify/ui-react/internal";
+import {
+  getOverrideProps,
+  useStateMutationAction,
+} from "@aws-amplify/ui-react/internal";
 import {
   Button,
   Divider,
@@ -18,7 +21,14 @@ import {
   View,
 } from "@aws-amplify/ui-react";
 export default function SubmitMeasure(props) {
-  const { overrides, ...rest } = props;
+  const { off = "none", overrides, ...rest } = props;
+  const [contentDisplay, setContentDisplay] = useStateMutationAction(undefined);
+  const iconOnClick = () => {
+    setContentDisplay(off);
+  };
+  const buttonOnClick = () => {
+    setContentDisplay(off);
+  };
   return (
     <Flex
       gap="16px"
@@ -44,6 +54,7 @@ export default function SubmitMeasure(props) {
         alignSelf="stretch"
         position="relative"
         padding="24px 24px 24px 24px"
+        display={contentDisplay}
         {...getOverrideProps(overrides, "Content")}
       >
         <Flex
@@ -70,6 +81,9 @@ export default function SubmitMeasure(props) {
             shrink="0"
             position="relative"
             padding="0px 0px 0px 0px"
+            onClick={() => {
+              iconOnClick();
+            }}
             {...getOverrideProps(overrides, "Icon")}
           >
             <Icon
@@ -233,6 +247,9 @@ export default function SubmitMeasure(props) {
           isDisabled={false}
           variation="primary"
           children="Submit"
+          onClick={() => {
+            buttonOnClick();
+          }}
           {...getOverrideProps(overrides, "Button")}
         ></Button>
       </Flex>

@@ -3,7 +3,8 @@ import './App.css';
 import {
   CementNav,
   Estimate,
-  SubmitMeasure 
+  SubmitMeasure,
+  NewForm1 
  } from './ui-components';
  import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import {
@@ -42,14 +43,22 @@ const client = new ApolloClient({
 
 
 function App() {
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+    return;
+    // $('#searchInput').val('');
+  }
+
   return (
     <ApolloProvider client={client}>
     <Router>
-    <Navbar/>      
+    <CementNav/>      
     <Routes>
         <Route
           path="/"
-          element={<Home/>}
+          element={<NewForm1
+            onSubmit={handleFormSubmit}
+          />}
         />
         {/* <Route
           path='/estimate'
