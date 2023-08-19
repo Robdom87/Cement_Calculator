@@ -1,5 +1,5 @@
 {
-  "staging": {
+  "providers": {
     "awscloudformation": {
       "AuthRoleName": "amplify-maestroai-staging-20330-authRole",
       "UnauthRoleArn": "arn:aws:iam::205726492296:role/amplify-maestroai-staging-20330-unauthRole",

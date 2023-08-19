@@ -6,10 +6,10 @@
 
 /* eslint-disable */
 import * as React from "react";
-import { Button, Flex, Grid, TextField } from "@aws-amplify/ui-react";
+import { Button, Flex, Grid, Heading, TextField } from "@aws-amplify/ui-react";
 import { getOverrideProps } from "@aws-amplify/ui-react/internal";
 import { fetchByPath, validateField } from "./utils";
-export default function NewForm1(props) {
+export default function RequestMeasurements(props) {
   const { onSubmit, onValidate, onChange, overrides, ...rest } = props;
   const initialValues = {
     Field0: "",
@@ -77,11 +77,15 @@ export default function NewForm1(props) {
         }
         await onSubmit(modelFields);
       }}
-      {...getOverrideProps(overrides, "NewForm1")}
+      {...getOverrideProps(overrides, "RequestMeasurements")}
       {...rest}
     >
+      <Heading
+        children="Submit Measurements"
+        {...getOverrideProps(overrides, "SectionalElement0")}
+      ></Heading>
       <TextField
-        label="sqft"
+        label="Square Footage of Cement Slab"
         type="number"
         step="any"
         value={Field0}
@@ -106,7 +110,7 @@ export default function NewForm1(props) {
         {...getOverrideProps(overrides, "Field0")}
       ></TextField>
       <TextField
-        label="depth"
+        label="Depth of Slab"
         type="number"
         step="any"
         value={Field1}

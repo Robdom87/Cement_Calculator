@@ -1,0 +1,15 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-maestroai-staging-20330-authRole",
+      "UnauthRoleArn": "arn:aws:iam::205726492296:role/amplify-maestroai-staging-20330-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::205726492296:role/amplify-maestroai-staging-20330-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-maestroai-staging-20330-deployment",
+      "UnauthRoleName": "amplify-maestroai-staging-20330-unauthRole",
+      "StackName": "amplify-maestroai-staging-20330",
+      "StackId": "arn:aws:cloudformation:us-east-1:205726492296:stack/amplify-maestroai-staging-20330/45196b00-37eb-11ee-ac7b-0e1f6d6285c1",
+      "AmplifyAppId": "d36m17nxrlyzof"
+    }
+  }
+}

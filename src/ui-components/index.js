@@ -6,8 +6,5 @@
 
 export { default as CementNav } from "./CementNav";
 export { default as Estimate } from "./Estimate";
-export { default as HeroLayout3 } from "./HeroLayout3";
-export { default as MyIcon } from "./MyIcon";
-export { default as NewForm1 } from "./NewForm1";
-export { default as SubmitMeasure } from "./SubmitMeasure";
+export { default as RequestMeasurements } from "./RequestMeasurements";
 export { default as studioTheme } from "./studioTheme";

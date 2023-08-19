@@ -12,13 +12,10 @@ export declare type CementNavOverridesProps = {
     CementNav?: PrimitiveOverrideProps<FlexProps>;
     Logo?: PrimitiveOverrideProps<FlexProps>;
     "Star 1"?: PrimitiveOverrideProps<IconProps>;
-    ContractorComrad?: PrimitiveOverrideProps<TextProps>;
+    "La Calculadora Maestra"?: PrimitiveOverrideProps<TextProps>;
     "Frame 32129767081"?: PrimitiveOverrideProps<FlexProps>;
     "Frame 32129767076"?: PrimitiveOverrideProps<FlexProps>;
-    Dashboard?: PrimitiveOverrideProps<TextProps>;
-    Jobs?: PrimitiveOverrideProps<TextProps>;
-    Applicants?: PrimitiveOverrideProps<TextProps>;
-    Company?: PrimitiveOverrideProps<TextProps>;
+    "Log In"?: PrimitiveOverrideProps<TextProps>;
 } & EscapeHatchProps;
 export declare type CementNavProps = React.PropsWithChildren<Partial<FlexProps> & {
     overrides?: CementNavOverridesProps | undefined | null;

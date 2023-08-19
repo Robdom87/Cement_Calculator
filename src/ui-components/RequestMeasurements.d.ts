@@ -5,32 +5,33 @@
  **************************************************************************/
 
 import * as React from "react";
-import { GridProps, TextFieldProps } from "@aws-amplify/ui-react";
+import { GridProps, HeadingProps, TextFieldProps } from "@aws-amplify/ui-react";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
 export declare type ValidationResponse = {
     hasError: boolean;
     errorMessage?: string;
 };
 export declare type ValidationFunction<T> = (value: T, validationResponse: ValidationResponse) => ValidationResponse | Promise<ValidationResponse>;
-export declare type NewForm1InputValues = {
+export declare type RequestMeasurementsInputValues = {
     Field0?: string;
     Field1?: string;
 };
-export declare type NewForm1ValidationValues = {
+export declare type RequestMeasurementsValidationValues = {
     Field0?: ValidationFunction<string>;
     Field1?: ValidationFunction<string>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
-export declare type NewForm1OverridesProps = {
-    NewForm1Grid?: PrimitiveOverrideProps<GridProps>;
+export declare type RequestMeasurementsOverridesProps = {
+    RequestMeasurementsGrid?: PrimitiveOverrideProps<GridProps>;
+    SectionalElement0?: PrimitiveOverrideProps<HeadingProps>;
     Field0?: PrimitiveOverrideProps<TextFieldProps>;
     Field1?: PrimitiveOverrideProps<TextFieldProps>;
 } & EscapeHatchProps;
-export declare type NewForm1Props = React.PropsWithChildren<{
-    overrides?: NewForm1OverridesProps | undefined | null;
+export declare type RequestMeasurementsProps = React.PropsWithChildren<{
+    overrides?: RequestMeasurementsOverridesProps | undefined | null;
 } & {
-    onSubmit: (fields: NewForm1InputValues) => void;
-    onChange?: (fields: NewForm1InputValues) => NewForm1InputValues;
-    onValidate?: NewForm1ValidationValues;
+    onSubmit: (fields: RequestMeasurementsInputValues) => void;
+    onChange?: (fields: RequestMeasurementsInputValues) => RequestMeasurementsInputValues;
+    onValidate?: RequestMeasurementsValidationValues;
 } & React.CSSProperties>;
-export default function NewForm1(props: NewForm1Props): React.ReactElement;
+export default function RequestMeasurements(props: RequestMeasurementsProps): React.ReactElement;
