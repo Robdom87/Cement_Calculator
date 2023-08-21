@@ -7,4 +7,6 @@
 export { default as CementNav } from "./CementNav";
 export { default as Estimate } from "./Estimate";
 export { default as RequestMeasurements } from "./RequestMeasurements";
+export { default as ResultsCreateForm } from "./ResultsCreateForm";
+export { default as ResultsUpdateForm } from "./ResultsUpdateForm";
 export { default as studioTheme } from "./studioTheme";
