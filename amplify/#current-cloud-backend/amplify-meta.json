@@ -11,5 +11,37 @@
       "StackId": "arn:aws:cloudformation:us-east-1:205726492296:stack/amplify-maestroai-staging-20330/45196b00-37eb-11ee-ac7b-0e1f6d6285c1",
       "AmplifyAppId": "d36m17nxrlyzof"
     }
+  },
+  "api": {
+    "MaestroAI": {
+      "service": "AppSync",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "output": {
+        "authConfig": {
+          "defaultAuthentication": {
+            "authenticationType": "API_KEY",
+            "apiKeyConfig": {
+              "apiKeyExpirationDays": 30,
+              "description": "api key description"
+            }
+          },
+          "additionalAuthenticationProviders": [
+            {
+              "authenticationType": "AWS_IAM"
+            }
+          ]
+        },
+        "GraphQLAPIIdOutput": "ohyjaqij4rcyncfisjji3fziva",
+        "GraphQLAPIEndpointOutput": "https://hluucnktrbf2pm233timidopey.appsync-api.us-east-1.amazonaws.com/graphql",
+        "GraphQLAPIKeyOutput": "da2-b7pjgqhuybdwbf6bkbpsd2re2e"
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-maestroai-staging-20330-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+        "logicalId": "apiMaestroAI"
+      },
+      "lastPushTimeStamp": "2023-08-20T22:48:53.169Z",
+      "lastPushDirHash": "y5o6y0a4CwCDwFTrCfCI1cpaYr0="
+    }
   }
 }

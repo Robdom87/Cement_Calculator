@@ -5,6 +5,7 @@
  **************************************************************************/
 
 import * as React from "react";
+import { Results } from "../models";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
 import { FlexProps, TextProps } from "@aws-amplify/ui-react";
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
@@ -32,6 +33,8 @@ export declare type EstimateOverridesProps = {
     "= $5773.28"?: PrimitiveOverrideProps<TextProps>;
 } & EscapeHatchProps;
 export declare type EstimateProps = React.PropsWithChildren<Partial<FlexProps> & {
+    results?: Results;
+} & {
     overrides?: EstimateOverridesProps | undefined | null;
 }>;
 export default function Estimate(props: EstimateProps): React.ReactElement;

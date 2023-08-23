@@ -9,7 +9,7 @@ import * as React from "react";
 import { getOverrideProps } from "@aws-amplify/ui-react/internal";
 import { Flex, Text } from "@aws-amplify/ui-react";
 export default function Estimate(props) {
-  const { overrides, ...rest } = props;
+  const { results, overrides, ...rest } = props;
   return (
     <Flex
       gap="5px"
@@ -66,7 +66,7 @@ export default function Estimate(props) {
         position="relative"
         padding="0px 0px 0px 0px"
         whiteSpace="pre-wrap"
-        children="Total FT^2 = 2360 FT^2"
+        children={results?.sqft}
         {...getOverrideProps(overrides, "Total FT^2 = 2360 FT^2")}
       ></Text>
       <Text
@@ -88,7 +88,7 @@ export default function Estimate(props) {
         position="relative"
         padding="0px 0px 0px 0px"
         whiteSpace="pre-wrap"
-        children="Depth Inches = 6 In"
+        children={results?.depth}
         {...getOverrideProps(overrides, "Depth Inches = 6 In")}
       ></Text>
       <Text
@@ -110,7 +110,7 @@ export default function Estimate(props) {
         position="relative"
         padding="0px 0px 0px 0px"
         whiteSpace="pre-wrap"
-        children="Total Cost (Includes Taxes) = $5773.28"
+        children={results?.Total}
         {...getOverrideProps(
           overrides,
           "Total Cost (Includes Taxes) = $5773.28"
@@ -178,7 +178,7 @@ export default function Estimate(props) {
         position="relative"
         padding="0px 0px 0px 0px"
         whiteSpace="pre-wrap"
-        children="Total FT^3 = 778.8 FT^3"
+        children={results?.ftCubed}
         {...getOverrideProps(overrides, "Total FT^3 = 778.8 FT^3")}
       ></Text>
       <Text
@@ -200,7 +200,7 @@ export default function Estimate(props) {
         position="relative"
         padding="0px 0px 0px 0px"
         whiteSpace="pre-wrap"
-        children="Total YD^3 = 30 YD^3"
+        children={results?.ydsCubed}
         {...getOverrideProps(overrides, "Total YD^3 = 30 YD^3")}
       ></Text>
       <Text
@@ -222,7 +222,7 @@ export default function Estimate(props) {
         position="relative"
         padding="0px 0px 0px 0px"
         whiteSpace="pre-wrap"
-        children="Cost per YD^3 = $125 YD^3"
+        children={results?.concreteRate}
         {...getOverrideProps(overrides, "Cost per YD^3 = $125 YD^3")}
       ></Text>
       <Text
@@ -244,7 +244,7 @@ export default function Estimate(props) {
         position="relative"
         padding="0px 0px 0px 0px"
         whiteSpace="pre-wrap"
-        children="Total Cost = $3750 + $1000 for pump"
+        children={results?.concreteCost}
         {...getOverrideProps(overrides, "Total Cost = $3750 + $1000 for pump")}
       ></Text>
       <Text
@@ -288,7 +288,7 @@ export default function Estimate(props) {
         position="relative"
         padding="0px 0px 0px 0px"
         whiteSpace="pre-wrap"
-        children="Total Cost = $200"
+        children={results?.vbCost}
         {...getOverrideProps(overrides, "Total Cost = $200")}
       ></Text>
       <Text
@@ -310,7 +310,7 @@ export default function Estimate(props) {
         position="relative"
         padding="0px 0px 0px 0px"
         whiteSpace="pre-wrap"
-        children="Cost = $100 per 2000ft^2 "
+        children={results?.vbRate}
         {...getOverrideProps(overrides, "Cost = $100 per 2000ft^2")}
       ></Text>
       <Text
@@ -354,7 +354,7 @@ export default function Estimate(props) {
         position="relative"
         padding="0px 0px 0px 0px"
         whiteSpace="pre-wrap"
-        children="Cost = $7 per 45ft^2 "
+        children={results?.wwmRate}
         {...getOverrideProps(overrides, "Cost = $7 per 45ft^2")}
       ></Text>
       <Text
@@ -376,7 +376,7 @@ export default function Estimate(props) {
         position="relative"
         padding="0px 0px 0px 0px"
         whiteSpace="pre-wrap"
-        children="Total Cost = $371"
+        children={results?.wwmCost}
         {...getOverrideProps(overrides, "Total Cost = $371")}
       ></Text>
       <Text
@@ -420,7 +420,7 @@ export default function Estimate(props) {
         position="relative"
         padding="0px 0px 0px 0px"
         whiteSpace="pre-wrap"
-        children=" = $452.28"
+        children={results?.Tax}
         {...getOverrideProps(overrides, "= $452.28")}
       ></Text>
       <Text
@@ -464,7 +464,7 @@ export default function Estimate(props) {
         position="relative"
         padding="0px 0px 0px 0px"
         whiteSpace="pre-wrap"
-        children=" = $5773.28"
+        children={results?.Total}
         {...getOverrideProps(overrides, "= $5773.28")}
       ></Text>
     </Flex>

@@ -1,11 +1,8 @@
-// import logo from './logo.svg';
 import './App.css';
 import {
-  CementNav,
-  Estimate,
-  RequestMeasurements
+  CementNav
  } from './ui-components';
- import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import {
   ApolloClient,
   InMemoryCache,
@@ -13,8 +10,7 @@ import {
   createHttpLink,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-import Home from './pages/Home';
-import Navbar from './components/Navbar';
+import Home from './pages/CementHome';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const httpLink = createHttpLink({
@@ -40,13 +36,7 @@ const client = new ApolloClient({
 });
 
 
-
 function App() {
-  const handleFormSubmit = async (event) => {
-    event.preventDefault();
-    return;
-    // $('#searchInput').val('');
-  }
 
   return (
     <ApolloProvider client={client}>
@@ -55,14 +45,8 @@ function App() {
     <Routes>
         <Route
           path="/"
-          element={<RequestMeasurements 
-            onSubmit={handleFormSubmit}
-          />}
+          element={<Home/>}
         />
-        {/* <Route
-          path='/estimate'
-          element={<Estimate />}
-        /> */}
       </Routes>
     </Router>
   </ApolloProvider>
