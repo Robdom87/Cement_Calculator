@@ -3,6 +3,7 @@ import {
 	Estimate,
 	RequestMeasurements
 } from '../../ui-components';
+import math from '../../math';
 import { useState } from 'react';
 
 
@@ -50,36 +51,45 @@ function Home() {
 
 			// const { rates } = await response.json();
 			//sample response from API call
-			let rates = {
-				concrete: 125,
-				vb: 100,
-				wwm: .15
+			let sampleRates = {
+				 cPrice: 125.00,
+				 m1Price: 200.00,
+				 m1Coverage: 100,
+				 m2Price: 7.00,
+				 m2Coverage: 10
 			}
 			let calcRates = {
-				concrete: rates.concrete,
-				vb: rates.vb,
-				wwm: rates.wwm
+				conPrice: sampleRates.cPrice,
+				mat1Price: sampleRates.m1Price,
+				mat1Coverage: sampleRates.m1Coverage,
+				mat2Price: sampleRates.m2Price,
+				mat2Coverage: sampleRates.m2Coverage
 			};
 			localStorage.setItem('ratesLocal', JSON.stringify(calcRates));
-			calculations();
+			display();
 		} catch (err) {
 			console.error(err.message);
 		}
 	};
 
-	async function calculations() {
+	async function calculations(inputs, rates) {
 		try {
-			let inputs = JSON.parse(localStorage.getItem('inputs'));
-			let ratesLocal = JSON.parse(localStorage.getItem('ratesLocal'));
+			let {depth, sqft} = inputs;
+			let {conPrice,
+				mat1Price,
+				mat1Coverage,
+				mat2Price,
+				mat2Coverage} = rates;
 			// object shapes
 			// {sqft: 3, depth: 4}
 			// {concrete: 125, vb: 100, wwm: 0.15}
-			let ftCubed = inputs.sqft * inputs.depth;
-			let ydsCubed = ftCubed * 0.037037;
-			let concreteCost = ydsCubed * ratesLocal.concrete;
-			let vbCost = inputs.sqft * ratesLocal.vb;
-			let wwmCost = inputs.sqft * ratesLocal.wwm;
+			let ftCubed = sqft * depth;
+			let ydsCubed = math.totalYardsCu(ftCubed);
+			let concreteCost = math.conCalc(ydsCubed,conPrice);
+			let vbCost = math.matCalc(sqft,mat1Price,mat1Coverage);
+			let wwmCost = math.matCalc(sqft,mat2Price,mat2Coverage);
 			let subtotal = concreteCost + vbCost + wwmCost;
+			console.log(subtotal);
 			let tax = subtotal * .085;
 			let total = subtotal + tax;
 
@@ -94,7 +104,6 @@ function Home() {
 				total: total
 			}
 			localStorage.setItem('resultsLocal', JSON.stringify(resultsObj));
-			display();
 		} catch (err) {
 			console.error(err);
 		}
@@ -104,6 +113,7 @@ function Home() {
 		try {
 			let inputs = JSON.parse(localStorage.getItem('inputs'));
 			let ratesLocal = JSON.parse(localStorage.getItem('ratesLocal'));
+			calculations(inputs, ratesLocal);
 			let resultsLocal = JSON.parse(localStorage.getItem('resultsLocal'));
 			//save all info in local storage into states below are examples
 			// setstationsFUEL(stationsFuel);
@@ -114,7 +124,7 @@ function Home() {
 			setShowRequests(false);
 			setResults({
 				...results, sqft: `Total FT^2 = ${inputs.sqft} FT^2`,
-				depth: `Depth Inches = ${inputs.depth} In`,
+				depth: `Depth FT = ${inputs.depth} FT`,
 				ftCubed: `Total FT^3 = ${resultsLocal.ftCubed} FT^3`,
 				ydsCubed: `Total YD^3 = ${resultsLocal.ydsCubed} YD^3`,
 				concreteCost: `Total Cost = $${resultsLocal.concreteCost} + $1000 for pump`,
@@ -123,9 +133,9 @@ function Home() {
 				subtotal: ``,
 				Tax: ` = $${resultsLocal.tax}`,
 				Total: `= $${resultsLocal.total}`,
-				concreteRate: `Cost per YD^3 = $${ratesLocal.concrete} YD^3`,
-				vbRate: `Cost = $${ratesLocal.vb} per 2000ft^2 `,
-				wwmRate: `Cost = $${ratesLocal.wwm} per 45ft^2 `
+				concreteRate: `Cost per YD^3 = $${ratesLocal.conPrice} YD^3`,
+				vbRate: `Cost = $${ratesLocal.mat1Price} per ${ratesLocal.mat1Coverage}ft^2 `,
+				wwmRate: `Cost = $${ratesLocal.mat2Price} per ${ratesLocal.mat2Coverage}ft^2 `
 			});
 		} catch (err) {
 			console.error(err);
