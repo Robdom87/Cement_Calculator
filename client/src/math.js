@@ -13,8 +13,9 @@
 const math = {
     // CALCULATING YARDS CUBED
     totalYardsCu: function (totalFtCu) {
-        totalFtCu += 81;
-        let yardsCu = (totalFtCu / 27.00).toFixed(2);
+        // totalFtCu += 81;
+        //add 3 because pumps use 1 cubic yard to start
+        let yardsCu = ((totalFtCu / 27.00)+3).toFixed(2);
         return parseInt(yardsCu);
     },
 
