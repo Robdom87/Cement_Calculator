@@ -7,6 +7,38 @@ const typeDefs = gql`
 		email: String
 	}
 
+	type Rates {
+    ratesId: ID!
+    concreteType: String
+    description: String
+    mainCosts: [Main]
+    extraCosts: [Extra]
+  }
+
+  type Main {
+    mainId: ID!
+    sackMix: String
+    psi: String
+    unit: String
+    rate: Number
+  }
+
+  type Extra {
+    extraId: ID!
+    costDescr: String
+    unit: String
+    rate: Number
+  }
+
+#   input RatesInput {
+# 	ratesId: ID!
+#     concreteType: String
+#     description: String
+#     mainCosts: [Main]
+#     extraCosts: [Extra]
+
+#   }
+
 	type Auth {
 		token: ID!
 		user: User

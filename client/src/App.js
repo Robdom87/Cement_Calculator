@@ -1,7 +1,10 @@
 import './App.css';
+// import {
+//   CementNav
+//  } from './ui-components';
 import {
-  CementNav
- } from './ui-components';
+  Navbar
+} from './components/Navbar';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import {
   ApolloClient,
@@ -41,7 +44,7 @@ function App() {
   return (
     <ApolloProvider client={client}>
     <Router>
-    <CementNav/>      
+    <Navbar/>      
     <Routes>
         <Route
           path="/"
