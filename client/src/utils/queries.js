@@ -24,3 +24,24 @@ export const QUERY_ME = gql`
 		}
 	}
 `;
+
+export const QUERY_RATES = gql`
+	query Query {
+		rates {
+			concreteType
+			description
+			_id
+			mainCosts {
+				sackMix
+				psi
+				unit
+				rate
+			}
+			extraCosts {
+				costDescr
+				unit
+				rate
+			}
+		}
+	}
+`;

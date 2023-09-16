@@ -8,7 +8,7 @@ const typeDefs = gql`
 	}
 
 	type Rates {
-    ratesId: ID!
+    _id: ID!
     concreteType: String
     description: String
     mainCosts: [Main]
@@ -16,28 +16,37 @@ const typeDefs = gql`
   }
 
   type Main {
-    mainId: ID!
+    _id: ID!
     sackMix: String
     psi: String
     unit: String
-    rate: Number
+    rate: Float
   }
 
   type Extra {
-    extraId: ID!
+    _id: ID!
     costDescr: String
     unit: String
-    rate: Number
+    rate: Float
   }
 
-#   input RatesInput {
-# 	ratesId: ID!
-#     concreteType: String
-#     description: String
-#     mainCosts: [Main]
-#     extraCosts: [Extra]
+  # input RatesInput {
+	#   ratesId: ID!
+  #   concreteType: String
+  #   mainCosts: [Main]
+  #   extraCosts: [Extra]
+  # }
 
-#   }
+  input Register {
+    username: String! 
+    email: String! 
+    password: String!
+  }
+
+  input Login {
+    email: String!
+    password: String!
+  }
 
 	type Auth {
 		token: ID!
@@ -47,11 +56,14 @@ const typeDefs = gql`
 	type Query {
 		users: [User]
 		me: User
+    rates: [Rates]
+    rate: Rates
+    # pullRate(sackMix: String!):Rates
 	}
 
 	type Mutation {
-		addUser(username: String!, email: String!, password: String!): Auth
-		login(email: String!, password: String!): Auth
+		addUser( input: Register ): Auth
+		login( input: Login ): Auth
 	}
 `;
 

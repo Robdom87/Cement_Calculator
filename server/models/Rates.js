@@ -1,7 +1,7 @@
 const { Schema, model } = require('mongoose');
 
-const mainSchema = require('./Main');
-const extraSchema = require('./Extra');
+const Main = require('./Main');
+const Extra = require('./Extra');
 
 const ratesSchema = new Schema(
 	{
@@ -15,8 +15,8 @@ const ratesSchema = new Schema(
 			required: true,
 			unique: true,
 		},
-		mainCosts: [ mainSchema ],
-        extraCosts:[ extraSchema ],
+		mainCosts: [ Main ],
+        extraCosts:[ Extra ],
 	},
 	// set this to use virtual below
 	{
