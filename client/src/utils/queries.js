@@ -27,21 +27,46 @@ export const QUERY_ME = gql`
 
 export const QUERY_RATES = gql`
 	query Query {
-		rates {
-			concreteType
-			description
-			_id
-			mainCosts {
-				sackMix
-				psi
-				unit
-				rate
-			}
-			extraCosts {
-				costDescr
-				unit
-				rate
-			}
-		}
-	}
+  rates {
+    _id
+    concreteType
+    description
+    mainCosts {
+      _id
+      sackMix
+      psi
+      unit
+      rate
+    }
+    extraCosts {
+      _id
+      costDescr
+      unit
+      rate
+    }
+  }
+}
+`;
+
+export const QUERY_RATE = gql`
+	query Rate($type: String!) {
+  rate(concreteType: $type){
+    _id
+    concreteType
+    description
+    mainCosts {
+      _id
+      sackMix
+      psi
+      unit
+      rate
+    }
+    extraCosts {
+      _id
+      costDescr
+      unit
+      rate
+    }
+  }
+}
 `;

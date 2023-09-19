@@ -19,8 +19,8 @@ const resolvers = {
 		rates: async () => {
 			return await Rates.find({});
 		},
-		rate: async (parent, args, context) => {
-			return await Rates.findOne({});
+		rate: async (parent, { type }, context) => {
+			return await Rates.findOne({ concreteType: type });
 		},
 	},
 

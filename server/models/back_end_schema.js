@@ -6,7 +6,9 @@ export const schema = {
         "serviceTypes": [
           {
             "typeName": "psi2k",
-            "serviceInputs": ["none", "cubicYards", "serviceMaterials", "serviceCostLabor", "total"]
+            "craftHrs":"none", 
+            "unit":"cubicYards" 
+            "serviceMaterials", "serviceCostLabor", "total"
           },
           {
             "typeName": "psi3k",

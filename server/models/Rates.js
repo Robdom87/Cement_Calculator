@@ -13,7 +13,6 @@ const ratesSchema = new Schema(
 		description: {
 			type: String,
 			required: true,
-			unique: true,
 		},
 		mainCosts: [ Main ],
         extraCosts:[ Extra ],
