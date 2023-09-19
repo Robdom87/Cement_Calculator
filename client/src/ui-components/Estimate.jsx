@@ -14,8 +14,8 @@ export default function Estimate(props) {
     <Flex
       gap="5px"
       direction="column"
-      width="684px"
-      height="718px"
+      width="655px"
+      height="unset"
       justifyContent="flex-start"
       alignItems="center"
       overflow="hidden"
@@ -67,7 +67,7 @@ export default function Estimate(props) {
         padding="0px 0px 0px 0px"
         whiteSpace="pre-wrap"
         children={results?.sqft}
-        {...getOverrideProps(overrides, "Total FT^2 = 2360 FT^2")}
+        {...getOverrideProps(overrides, "Total (FT^2) =")}
       ></Text>
       <Text
         fontFamily="Inter"

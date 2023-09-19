@@ -12,7 +12,7 @@ export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes
 export declare type EstimateOverridesProps = {
     Estimate?: PrimitiveOverrideProps<FlexProps>;
     label4099328?: PrimitiveOverrideProps<TextProps>;
-    "Total FT^2 = 2360 FT^2"?: PrimitiveOverrideProps<TextProps>;
+    "Total (FT^2) ="?: PrimitiveOverrideProps<TextProps>;
     "Depth Inches = 6 In"?: PrimitiveOverrideProps<TextProps>;
     "Total Cost (Includes Taxes) = $5773.28"?: PrimitiveOverrideProps<TextProps>;
     label40701203?: PrimitiveOverrideProps<TextProps>;

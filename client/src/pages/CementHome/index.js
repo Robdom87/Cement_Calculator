@@ -5,6 +5,9 @@ import {
 } from '../../ui-components';
 import math from '../../math';
 import { useState } from 'react';
+import {
+	InputII 
+   } from '../../ui-components';
 
 
 function Home() {
@@ -144,6 +147,7 @@ function Home() {
 
 	return (
 		<>
+			<InputII />
 			{showRequests ? <RequestMeasurements
 				onSubmit={handleFormSubmit}
 			/> : null}

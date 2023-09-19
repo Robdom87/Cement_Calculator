@@ -81,6 +81,7 @@ export default function RequestMeasurements(props) {
       {...rest}
     >
       <Heading
+        level={6}
         children="Submit Measurements"
         {...getOverrideProps(overrides, "SectionalElement0")}
       ></Heading>
