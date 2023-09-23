@@ -1,8 +1,8 @@
 const User = require('./User');
-const Rates = require('./Rates');
+const Services = require('./Services');
 
 
-module.exports = { User, Rates };
+module.exports = { User, Services };
 
 // let sampleObj = {
 //     concreteType: "rd-mx-cncrt",

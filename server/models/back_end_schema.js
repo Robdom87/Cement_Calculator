@@ -138,24 +138,6 @@ export const schema = {
           "labor": "serviceCostLabor",
           "total": 29.7,
         },
-        {
-          "costName": "highEarlyStrength",
-          "description": "Add for high early strength concrete",
-          "craftHrs": "none",
-          "units": "cubicYards",
-          "materials": [
-            {
-              "description": "5 sack mix",
-              "rate": 17.6,
-            },
-            {
-              "description": "6 sack mix",
-              "rate": 23.4,
-            }
-          ],
-          "labor": "serviceCostLabor",
-          "total": "variable",
-        },
       ],
     },
   ]

@@ -3,21 +3,19 @@ const { Schema, model } = require('mongoose');
 const Main = require('./Main');
 const Extra = require('./Extra');
 
-const ratesSchema = new Schema(
+const serviceSchema = new Schema(
 	{
-		concreteType: {
+		serviceName: {
 			type: String,
 			required: true,
-			unique: true,
 		},
 		description: {
 			type: String,
 			required: true,
 		},
-		mainCosts: [ Main ],
-        extraCosts:[ Extra ],
+		serviceTypes: [Main],
+		extraCosts: [Extra],
 	},
-	// set this to use virtual below
 	{
 		toJSON: {
 			virtuals: true,
@@ -25,10 +23,6 @@ const ratesSchema = new Schema(
 	}
 );
 
-const Rates = model('Rates', ratesSchema);
+const Service = model('Service', serviceSchema);
 
-module.exports = Rates;
-
-
-
-
+module.exports = Service;
