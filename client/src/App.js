@@ -2,9 +2,9 @@ import './App.css';
 // import {
 //   CementNav
 //  } from './ui-components';
-import {
-  Navbar
-} from './components/Navbar';
+// import {
+//   Navbar
+// } from './components/Navbar';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import {
   ApolloClient,

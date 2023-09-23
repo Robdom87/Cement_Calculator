@@ -1,38 +1,162 @@
 export const schema = {
-    "services": [
-      {
-        "serviceName": "Service Name",
-        "description": "What the service does",
-        "serviceTypes": [
-          {
-            "typeName": "psi2k",
-            "craftHrs":"none", 
-            "unit":"cubicYards" 
-            "serviceMaterials", "serviceCostLabor", "total"
-          },
-          {
-            "typeName": "psi3k",
-            "serviceInputs": ["none", "cubicYards", "serviceMaterials", "serviceCostLabor", "total"]
-          },
-          // Add more service types as needed
-        ],
-        "extraCosts": [
-          {
-            "costName": "Extra Cost Name 1",
-            "costInputs": ["none", "cubicYards", "serviceMaterials", "serviceCostLabor", "total"]
-          },
-          {
-            "costName": "Extra Cost Name 2",
-            "costInputs": ["none", "cubicYards", "serviceMaterials", "serviceCostLabor", "total"]
-          },
-          {
-            "costName": "Extra Cost Name 3",
-            "costInputs": ["none", "cubicYards", "serviceMaterials", "serviceCostLabor", "total"]
-          }
-          // Add more extra costs as needed
-        ]
-      },
-      // Add more services as needed
-    ]
-  };
-  
+  "services": [
+    {
+      "serviceName": "ReadyMixConcrete",
+      "description": "Ready-Mix Concrete Ready-mix delivered by truck. Typical prices for most cities. Includes delivery up to 20 miles for 10 CY or more, 3in to 4in slump. Material cost only, no placing or pumping included. All concrete material costs in this manual are based on these figures.",
+      "serviceTypes": [
+        {
+          "typeName": "psi2000",
+          "craftHrs": "none",
+          "units": "cubicYards",
+          "materials": 136,
+          "labor": "none",
+          "total": 136,
+        },
+        {
+          "typeName": "psi3000",
+          "craftHrs": "none",
+          "units": "cubicYards",
+          "materials": 141,
+          "labor": "serviceCostLabor",
+          "total": 141,
+        },
+        {
+          "typeName": "psi3500",
+          "craftHrs": "none",
+          "units": "cubicYards",
+          "materials": 144,
+          "labor": "serviceCostLabor",
+          "total": 144,
+        },
+        {
+          "typeName": "psi4000",
+          "craftHrs": "none",
+          "units": "cubicYards",
+          "materials": 147,
+          "labor": "serviceCostLabor",
+          "total": 147,
+        },
+        {
+          "typeName": "psi5000",
+          "craftHrs": "none",
+          "units": "cubicYards",
+          "materials": 168,
+          "labor": "serviceCostLabor",
+          "total": 169,
+        },
+      ],
+      "extraCosts": [
+        {
+          "costName": "lessThan10CY",
+          "description": "Add for less than 10 CY per load",
+          "craftHrs": "none",
+          "units": "cubicYards",
+          "materials": 59.3,
+          "labor": "serviceCostLabor",
+          "total": 59.3,
+        },
+        {
+          "costName": "deliveryOver20Miles",
+          "description": "Add for delivery over 20 miles",
+          "craftHrs": "none",
+          "units": "mile",
+          "materials": 10.8,
+          "labor": "serviceCostLabor",
+          "total": 10.8,
+
+        },
+        {
+          "costName": "stanbyTimefiveMinutes",
+          "description": "Add for standby charge in excess of 5 minutes per CY delivered, per minute of extra time",
+          "craftHrs": "none",
+          "units": "EA",
+          "materials": 3.39,
+          "labor": "serviceCostLabor",
+          "total": 3.39,
+
+        },
+        {
+          "costName": "superPlasticizerMix",
+          "description": "Add for super-plasticized mix, 7in-8in slump",
+          "craftHrs": "percentage",
+          "units": "cubicYards",
+          "materials": 8.5,
+          "labor": "serviceCostLabor",
+          "total": 8.5,
+        },
+        {
+          "costName": "lightweightAggregate",
+          "description": "Add for lightweight aggregate, typical",
+          "craftHrs": "none",
+          "units": "cubicYards",
+          "materials": 62.3,
+          "labor": "serviceCostLabor",
+          "total": 62.3,
+        },
+        {
+          "costName": "pumpMixPeaGravel",
+          "description": "Add for pump mix (pea-gravel aggregate)",
+          "craftHrs": "none",
+          "units": "cubicYards",
+          "materials": 13.5,
+          "labor": "serviceCostLabor",
+          "total": 13.5,
+        },
+        {
+          "costName": "graniteAggregate",
+          "description": "Add for granite aggregate, typical",
+          "craftHrs": "none",
+          "units": "cubicYards",
+          "materials": 9.78,
+          "labor": "serviceCostLabor",
+          "total": 9.78,
+        },
+        {
+          "costName": "whiteCement",
+          "description": "Add for white cement (architectural)",
+          "craftHrs": "none",
+          "units": "cubicYards",
+          "materials": 80.7,
+          "labor": "serviceCostLabor",
+          "total": 80.7,
+        },
+        {
+          "costName": "calciumChloride",
+          "description": "Add for 1% calcium chloride",
+          "craftHrs": "none",
+          "units": "cubicYards",
+          "materials": 2.27,
+          "labor": "serviceCostLabor",
+          "total": 2.27,
+        },
+        {
+          "costName": "chemicalCompensationShrinkage",
+          "description": "Add for chemical compensated shrinkage",
+          "craftHrs": "none",
+          "units": "cubicYards",
+          "materials": 29.7,
+          "labor": "serviceCostLabor",
+          "total": 29.7,
+        },
+        {
+          "costName": "highEarlyStrength",
+          "description": "Add for high early strength concrete",
+          "craftHrs": "none",
+          "units": "cubicYards",
+          "materials": [
+            {
+              "description": "5 sack mix",
+              "rate": 17.6,
+            },
+            {
+              "description": "6 sack mix",
+              "rate": 23.4,
+            }
+          ],
+          "labor": "serviceCostLabor",
+          "total": "variable",
+        },
+      ],
+    },
+  ]
+}
