@@ -6,26 +6,43 @@
 
 /* eslint-disable */
 import * as React from "react";
-import { Button, Flex, Grid, Heading, TextField } from "@aws-amplify/ui-react";
+import {
+  Button,
+  Flex,
+  Grid,
+  Heading,
+  Radio,
+  RadioGroupField,
+  SelectField,
+  TextField,
+} from "@aws-amplify/ui-react";
 import { getOverrideProps } from "@aws-amplify/ui-react/internal";
 import { fetchByPath, validateField } from "./utils";
 export default function RequestMeasurements(props) {
   const { onSubmit, onValidate, onChange, overrides, ...rest } = props;
   const initialValues = {
-    Field0: "",
-    Field1: "",
+    Sqft: "",
+    Depth: "",
+    Main: "",
+    Extra: undefined,
   };
-  const [Field0, setField0] = React.useState(initialValues.Field0);
-  const [Field1, setField1] = React.useState(initialValues.Field1);
+  const [Sqft, setSqft] = React.useState(initialValues.Sqft);
+  const [Depth, setDepth] = React.useState(initialValues.Depth);
+  const [Main, setMain] = React.useState(initialValues.Main);
+  const [Extra, setExtra] = React.useState(initialValues.Extra);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
-    setField0(initialValues.Field0);
-    setField1(initialValues.Field1);
+    setSqft(initialValues.Sqft);
+    setDepth(initialValues.Depth);
+    setMain(initialValues.Main);
+    setExtra(initialValues.Extra);
     setErrors({});
   };
   const validations = {
-    Field0: [],
-    Field1: [],
+    Sqft: [],
+    Depth: [],
+    Main: [],
+    Extra: [],
   };
   const runValidationTasks = async (
     fieldName,
@@ -53,8 +70,10 @@ export default function RequestMeasurements(props) {
       onSubmit={async (event) => {
         event.preventDefault();
         const modelFields = {
-          Field0,
-          Field1,
+          Sqft,
+          Depth,
+          Main,
+          Extra,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -86,55 +105,116 @@ export default function RequestMeasurements(props) {
         {...getOverrideProps(overrides, "SectionalElement0")}
       ></Heading>
       <TextField
-        label="Square Footage of Cement Slab"
+        label="Square Footage"
         type="number"
         step="any"
-        value={Field0}
+        value={Sqft}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
-              Field0: value,
-              Field1,
+              Sqft: value,
+              Depth,
+              Main,
+              Extra,
             };
             const result = onChange(modelFields);
-            value = result?.Field0 ?? value;
+            value = result?.Sqft ?? value;
           }
-          if (errors.Field0?.hasError) {
-            runValidationTasks("Field0", value);
+          if (errors.Sqft?.hasError) {
+            runValidationTasks("Sqft", value);
           }
-          setField0(value);
+          setSqft(value);
         }}
-        onBlur={() => runValidationTasks("Field0", Field0)}
-        errorMessage={errors.Field0?.errorMessage}
-        hasError={errors.Field0?.hasError}
-        {...getOverrideProps(overrides, "Field0")}
+        onBlur={() => runValidationTasks("Sqft", Sqft)}
+        errorMessage={errors.Sqft?.errorMessage}
+        hasError={errors.Sqft?.hasError}
+        {...getOverrideProps(overrides, "Sqft")}
       ></TextField>
       <TextField
-        label="Depth of Slab"
+        label="Depth"
         type="number"
         step="any"
-        value={Field1}
+        value={Depth}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
-              Field0,
-              Field1: value,
+              Sqft,
+              Depth: value,
+              Main,
+              Extra,
             };
             const result = onChange(modelFields);
-            value = result?.Field1 ?? value;
+            value = result?.Depth ?? value;
           }
-          if (errors.Field1?.hasError) {
-            runValidationTasks("Field1", value);
+          if (errors.Depth?.hasError) {
+            runValidationTasks("Depth", value);
           }
-          setField1(value);
+          setDepth(value);
         }}
-        onBlur={() => runValidationTasks("Field1", Field1)}
-        errorMessage={errors.Field1?.errorMessage}
-        hasError={errors.Field1?.hasError}
-        {...getOverrideProps(overrides, "Field1")}
+        onBlur={() => runValidationTasks("Depth", Depth)}
+        errorMessage={errors.Depth?.errorMessage}
+        hasError={errors.Depth?.hasError}
+        {...getOverrideProps(overrides, "Depth")}
       ></TextField>
+      <SelectField
+        label="Main Costs"
+        placeholder="Please select an option"
+        value={Main}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              Sqft,
+              Depth,
+              Main: value,
+              Extra,
+            };
+            const result = onChange(modelFields);
+            value = result?.Main ?? value;
+          }
+          if (errors.Main?.hasError) {
+            runValidationTasks("Main", value);
+          }
+          setMain(value);
+        }}
+        onBlur={() => runValidationTasks("Main", Main)}
+        errorMessage={errors.Main?.errorMessage}
+        hasError={errors.Main?.hasError}
+        {...getOverrideProps(overrides, "Main")}
+      ></SelectField>
+      <RadioGroupField
+        label="Extra Costs"
+        name="fieldName"
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              Sqft,
+              Depth,
+              Main,
+              Extra: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.Extra ?? value;
+          }
+          if (errors.Extra?.hasError) {
+            runValidationTasks("Extra", value);
+          }
+          setExtra(value);
+        }}
+        onBlur={() => runValidationTasks("Extra", Extra)}
+        errorMessage={errors.Extra?.errorMessage}
+        hasError={errors.Extra?.hasError}
+        {...getOverrideProps(overrides, "Extra")}
+      >
+        <Radio
+          children="Option"
+          value="Option"
+          {...getOverrideProps(overrides, "ExtraRadio0")}
+        ></Radio>
+      </RadioGroupField>
       <Flex
         justifyContent="space-between"
         {...getOverrideProps(overrides, "CTAFlex")}

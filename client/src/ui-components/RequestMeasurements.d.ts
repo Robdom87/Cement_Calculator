@@ -5,7 +5,7 @@
  **************************************************************************/
 
 import * as React from "react";
-import { GridProps, HeadingProps, TextFieldProps } from "@aws-amplify/ui-react";
+import { GridProps, HeadingProps, RadioGroupFieldProps, SelectFieldProps, TextFieldProps } from "@aws-amplify/ui-react";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
 export declare type ValidationResponse = {
     hasError: boolean;
@@ -13,19 +13,25 @@ export declare type ValidationResponse = {
 };
 export declare type ValidationFunction<T> = (value: T, validationResponse: ValidationResponse) => ValidationResponse | Promise<ValidationResponse>;
 export declare type RequestMeasurementsInputValues = {
-    Field0?: string;
-    Field1?: string;
+    Sqft?: string;
+    Depth?: string;
+    Main?: string;
+    Extra?: string;
 };
 export declare type RequestMeasurementsValidationValues = {
-    Field0?: ValidationFunction<string>;
-    Field1?: ValidationFunction<string>;
+    Sqft?: ValidationFunction<string>;
+    Depth?: ValidationFunction<string>;
+    Main?: ValidationFunction<string>;
+    Extra?: ValidationFunction<string>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type RequestMeasurementsOverridesProps = {
     RequestMeasurementsGrid?: PrimitiveOverrideProps<GridProps>;
     SectionalElement0?: PrimitiveOverrideProps<HeadingProps>;
-    Field0?: PrimitiveOverrideProps<TextFieldProps>;
-    Field1?: PrimitiveOverrideProps<TextFieldProps>;
+    Sqft?: PrimitiveOverrideProps<TextFieldProps>;
+    Depth?: PrimitiveOverrideProps<TextFieldProps>;
+    Main?: PrimitiveOverrideProps<SelectFieldProps>;
+    Extra?: PrimitiveOverrideProps<RadioGroupFieldProps>;
 } & EscapeHatchProps;
 export declare type RequestMeasurementsProps = React.PropsWithChildren<{
     overrides?: RequestMeasurementsOverridesProps | undefined | null;
