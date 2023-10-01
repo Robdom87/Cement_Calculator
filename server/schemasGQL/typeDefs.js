@@ -7,35 +7,39 @@ const typeDefs = gql`
 		email: String
 	}
 
-	type Rates {
+  # type Services {
+  #   _id: ID!
+  #   services: [Service]
+  # }
+
+	type Service {
     _id: ID!
-    concreteType: String
+    serviceName: String
     description: String
-    mainCosts: [Main]
+    serviceTypes: [Main]
     extraCosts: [Extra]
   }
 
   type Main {
     _id: ID!
-    sackMix: String
-    psi: String
-    unit: String
-    rate: Float
+    typeName: String
+    craftHrs: String
+    units: String
+    materials: Float
+    labor: String
+    total: Float
   }
 
   type Extra {
     _id: ID!
-    costDescr: String
-    unit: String
-    rate: Float
+    costName: String
+    description: String
+    craftHrs: String
+    units: String
+    materials: Float
+    labor: String
+    total: Float
   }
-
-  # input RatesInput {
-	#   ratesId: ID!
-  #   concreteType: String
-  #   mainCosts: [Main]
-  #   extraCosts: [Extra]
-  # }
 
   input Register {
     username: String! 
@@ -56,8 +60,8 @@ const typeDefs = gql`
 	type Query {
 		users: [User]
 		me: User
-    rates: [Rates]
-    rate: Rates
+    services: [Service]
+    service(serviceName: String!): Service
     # pullRate(sackMix: String!):Rates
 	}
 

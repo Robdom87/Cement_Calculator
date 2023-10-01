@@ -1,21 +1,21 @@
 const { Schema, model } = require('mongoose');
 
-const Service = require('./Service');
+// const Service = require('./Service');
 
-const servicesSchema = new Schema(
-	{
-		services: [Service],
-	},
-	{
-		toJSON: {
-			virtuals: true,
-		},
-	}
-);
+// const servicesSchema = new Schema(
+// 	{
+// 		services: [Service],
+// 	},
+// 	{
+// 		toJSON: {
+// 			virtuals: true,
+// 		},
+// 	}
+// );
 
-const Services = model('Services', servicesSchema);
+// const Services = model('Services', servicesSchema);
 
-module.exports = Services;
+// module.exports = Services;
 
 
 

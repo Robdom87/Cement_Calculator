@@ -10,6 +10,8 @@ export const QUERY_USERS = gql`
 	}
 `;
 
+//make api endpoint to just get all the service names for front end
+
 export const QUERY_ME = gql`
 	query Query {
 		me {
@@ -25,48 +27,68 @@ export const QUERY_ME = gql`
 	}
 `;
 
-export const QUERY_RATES = gql`
-	query Query {
-  rates {
+export const QUERY_SERVICE = gql`
+query Service($serviceName: String!) {
+  service (serviceName: $serviceName) {
     _id
-    concreteType
+    serviceName
     description
-    mainCosts {
+    serviceTypes {
       _id
-      sackMix
-      psi
-      unit
-      rate
+      typeName
+      craftHrs
+      units
+      materials
+      labor
+      total
     }
     extraCosts {
       _id
-      costDescr
-      unit
-      rate
+      costName
+      description
+      craftHrs
+      units
+      materials
+      labor
+      total
     }
   }
 }
 `;
 
-export const QUERY_RATE = gql`
-	query Rate($type: String!) {
-  rate(concreteType: $type){
+export const QUERY_SERVICES = gql`
+query Services {
+  services {
     _id
-    concreteType
+    serviceName
     description
-    mainCosts {
+    serviceTypes {
       _id
-      sackMix
-      psi
-      unit
-      rate
+      typeName
+      craftHrs
+      units
+      materials
+      labor
+      total
     }
     extraCosts {
       _id
-      costDescr
-      unit
-      rate
+      costName
+      description
+      craftHrs
+      units
+      materials
+      labor
+      total
     }
+  }
+}
+`;
+
+export const QUERY_NAMES = gql`
+query ServiceNames {
+  services {
+    serviceName
   }
 }
 `;
