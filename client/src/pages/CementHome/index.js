@@ -14,7 +14,7 @@ import { QUERY_NAMES, QUERY_SERVICE } from '../../utils/queries';
 
 function Home() {
 	const [showResults, setShowResults] = useState(false);
-	const [showRequests, setShowRequests] = useState(false);
+	const [showRequests, setShowRequests] = useState(true);
 	const [results, setResults] = useState({
 		sqft: "",
 		depth: "",
@@ -31,16 +31,16 @@ function Home() {
 		wwmRate: ""
 	});
 	const { loading, data } = useQuery(QUERY_NAMES);
-	const names = data?.services || [];
+	const serviceOptions = data?.services || [];
 	
 
-	const handleType = async (event) => {
+	// const handleType = async (event) => {
 		
-		const { loading, data } = useQuery(QUERY_SERVICE, {
-			variables: { serviceName: event.name },
-		});
-		setShowRequests(true);
-	}
+	// 	const { loading, data } = useQuery(QUERY_SERVICE, {
+	// 		variables: { serviceName: event.name },
+	// 	});
+	// 	setShowRequests(true);
+	// }
 
 
 	const handleFormSubmit = async (event) => {
@@ -163,13 +163,17 @@ function Home() {
 			{/* <InputII /> */}
 			{loading ? (
 				<div>Loading...</div>
-			) : (
+			) : ( 
 				<NewForm1
-					onChange={handleType} />
+					// onChange={handleType} 
+					overrides={{
+						options: {serviceOptions}
+					}}/>
 			)}
 			{showRequests ?
 				<RequestMeasurements
-					onSubmit={handleFormSubmit} />
+					onSubmit={handleFormSubmit}
+					 />
 				: null}
 			{showResults ? <Estimate
 				results={results}
