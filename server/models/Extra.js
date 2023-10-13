@@ -2,15 +2,31 @@ const { Schema, model } = require('mongoose');
 
 const extraSchema = new Schema(
 	{
-		costDescr: {
+		costName: {
 			type: String,
 			required: true,
 		},
-		unit: {
+		description: {
 			type: String,
 			required: true,
 		},
-        rate: {
+		craftHrs: {
+			type: String,
+			required: true,
+		},
+		units: {
+			type: String,
+			required: true,
+		},
+		materials: {
+			type: Number,
+			required: true,
+		},
+		labor: {
+			type: String,
+			required: true,
+		},
+		total: {
 			type: Number,
 			required: true,
 		},

@@ -15,6 +15,7 @@ export { default as Login } from "./Login";
 export { default as MyIcon } from "./MyIcon";
 export { default as Navbar } from "./Navbar";
 export { default as NavbarII } from "./NavbarII";
+export { default as NewForm1 } from "./NewForm1";
 export { default as PrintReport } from "./PrintReport";
 export { default as RequestMeasurements } from "./RequestMeasurements";
 export { default as ResultsCreateForm } from "./ResultsCreateForm";

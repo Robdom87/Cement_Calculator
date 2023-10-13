@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Rates } = require('../models');
+const { User, Service } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -10,17 +10,16 @@ const resolvers = {
 		me: async (parent, args, context) => {
 			if (context.user) {
 				const userData = await User.findOne({ _id: context.user._id }).select('-__v -password');
-
 				return userData;
 			}
-
 			throw new AuthenticationError('Not logged in');
 		},
-		rates: async () => {
-			return await Rates.find({});
+		//.populate only needed if schema .populate("Main").populate("Extra")
+		services: async () => {
+			return await Service.find({});
 		},
-		rate: async (parent, args, context) => {
-			return await Rates.findOne({});
+		service: async (_, args) => {
+			return await Service.findOne({serviceName: args.serviceName});
 		},
 	},
 

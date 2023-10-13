@@ -1,14 +1,16 @@
 import React from 'react';
 import {
 	Estimate,
-	RequestMeasurements
+	RequestMeasurements,
+	NewForm1
 } from '../../ui-components';
 import math from '../../math';
 import { useState } from 'react';
-import {
-	InputII 
-   } from '../../ui-components';
-
+// import {
+// 	InputII 
+//    } from '../../ui-components';
+import { useQuery } from '@apollo/client';
+import { QUERY_NAMES, QUERY_SERVICE } from '../../utils/queries';
 
 function Home() {
 	const [showResults, setShowResults] = useState(false);
@@ -28,12 +30,23 @@ function Home() {
 		vbRate: "",
 		wwmRate: ""
 	});
+	const { loading, data } = useQuery(QUERY_NAMES);
+	const serviceOptions = data?.services || [];
+	
+
+	// const handleType = async (event) => {
+		
+	// 	const { loading, data } = useQuery(QUERY_SERVICE, {
+	// 		variables: { serviceName: event.name },
+	// 	});
+	// 	setShowRequests(true);
+	// }
 
 
 	const handleFormSubmit = async (event) => {
 		let inputsObj = {
-			sqft: parseInt(event.Field0),
-			depth: parseInt(event.Field1)
+			sqft: parseInt(event.sqft),
+			depth: parseInt(event.depth)
 		};
 		//save input into local storage
 		localStorage.setItem('inputs', JSON.stringify(inputsObj));
@@ -55,11 +68,11 @@ function Home() {
 			// const { rates } = await response.json();
 			//sample response from API call
 			let sampleRates = {
-				 cPrice: 125.00,
-				 m1Price: 200.00,
-				 m1Coverage: 100,
-				 m2Price: 7.00,
-				 m2Coverage: 10
+				cPrice: 125.00,
+				m1Price: 200.00,
+				m1Coverage: 100,
+				m2Price: 7.00,
+				m2Coverage: 10
 			}
 			let calcRates = {
 				conPrice: sampleRates.cPrice,
@@ -77,20 +90,20 @@ function Home() {
 
 	async function calculations(inputs, rates) {
 		try {
-			let {depth, sqft} = inputs;
-			let {conPrice,
+			let { depth, sqft } = inputs;
+			let { conPrice,
 				mat1Price,
 				mat1Coverage,
 				mat2Price,
-				mat2Coverage} = rates;
+				mat2Coverage } = rates;
 			// object shapes
 			// {sqft: 3, depth: 4}
 			// {concrete: 125, vb: 100, wwm: 0.15}
 			let ftCubed = sqft * depth;
 			let ydsCubed = math.totalYardsCu(ftCubed);
-			let concreteCost = math.conCalc(ydsCubed,conPrice);
-			let vbCost = math.matCalc(sqft,mat1Price,mat1Coverage);
-			let wwmCost = math.matCalc(sqft,mat2Price,mat2Coverage);
+			let concreteCost = math.conCalc(ydsCubed, conPrice);
+			let vbCost = math.matCalc(sqft, mat1Price, mat1Coverage);
+			let wwmCost = math.matCalc(sqft, mat2Price, mat2Coverage);
 			let subtotal = concreteCost + vbCost + wwmCost;
 			console.log(subtotal);
 			let tax = subtotal * .085;
@@ -147,10 +160,21 @@ function Home() {
 
 	return (
 		<>
-			<InputII />
-			{showRequests ? <RequestMeasurements
-				onSubmit={handleFormSubmit}
-			/> : null}
+			{/* <InputII /> */}
+			{loading ? (
+				<div>Loading...</div>
+			) : ( 
+				<NewForm1
+					// onChange={handleType} 
+					overrides={{
+						options: {serviceOptions}
+					}}/>
+			)}
+			{showRequests ?
+				<RequestMeasurements
+					onSubmit={handleFormSubmit}
+					 />
+				: null}
 			{showResults ? <Estimate
 				results={results}
 			/> : null}

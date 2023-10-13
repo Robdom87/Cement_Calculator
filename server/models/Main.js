@@ -2,24 +2,31 @@ const { Schema, model } = require('mongoose');
 
 const mainSchema = new Schema(
 	{
-		sackMix: {
+		typeName: {
 			type: String,
 			required: true,
 		},
-		psi: {
+		craftHrs: {
 			type: String,
 			required: true,
 		},
-		unit: {
+		units: {
 			type: String,
 			required: true,
 		},
-        rate: {
+		materials: {
+			type: Number,
+			required: true,
+		},
+		labor: {
+			type: String,
+			required: true,
+		},
+		total: {
 			type: Number,
 			required: true,
 		},
 	},
-	// set this to use virtual below
 	{
 		toJSON: {
 			virtuals: true,
