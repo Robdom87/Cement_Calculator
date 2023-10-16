@@ -16,7 +16,7 @@ import {
   View,
 } from "@aws-amplify/ui-react";
 export default function InputII(props) {
-  const { overrides, ...rest } = props;
+  const { results, Input, overrides, ...rest } = props;
   return (
     <View
       width="1321px"
@@ -70,6 +70,7 @@ export default function InputII(props) {
           isDisabled={false}
           labelHidden={false}
           variation="default"
+          results={results?.widthFT}
           {...getOverrideProps(overrides, "TextField4184472")}
         ></TextField>
       </Flex>
@@ -97,6 +98,7 @@ export default function InputII(props) {
           isDisabled={false}
           labelHidden={false}
           variation="default"
+          results={results?.lengthFT}
           {...getOverrideProps(overrides, "TextField4184479")}
         ></TextField>
       </Flex>
@@ -174,6 +176,7 @@ export default function InputII(props) {
           isDisabled={false}
           labelHidden={false}
           variation="default"
+          results={results?.depth}
           {...getOverrideProps(overrides, "TextField4184493")}
         ></TextField>
       </Flex>

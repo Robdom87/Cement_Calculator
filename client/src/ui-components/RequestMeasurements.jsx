@@ -11,8 +11,6 @@ import {
   Flex,
   Grid,
   Heading,
-  Radio,
-  RadioGroupField,
   SelectField,
   TextField,
 } from "@aws-amplify/ui-react";
@@ -24,7 +22,7 @@ export default function RequestMeasurements(props) {
     Sqft: "",
     Depth: "",
     Main: "",
-    Extra: undefined,
+    Extra: [],
   };
   const [Sqft, setSqft] = React.useState(initialValues.Sqft);
   const [Depth, setDepth] = React.useState(initialValues.Depth);
@@ -184,9 +182,10 @@ export default function RequestMeasurements(props) {
         hasError={errors.Main?.hasError}
         {...getOverrideProps(overrides, "Main")}
       ></SelectField>
-      <RadioGroupField
+      <SelectField
         label="Extra Costs"
-        name="fieldName"
+        placeholder="Please select an option"
+        value={Extra}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
@@ -208,13 +207,7 @@ export default function RequestMeasurements(props) {
         errorMessage={errors.Extra?.errorMessage}
         hasError={errors.Extra?.hasError}
         {...getOverrideProps(overrides, "Extra")}
-      >
-        <Radio
-          children="Option"
-          value="Option"
-          {...getOverrideProps(overrides, "ExtraRadio0")}
-        ></Radio>
-      </RadioGroupField>
+      ></SelectField>
       <Flex
         justifyContent="space-between"
         {...getOverrideProps(overrides, "CTAFlex")}

@@ -5,6 +5,7 @@
  **************************************************************************/
 
 import * as React from "react";
+import { Results } from "../models";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
 import { ButtonProps, DividerProps, FlexProps, TextFieldProps, TextProps, ViewProps } from "@aws-amplify/ui-react";
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
@@ -25,6 +26,9 @@ export declare type InputIIOverridesProps = {
     "CEMENT CALCULATOR"?: PrimitiveOverrideProps<TextProps>;
 } & EscapeHatchProps;
 export declare type InputIIProps = React.PropsWithChildren<Partial<ViewProps> & {
+    results?: Results;
+    Input?: Number;
+} & {
     overrides?: InputIIOverridesProps | undefined | null;
 }>;
 export default function InputII(props: InputIIProps): React.ReactElement;
