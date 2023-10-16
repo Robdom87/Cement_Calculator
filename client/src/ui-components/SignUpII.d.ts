@@ -5,6 +5,7 @@
  **************************************************************************/
 
 import * as React from "react";
+import { Results } from "../models";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
 import { ButtonProps, TextFieldProps, ViewProps } from "@aws-amplify/ui-react";
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
@@ -21,6 +22,8 @@ export declare type SignUpIIOverridesProps = {
     Password?: PrimitiveOverrideProps<TextFieldProps>;
 } & EscapeHatchProps;
 export declare type SignUpIIProps = React.PropsWithChildren<Partial<ViewProps> & {
+    ouptut?: Results;
+} & {
     overrides?: SignUpIIOverridesProps | undefined | null;
 }>;
 export default function SignUpII(props: SignUpIIProps): React.ReactElement;

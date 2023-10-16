@@ -24,52 +24,96 @@ export default function ResultsUpdateForm(props) {
     ...rest
   } = props;
   const initialValues = {
-    sqft: "",
+    lengthFT: "",
+    widthFT: "",
     depth: "",
     ftCubed: "",
     ydsCubed: "",
     concreteRate: "",
-    concreteCost: "",
-    vbRate: "",
-    vbCost: "",
-    wwmRate: "",
-    wwmCost: "",
+    concreteTCost: "",
     Tax: "",
     Total: "",
+    sqft: "",
+    serviceName: "",
+    description: "",
+    serviceType: "",
+    typeName: "",
+    typeDescription: "",
+    addOnName: "",
+    addOnDescription: "",
+    addOnMaterial: "",
+    addOnTotal: "",
+    callTotal: "",
+    serviceDescription: "",
+    addOnLabor: "",
   };
-  const [sqft, setSqft] = React.useState(initialValues.sqft);
+  const [lengthFT, setLengthFT] = React.useState(initialValues.lengthFT);
+  const [widthFT, setWidthFT] = React.useState(initialValues.widthFT);
   const [depth, setDepth] = React.useState(initialValues.depth);
   const [ftCubed, setFtCubed] = React.useState(initialValues.ftCubed);
   const [ydsCubed, setYdsCubed] = React.useState(initialValues.ydsCubed);
   const [concreteRate, setConcreteRate] = React.useState(
     initialValues.concreteRate
   );
-  const [concreteCost, setConcreteCost] = React.useState(
-    initialValues.concreteCost
+  const [concreteTCost, setConcreteTCost] = React.useState(
+    initialValues.concreteTCost
   );
-  const [vbRate, setVbRate] = React.useState(initialValues.vbRate);
-  const [vbCost, setVbCost] = React.useState(initialValues.vbCost);
-  const [wwmRate, setWwmRate] = React.useState(initialValues.wwmRate);
-  const [wwmCost, setWwmCost] = React.useState(initialValues.wwmCost);
   const [Tax, setTax] = React.useState(initialValues.Tax);
   const [Total, setTotal] = React.useState(initialValues.Total);
+  const [sqft, setSqft] = React.useState(initialValues.sqft);
+  const [serviceName, setServiceName] = React.useState(
+    initialValues.serviceName
+  );
+  const [description, setDescription] = React.useState(
+    initialValues.description
+  );
+  const [serviceType, setServiceType] = React.useState(
+    initialValues.serviceType
+  );
+  const [typeName, setTypeName] = React.useState(initialValues.typeName);
+  const [typeDescription, setTypeDescription] = React.useState(
+    initialValues.typeDescription
+  );
+  const [addOnName, setAddOnName] = React.useState(initialValues.addOnName);
+  const [addOnDescription, setAddOnDescription] = React.useState(
+    initialValues.addOnDescription
+  );
+  const [addOnMaterial, setAddOnMaterial] = React.useState(
+    initialValues.addOnMaterial
+  );
+  const [addOnTotal, setAddOnTotal] = React.useState(initialValues.addOnTotal);
+  const [callTotal, setCallTotal] = React.useState(initialValues.callTotal);
+  const [serviceDescription, setServiceDescription] = React.useState(
+    initialValues.serviceDescription
+  );
+  const [addOnLabor, setAddOnLabor] = React.useState(initialValues.addOnLabor);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     const cleanValues = resultsRecord
       ? { ...initialValues, ...resultsRecord }
       : initialValues;
-    setSqft(cleanValues.sqft);
+    setLengthFT(cleanValues.lengthFT);
+    setWidthFT(cleanValues.widthFT);
     setDepth(cleanValues.depth);
     setFtCubed(cleanValues.ftCubed);
     setYdsCubed(cleanValues.ydsCubed);
     setConcreteRate(cleanValues.concreteRate);
-    setConcreteCost(cleanValues.concreteCost);
-    setVbRate(cleanValues.vbRate);
-    setVbCost(cleanValues.vbCost);
-    setWwmRate(cleanValues.wwmRate);
-    setWwmCost(cleanValues.wwmCost);
+    setConcreteTCost(cleanValues.concreteTCost);
     setTax(cleanValues.Tax);
     setTotal(cleanValues.Total);
+    setSqft(cleanValues.sqft);
+    setServiceName(cleanValues.serviceName);
+    setDescription(cleanValues.description);
+    setServiceType(cleanValues.serviceType);
+    setTypeName(cleanValues.typeName);
+    setTypeDescription(cleanValues.typeDescription);
+    setAddOnName(cleanValues.addOnName);
+    setAddOnDescription(cleanValues.addOnDescription);
+    setAddOnMaterial(cleanValues.addOnMaterial);
+    setAddOnTotal(cleanValues.addOnTotal);
+    setCallTotal(cleanValues.callTotal);
+    setServiceDescription(cleanValues.serviceDescription);
+    setAddOnLabor(cleanValues.addOnLabor);
     setErrors({});
   };
   const [resultsRecord, setResultsRecord] = React.useState(resultsModelProp);
@@ -84,18 +128,28 @@ export default function ResultsUpdateForm(props) {
   }, [idProp, resultsModelProp]);
   React.useEffect(resetStateValues, [resultsRecord]);
   const validations = {
-    sqft: [],
-    depth: [],
+    lengthFT: [],
+    widthFT: [],
+    depth: [{ type: "Required" }],
     ftCubed: [],
     ydsCubed: [],
     concreteRate: [],
-    concreteCost: [],
-    vbRate: [],
-    vbCost: [],
-    wwmRate: [],
-    wwmCost: [],
+    concreteTCost: [],
     Tax: [],
     Total: [],
+    sqft: [{ type: "Required" }],
+    serviceName: [],
+    description: [],
+    serviceType: [],
+    typeName: [],
+    typeDescription: [],
+    addOnName: [],
+    addOnDescription: [],
+    addOnMaterial: [],
+    addOnTotal: [],
+    callTotal: [],
+    serviceDescription: [],
+    addOnLabor: [],
   };
   const runValidationTasks = async (
     fieldName,
@@ -123,18 +177,28 @@ export default function ResultsUpdateForm(props) {
       onSubmit={async (event) => {
         event.preventDefault();
         let modelFields = {
-          sqft,
+          lengthFT,
+          widthFT,
           depth,
           ftCubed,
           ydsCubed,
           concreteRate,
-          concreteCost,
-          vbRate,
-          vbCost,
-          wwmRate,
-          wwmCost,
+          concreteTCost,
           Tax,
           Total,
+          sqft,
+          serviceName,
+          description,
+          serviceType,
+          typeName,
+          typeDescription,
+          addOnName,
+          addOnDescription,
+          addOnMaterial,
+          addOnTotal,
+          callTotal,
+          serviceDescription,
+          addOnLabor,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -182,61 +246,138 @@ export default function ResultsUpdateForm(props) {
       {...rest}
     >
       <TextField
-        label="Sqft"
+        label="Length ft"
         isRequired={false}
         isReadOnly={false}
-        value={sqft}
+        type="number"
+        step="any"
+        value={lengthFT}
         onChange={(e) => {
-          let { value } = e.target;
+          let value = isNaN(parseInt(e.target.value))
+            ? e.target.value
+            : parseInt(e.target.value);
           if (onChange) {
             const modelFields = {
-              sqft: value,
+              lengthFT: value,
+              widthFT,
               depth,
               ftCubed,
               ydsCubed,
               concreteRate,
-              concreteCost,
-              vbRate,
-              vbCost,
-              wwmRate,
-              wwmCost,
+              concreteTCost,
               Tax,
               Total,
+              sqft,
+              serviceName,
+              description,
+              serviceType,
+              typeName,
+              typeDescription,
+              addOnName,
+              addOnDescription,
+              addOnMaterial,
+              addOnTotal,
+              callTotal,
+              serviceDescription,
+              addOnLabor,
             };
             const result = onChange(modelFields);
-            value = result?.sqft ?? value;
+            value = result?.lengthFT ?? value;
           }
-          if (errors.sqft?.hasError) {
-            runValidationTasks("sqft", value);
+          if (errors.lengthFT?.hasError) {
+            runValidationTasks("lengthFT", value);
           }
-          setSqft(value);
+          setLengthFT(value);
         }}
-        onBlur={() => runValidationTasks("sqft", sqft)}
-        errorMessage={errors.sqft?.errorMessage}
-        hasError={errors.sqft?.hasError}
-        {...getOverrideProps(overrides, "sqft")}
+        onBlur={() => runValidationTasks("lengthFT", lengthFT)}
+        errorMessage={errors.lengthFT?.errorMessage}
+        hasError={errors.lengthFT?.hasError}
+        {...getOverrideProps(overrides, "lengthFT")}
+      ></TextField>
+      <TextField
+        label="Width ft"
+        isRequired={false}
+        isReadOnly={false}
+        type="number"
+        step="any"
+        value={widthFT}
+        onChange={(e) => {
+          let value = isNaN(parseInt(e.target.value))
+            ? e.target.value
+            : parseInt(e.target.value);
+          if (onChange) {
+            const modelFields = {
+              lengthFT,
+              widthFT: value,
+              depth,
+              ftCubed,
+              ydsCubed,
+              concreteRate,
+              concreteTCost,
+              Tax,
+              Total,
+              sqft,
+              serviceName,
+              description,
+              serviceType,
+              typeName,
+              typeDescription,
+              addOnName,
+              addOnDescription,
+              addOnMaterial,
+              addOnTotal,
+              callTotal,
+              serviceDescription,
+              addOnLabor,
+            };
+            const result = onChange(modelFields);
+            value = result?.widthFT ?? value;
+          }
+          if (errors.widthFT?.hasError) {
+            runValidationTasks("widthFT", value);
+          }
+          setWidthFT(value);
+        }}
+        onBlur={() => runValidationTasks("widthFT", widthFT)}
+        errorMessage={errors.widthFT?.errorMessage}
+        hasError={errors.widthFT?.hasError}
+        {...getOverrideProps(overrides, "widthFT")}
       ></TextField>
       <TextField
         label="Depth"
-        isRequired={false}
+        isRequired={true}
         isReadOnly={false}
+        type="number"
+        step="any"
         value={depth}
         onChange={(e) => {
-          let { value } = e.target;
+          let value = isNaN(parseInt(e.target.value))
+            ? e.target.value
+            : parseInt(e.target.value);
           if (onChange) {
             const modelFields = {
-              sqft,
+              lengthFT,
+              widthFT,
               depth: value,
               ftCubed,
               ydsCubed,
               concreteRate,
-              concreteCost,
-              vbRate,
-              vbCost,
-              wwmRate,
-              wwmCost,
+              concreteTCost,
               Tax,
               Total,
+              sqft,
+              serviceName,
+              description,
+              serviceType,
+              typeName,
+              typeDescription,
+              addOnName,
+              addOnDescription,
+              addOnMaterial,
+              addOnTotal,
+              callTotal,
+              serviceDescription,
+              addOnLabor,
             };
             const result = onChange(modelFields);
             value = result?.depth ?? value;
@@ -255,23 +396,37 @@ export default function ResultsUpdateForm(props) {
         label="Ft cubed"
         isRequired={false}
         isReadOnly={false}
+        type="number"
+        step="any"
         value={ftCubed}
         onChange={(e) => {
-          let { value } = e.target;
+          let value = isNaN(parseInt(e.target.value))
+            ? e.target.value
+            : parseInt(e.target.value);
           if (onChange) {
             const modelFields = {
-              sqft,
+              lengthFT,
+              widthFT,
               depth,
               ftCubed: value,
               ydsCubed,
               concreteRate,
-              concreteCost,
-              vbRate,
-              vbCost,
-              wwmRate,
-              wwmCost,
+              concreteTCost,
               Tax,
               Total,
+              sqft,
+              serviceName,
+              description,
+              serviceType,
+              typeName,
+              typeDescription,
+              addOnName,
+              addOnDescription,
+              addOnMaterial,
+              addOnTotal,
+              callTotal,
+              serviceDescription,
+              addOnLabor,
             };
             const result = onChange(modelFields);
             value = result?.ftCubed ?? value;
@@ -290,23 +445,37 @@ export default function ResultsUpdateForm(props) {
         label="Yds cubed"
         isRequired={false}
         isReadOnly={false}
+        type="number"
+        step="any"
         value={ydsCubed}
         onChange={(e) => {
-          let { value } = e.target;
+          let value = isNaN(parseInt(e.target.value))
+            ? e.target.value
+            : parseInt(e.target.value);
           if (onChange) {
             const modelFields = {
-              sqft,
+              lengthFT,
+              widthFT,
               depth,
               ftCubed,
               ydsCubed: value,
               concreteRate,
-              concreteCost,
-              vbRate,
-              vbCost,
-              wwmRate,
-              wwmCost,
+              concreteTCost,
               Tax,
               Total,
+              sqft,
+              serviceName,
+              description,
+              serviceType,
+              typeName,
+              typeDescription,
+              addOnName,
+              addOnDescription,
+              addOnMaterial,
+              addOnTotal,
+              callTotal,
+              serviceDescription,
+              addOnLabor,
             };
             const result = onChange(modelFields);
             value = result?.ydsCubed ?? value;
@@ -325,23 +494,37 @@ export default function ResultsUpdateForm(props) {
         label="Concrete rate"
         isRequired={false}
         isReadOnly={false}
+        type="number"
+        step="any"
         value={concreteRate}
         onChange={(e) => {
-          let { value } = e.target;
+          let value = isNaN(parseInt(e.target.value))
+            ? e.target.value
+            : parseInt(e.target.value);
           if (onChange) {
             const modelFields = {
-              sqft,
+              lengthFT,
+              widthFT,
               depth,
               ftCubed,
               ydsCubed,
               concreteRate: value,
-              concreteCost,
-              vbRate,
-              vbCost,
-              wwmRate,
-              wwmCost,
+              concreteTCost,
               Tax,
               Total,
+              sqft,
+              serviceName,
+              description,
+              serviceType,
+              typeName,
+              typeDescription,
+              addOnName,
+              addOnDescription,
+              addOnMaterial,
+              addOnTotal,
+              callTotal,
+              serviceDescription,
+              addOnLabor,
             };
             const result = onChange(modelFields);
             value = result?.concreteRate ?? value;
@@ -357,179 +540,53 @@ export default function ResultsUpdateForm(props) {
         {...getOverrideProps(overrides, "concreteRate")}
       ></TextField>
       <TextField
-        label="Concrete cost"
+        label="Concrete t cost"
         isRequired={false}
         isReadOnly={false}
-        value={concreteCost}
+        type="number"
+        step="any"
+        value={concreteTCost}
         onChange={(e) => {
-          let { value } = e.target;
+          let value = isNaN(parseInt(e.target.value))
+            ? e.target.value
+            : parseInt(e.target.value);
           if (onChange) {
             const modelFields = {
-              sqft,
+              lengthFT,
+              widthFT,
               depth,
               ftCubed,
               ydsCubed,
               concreteRate,
-              concreteCost: value,
-              vbRate,
-              vbCost,
-              wwmRate,
-              wwmCost,
+              concreteTCost: value,
               Tax,
               Total,
-            };
-            const result = onChange(modelFields);
-            value = result?.concreteCost ?? value;
-          }
-          if (errors.concreteCost?.hasError) {
-            runValidationTasks("concreteCost", value);
-          }
-          setConcreteCost(value);
-        }}
-        onBlur={() => runValidationTasks("concreteCost", concreteCost)}
-        errorMessage={errors.concreteCost?.errorMessage}
-        hasError={errors.concreteCost?.hasError}
-        {...getOverrideProps(overrides, "concreteCost")}
-      ></TextField>
-      <TextField
-        label="Vb rate"
-        isRequired={false}
-        isReadOnly={false}
-        value={vbRate}
-        onChange={(e) => {
-          let { value } = e.target;
-          if (onChange) {
-            const modelFields = {
               sqft,
-              depth,
-              ftCubed,
-              ydsCubed,
-              concreteRate,
-              concreteCost,
-              vbRate: value,
-              vbCost,
-              wwmRate,
-              wwmCost,
-              Tax,
-              Total,
+              serviceName,
+              description,
+              serviceType,
+              typeName,
+              typeDescription,
+              addOnName,
+              addOnDescription,
+              addOnMaterial,
+              addOnTotal,
+              callTotal,
+              serviceDescription,
+              addOnLabor,
             };
             const result = onChange(modelFields);
-            value = result?.vbRate ?? value;
+            value = result?.concreteTCost ?? value;
           }
-          if (errors.vbRate?.hasError) {
-            runValidationTasks("vbRate", value);
+          if (errors.concreteTCost?.hasError) {
+            runValidationTasks("concreteTCost", value);
           }
-          setVbRate(value);
+          setConcreteTCost(value);
         }}
-        onBlur={() => runValidationTasks("vbRate", vbRate)}
-        errorMessage={errors.vbRate?.errorMessage}
-        hasError={errors.vbRate?.hasError}
-        {...getOverrideProps(overrides, "vbRate")}
-      ></TextField>
-      <TextField
-        label="Vb cost"
-        isRequired={false}
-        isReadOnly={false}
-        value={vbCost}
-        onChange={(e) => {
-          let { value } = e.target;
-          if (onChange) {
-            const modelFields = {
-              sqft,
-              depth,
-              ftCubed,
-              ydsCubed,
-              concreteRate,
-              concreteCost,
-              vbRate,
-              vbCost: value,
-              wwmRate,
-              wwmCost,
-              Tax,
-              Total,
-            };
-            const result = onChange(modelFields);
-            value = result?.vbCost ?? value;
-          }
-          if (errors.vbCost?.hasError) {
-            runValidationTasks("vbCost", value);
-          }
-          setVbCost(value);
-        }}
-        onBlur={() => runValidationTasks("vbCost", vbCost)}
-        errorMessage={errors.vbCost?.errorMessage}
-        hasError={errors.vbCost?.hasError}
-        {...getOverrideProps(overrides, "vbCost")}
-      ></TextField>
-      <TextField
-        label="Wwm rate"
-        isRequired={false}
-        isReadOnly={false}
-        value={wwmRate}
-        onChange={(e) => {
-          let { value } = e.target;
-          if (onChange) {
-            const modelFields = {
-              sqft,
-              depth,
-              ftCubed,
-              ydsCubed,
-              concreteRate,
-              concreteCost,
-              vbRate,
-              vbCost,
-              wwmRate: value,
-              wwmCost,
-              Tax,
-              Total,
-            };
-            const result = onChange(modelFields);
-            value = result?.wwmRate ?? value;
-          }
-          if (errors.wwmRate?.hasError) {
-            runValidationTasks("wwmRate", value);
-          }
-          setWwmRate(value);
-        }}
-        onBlur={() => runValidationTasks("wwmRate", wwmRate)}
-        errorMessage={errors.wwmRate?.errorMessage}
-        hasError={errors.wwmRate?.hasError}
-        {...getOverrideProps(overrides, "wwmRate")}
-      ></TextField>
-      <TextField
-        label="Wwm cost"
-        isRequired={false}
-        isReadOnly={false}
-        value={wwmCost}
-        onChange={(e) => {
-          let { value } = e.target;
-          if (onChange) {
-            const modelFields = {
-              sqft,
-              depth,
-              ftCubed,
-              ydsCubed,
-              concreteRate,
-              concreteCost,
-              vbRate,
-              vbCost,
-              wwmRate,
-              wwmCost: value,
-              Tax,
-              Total,
-            };
-            const result = onChange(modelFields);
-            value = result?.wwmCost ?? value;
-          }
-          if (errors.wwmCost?.hasError) {
-            runValidationTasks("wwmCost", value);
-          }
-          setWwmCost(value);
-        }}
-        onBlur={() => runValidationTasks("wwmCost", wwmCost)}
-        errorMessage={errors.wwmCost?.errorMessage}
-        hasError={errors.wwmCost?.hasError}
-        {...getOverrideProps(overrides, "wwmCost")}
+        onBlur={() => runValidationTasks("concreteTCost", concreteTCost)}
+        errorMessage={errors.concreteTCost?.errorMessage}
+        hasError={errors.concreteTCost?.hasError}
+        {...getOverrideProps(overrides, "concreteTCost")}
       ></TextField>
       <TextField
         label="Tax"
@@ -540,18 +597,28 @@ export default function ResultsUpdateForm(props) {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
-              sqft,
+              lengthFT,
+              widthFT,
               depth,
               ftCubed,
               ydsCubed,
               concreteRate,
-              concreteCost,
-              vbRate,
-              vbCost,
-              wwmRate,
-              wwmCost,
+              concreteTCost,
               Tax: value,
               Total,
+              sqft,
+              serviceName,
+              description,
+              serviceType,
+              typeName,
+              typeDescription,
+              addOnName,
+              addOnDescription,
+              addOnMaterial,
+              addOnTotal,
+              callTotal,
+              serviceDescription,
+              addOnLabor,
             };
             const result = onChange(modelFields);
             value = result?.Tax ?? value;
@@ -575,18 +642,28 @@ export default function ResultsUpdateForm(props) {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
-              sqft,
+              lengthFT,
+              widthFT,
               depth,
               ftCubed,
               ydsCubed,
               concreteRate,
-              concreteCost,
-              vbRate,
-              vbCost,
-              wwmRate,
-              wwmCost,
+              concreteTCost,
               Tax,
               Total: value,
+              sqft,
+              serviceName,
+              description,
+              serviceType,
+              typeName,
+              typeDescription,
+              addOnName,
+              addOnDescription,
+              addOnMaterial,
+              addOnTotal,
+              callTotal,
+              serviceDescription,
+              addOnLabor,
             };
             const result = onChange(modelFields);
             value = result?.Total ?? value;
@@ -600,6 +677,613 @@ export default function ResultsUpdateForm(props) {
         errorMessage={errors.Total?.errorMessage}
         hasError={errors.Total?.hasError}
         {...getOverrideProps(overrides, "Total")}
+      ></TextField>
+      <TextField
+        label="Sqft"
+        isRequired={true}
+        isReadOnly={false}
+        type="number"
+        step="any"
+        value={sqft}
+        onChange={(e) => {
+          let value = isNaN(parseInt(e.target.value))
+            ? e.target.value
+            : parseInt(e.target.value);
+          if (onChange) {
+            const modelFields = {
+              lengthFT,
+              widthFT,
+              depth,
+              ftCubed,
+              ydsCubed,
+              concreteRate,
+              concreteTCost,
+              Tax,
+              Total,
+              sqft: value,
+              serviceName,
+              description,
+              serviceType,
+              typeName,
+              typeDescription,
+              addOnName,
+              addOnDescription,
+              addOnMaterial,
+              addOnTotal,
+              callTotal,
+              serviceDescription,
+              addOnLabor,
+            };
+            const result = onChange(modelFields);
+            value = result?.sqft ?? value;
+          }
+          if (errors.sqft?.hasError) {
+            runValidationTasks("sqft", value);
+          }
+          setSqft(value);
+        }}
+        onBlur={() => runValidationTasks("sqft", sqft)}
+        errorMessage={errors.sqft?.errorMessage}
+        hasError={errors.sqft?.hasError}
+        {...getOverrideProps(overrides, "sqft")}
+      ></TextField>
+      <TextField
+        label="Service name"
+        isRequired={false}
+        isReadOnly={false}
+        value={serviceName}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              lengthFT,
+              widthFT,
+              depth,
+              ftCubed,
+              ydsCubed,
+              concreteRate,
+              concreteTCost,
+              Tax,
+              Total,
+              sqft,
+              serviceName: value,
+              description,
+              serviceType,
+              typeName,
+              typeDescription,
+              addOnName,
+              addOnDescription,
+              addOnMaterial,
+              addOnTotal,
+              callTotal,
+              serviceDescription,
+              addOnLabor,
+            };
+            const result = onChange(modelFields);
+            value = result?.serviceName ?? value;
+          }
+          if (errors.serviceName?.hasError) {
+            runValidationTasks("serviceName", value);
+          }
+          setServiceName(value);
+        }}
+        onBlur={() => runValidationTasks("serviceName", serviceName)}
+        errorMessage={errors.serviceName?.errorMessage}
+        hasError={errors.serviceName?.hasError}
+        {...getOverrideProps(overrides, "serviceName")}
+      ></TextField>
+      <TextField
+        label="Description"
+        isRequired={false}
+        isReadOnly={false}
+        value={description}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              lengthFT,
+              widthFT,
+              depth,
+              ftCubed,
+              ydsCubed,
+              concreteRate,
+              concreteTCost,
+              Tax,
+              Total,
+              sqft,
+              serviceName,
+              description: value,
+              serviceType,
+              typeName,
+              typeDescription,
+              addOnName,
+              addOnDescription,
+              addOnMaterial,
+              addOnTotal,
+              callTotal,
+              serviceDescription,
+              addOnLabor,
+            };
+            const result = onChange(modelFields);
+            value = result?.description ?? value;
+          }
+          if (errors.description?.hasError) {
+            runValidationTasks("description", value);
+          }
+          setDescription(value);
+        }}
+        onBlur={() => runValidationTasks("description", description)}
+        errorMessage={errors.description?.errorMessage}
+        hasError={errors.description?.hasError}
+        {...getOverrideProps(overrides, "description")}
+      ></TextField>
+      <TextField
+        label="Service type"
+        isRequired={false}
+        isReadOnly={false}
+        value={serviceType}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              lengthFT,
+              widthFT,
+              depth,
+              ftCubed,
+              ydsCubed,
+              concreteRate,
+              concreteTCost,
+              Tax,
+              Total,
+              sqft,
+              serviceName,
+              description,
+              serviceType: value,
+              typeName,
+              typeDescription,
+              addOnName,
+              addOnDescription,
+              addOnMaterial,
+              addOnTotal,
+              callTotal,
+              serviceDescription,
+              addOnLabor,
+            };
+            const result = onChange(modelFields);
+            value = result?.serviceType ?? value;
+          }
+          if (errors.serviceType?.hasError) {
+            runValidationTasks("serviceType", value);
+          }
+          setServiceType(value);
+        }}
+        onBlur={() => runValidationTasks("serviceType", serviceType)}
+        errorMessage={errors.serviceType?.errorMessage}
+        hasError={errors.serviceType?.hasError}
+        {...getOverrideProps(overrides, "serviceType")}
+      ></TextField>
+      <TextField
+        label="Type name"
+        isRequired={false}
+        isReadOnly={false}
+        value={typeName}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              lengthFT,
+              widthFT,
+              depth,
+              ftCubed,
+              ydsCubed,
+              concreteRate,
+              concreteTCost,
+              Tax,
+              Total,
+              sqft,
+              serviceName,
+              description,
+              serviceType,
+              typeName: value,
+              typeDescription,
+              addOnName,
+              addOnDescription,
+              addOnMaterial,
+              addOnTotal,
+              callTotal,
+              serviceDescription,
+              addOnLabor,
+            };
+            const result = onChange(modelFields);
+            value = result?.typeName ?? value;
+          }
+          if (errors.typeName?.hasError) {
+            runValidationTasks("typeName", value);
+          }
+          setTypeName(value);
+        }}
+        onBlur={() => runValidationTasks("typeName", typeName)}
+        errorMessage={errors.typeName?.errorMessage}
+        hasError={errors.typeName?.hasError}
+        {...getOverrideProps(overrides, "typeName")}
+      ></TextField>
+      <TextField
+        label="Type description"
+        isRequired={false}
+        isReadOnly={false}
+        value={typeDescription}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              lengthFT,
+              widthFT,
+              depth,
+              ftCubed,
+              ydsCubed,
+              concreteRate,
+              concreteTCost,
+              Tax,
+              Total,
+              sqft,
+              serviceName,
+              description,
+              serviceType,
+              typeName,
+              typeDescription: value,
+              addOnName,
+              addOnDescription,
+              addOnMaterial,
+              addOnTotal,
+              callTotal,
+              serviceDescription,
+              addOnLabor,
+            };
+            const result = onChange(modelFields);
+            value = result?.typeDescription ?? value;
+          }
+          if (errors.typeDescription?.hasError) {
+            runValidationTasks("typeDescription", value);
+          }
+          setTypeDescription(value);
+        }}
+        onBlur={() => runValidationTasks("typeDescription", typeDescription)}
+        errorMessage={errors.typeDescription?.errorMessage}
+        hasError={errors.typeDescription?.hasError}
+        {...getOverrideProps(overrides, "typeDescription")}
+      ></TextField>
+      <TextField
+        label="Add on name"
+        isRequired={false}
+        isReadOnly={false}
+        value={addOnName}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              lengthFT,
+              widthFT,
+              depth,
+              ftCubed,
+              ydsCubed,
+              concreteRate,
+              concreteTCost,
+              Tax,
+              Total,
+              sqft,
+              serviceName,
+              description,
+              serviceType,
+              typeName,
+              typeDescription,
+              addOnName: value,
+              addOnDescription,
+              addOnMaterial,
+              addOnTotal,
+              callTotal,
+              serviceDescription,
+              addOnLabor,
+            };
+            const result = onChange(modelFields);
+            value = result?.addOnName ?? value;
+          }
+          if (errors.addOnName?.hasError) {
+            runValidationTasks("addOnName", value);
+          }
+          setAddOnName(value);
+        }}
+        onBlur={() => runValidationTasks("addOnName", addOnName)}
+        errorMessage={errors.addOnName?.errorMessage}
+        hasError={errors.addOnName?.hasError}
+        {...getOverrideProps(overrides, "addOnName")}
+      ></TextField>
+      <TextField
+        label="Add on description"
+        isRequired={false}
+        isReadOnly={false}
+        value={addOnDescription}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              lengthFT,
+              widthFT,
+              depth,
+              ftCubed,
+              ydsCubed,
+              concreteRate,
+              concreteTCost,
+              Tax,
+              Total,
+              sqft,
+              serviceName,
+              description,
+              serviceType,
+              typeName,
+              typeDescription,
+              addOnName,
+              addOnDescription: value,
+              addOnMaterial,
+              addOnTotal,
+              callTotal,
+              serviceDescription,
+              addOnLabor,
+            };
+            const result = onChange(modelFields);
+            value = result?.addOnDescription ?? value;
+          }
+          if (errors.addOnDescription?.hasError) {
+            runValidationTasks("addOnDescription", value);
+          }
+          setAddOnDescription(value);
+        }}
+        onBlur={() => runValidationTasks("addOnDescription", addOnDescription)}
+        errorMessage={errors.addOnDescription?.errorMessage}
+        hasError={errors.addOnDescription?.hasError}
+        {...getOverrideProps(overrides, "addOnDescription")}
+      ></TextField>
+      <TextField
+        label="Add on material"
+        isRequired={false}
+        isReadOnly={false}
+        type="number"
+        step="any"
+        value={addOnMaterial}
+        onChange={(e) => {
+          let value = isNaN(parseInt(e.target.value))
+            ? e.target.value
+            : parseInt(e.target.value);
+          if (onChange) {
+            const modelFields = {
+              lengthFT,
+              widthFT,
+              depth,
+              ftCubed,
+              ydsCubed,
+              concreteRate,
+              concreteTCost,
+              Tax,
+              Total,
+              sqft,
+              serviceName,
+              description,
+              serviceType,
+              typeName,
+              typeDescription,
+              addOnName,
+              addOnDescription,
+              addOnMaterial: value,
+              addOnTotal,
+              callTotal,
+              serviceDescription,
+              addOnLabor,
+            };
+            const result = onChange(modelFields);
+            value = result?.addOnMaterial ?? value;
+          }
+          if (errors.addOnMaterial?.hasError) {
+            runValidationTasks("addOnMaterial", value);
+          }
+          setAddOnMaterial(value);
+        }}
+        onBlur={() => runValidationTasks("addOnMaterial", addOnMaterial)}
+        errorMessage={errors.addOnMaterial?.errorMessage}
+        hasError={errors.addOnMaterial?.hasError}
+        {...getOverrideProps(overrides, "addOnMaterial")}
+      ></TextField>
+      <TextField
+        label="Add on total"
+        isRequired={false}
+        isReadOnly={false}
+        type="number"
+        step="any"
+        value={addOnTotal}
+        onChange={(e) => {
+          let value = isNaN(parseInt(e.target.value))
+            ? e.target.value
+            : parseInt(e.target.value);
+          if (onChange) {
+            const modelFields = {
+              lengthFT,
+              widthFT,
+              depth,
+              ftCubed,
+              ydsCubed,
+              concreteRate,
+              concreteTCost,
+              Tax,
+              Total,
+              sqft,
+              serviceName,
+              description,
+              serviceType,
+              typeName,
+              typeDescription,
+              addOnName,
+              addOnDescription,
+              addOnMaterial,
+              addOnTotal: value,
+              callTotal,
+              serviceDescription,
+              addOnLabor,
+            };
+            const result = onChange(modelFields);
+            value = result?.addOnTotal ?? value;
+          }
+          if (errors.addOnTotal?.hasError) {
+            runValidationTasks("addOnTotal", value);
+          }
+          setAddOnTotal(value);
+        }}
+        onBlur={() => runValidationTasks("addOnTotal", addOnTotal)}
+        errorMessage={errors.addOnTotal?.errorMessage}
+        hasError={errors.addOnTotal?.hasError}
+        {...getOverrideProps(overrides, "addOnTotal")}
+      ></TextField>
+      <TextField
+        label="Call total"
+        isRequired={false}
+        isReadOnly={false}
+        type="number"
+        step="any"
+        value={callTotal}
+        onChange={(e) => {
+          let value = isNaN(parseInt(e.target.value))
+            ? e.target.value
+            : parseInt(e.target.value);
+          if (onChange) {
+            const modelFields = {
+              lengthFT,
+              widthFT,
+              depth,
+              ftCubed,
+              ydsCubed,
+              concreteRate,
+              concreteTCost,
+              Tax,
+              Total,
+              sqft,
+              serviceName,
+              description,
+              serviceType,
+              typeName,
+              typeDescription,
+              addOnName,
+              addOnDescription,
+              addOnMaterial,
+              addOnTotal,
+              callTotal: value,
+              serviceDescription,
+              addOnLabor,
+            };
+            const result = onChange(modelFields);
+            value = result?.callTotal ?? value;
+          }
+          if (errors.callTotal?.hasError) {
+            runValidationTasks("callTotal", value);
+          }
+          setCallTotal(value);
+        }}
+        onBlur={() => runValidationTasks("callTotal", callTotal)}
+        errorMessage={errors.callTotal?.errorMessage}
+        hasError={errors.callTotal?.hasError}
+        {...getOverrideProps(overrides, "callTotal")}
+      ></TextField>
+      <TextField
+        label="Service description"
+        isRequired={false}
+        isReadOnly={false}
+        value={serviceDescription}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              lengthFT,
+              widthFT,
+              depth,
+              ftCubed,
+              ydsCubed,
+              concreteRate,
+              concreteTCost,
+              Tax,
+              Total,
+              sqft,
+              serviceName,
+              description,
+              serviceType,
+              typeName,
+              typeDescription,
+              addOnName,
+              addOnDescription,
+              addOnMaterial,
+              addOnTotal,
+              callTotal,
+              serviceDescription: value,
+              addOnLabor,
+            };
+            const result = onChange(modelFields);
+            value = result?.serviceDescription ?? value;
+          }
+          if (errors.serviceDescription?.hasError) {
+            runValidationTasks("serviceDescription", value);
+          }
+          setServiceDescription(value);
+        }}
+        onBlur={() =>
+          runValidationTasks("serviceDescription", serviceDescription)
+        }
+        errorMessage={errors.serviceDescription?.errorMessage}
+        hasError={errors.serviceDescription?.hasError}
+        {...getOverrideProps(overrides, "serviceDescription")}
+      ></TextField>
+      <TextField
+        label="Add on labor"
+        isRequired={false}
+        isReadOnly={false}
+        type="number"
+        step="any"
+        value={addOnLabor}
+        onChange={(e) => {
+          let value = isNaN(parseInt(e.target.value))
+            ? e.target.value
+            : parseInt(e.target.value);
+          if (onChange) {
+            const modelFields = {
+              lengthFT,
+              widthFT,
+              depth,
+              ftCubed,
+              ydsCubed,
+              concreteRate,
+              concreteTCost,
+              Tax,
+              Total,
+              sqft,
+              serviceName,
+              description,
+              serviceType,
+              typeName,
+              typeDescription,
+              addOnName,
+              addOnDescription,
+              addOnMaterial,
+              addOnTotal,
+              callTotal,
+              serviceDescription,
+              addOnLabor: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.addOnLabor ?? value;
+          }
+          if (errors.addOnLabor?.hasError) {
+            runValidationTasks("addOnLabor", value);
+          }
+          setAddOnLabor(value);
+        }}
+        onBlur={() => runValidationTasks("addOnLabor", addOnLabor)}
+        errorMessage={errors.addOnLabor?.errorMessage}
+        hasError={errors.addOnLabor?.hasError}
+        {...getOverrideProps(overrides, "addOnLabor")}
       ></TextField>
       <Flex
         justifyContent="space-between"

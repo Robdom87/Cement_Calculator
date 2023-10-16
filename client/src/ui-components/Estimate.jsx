@@ -110,7 +110,7 @@ export default function Estimate(props) {
         position="relative"
         padding="0px 0px 0px 0px"
         whiteSpace="pre-wrap"
-        children={results?.Total}
+        children={results?.ydsCubed}
         {...getOverrideProps(
           overrides,
           "Total Cost (Includes Taxes) = $5773.28"

@@ -1,15 +1,26 @@
 type Results @model @auth(rules: [{allow: public}]) {
-  id: ID!
-  sqft: String
-  depth: String
-  ftCubed: String
-  ydsCubed: String
-  concreteRate: String
-  concreteCost: String
-  vbRate: String
-  vbCost: String
-  wwmRate: String
-  wwmCost: String
+  lengthFT: Int
+  widthFT: Int
+  depth: Int!
+  ftCubed: Int
+  ydsCubed: Int
+  concreteRate: Int
+  concreteTCost: Int
   Tax: String
   Total: String
+  id: ID!
+  sqft: Int!
+  serviceName: String
+  description: String
+  serviceType: String
+  typeName: String
+  typeDescription: String
+  addOnName: String
+  addOnDescription: String
+  addOnMaterial: Int
+  addOnTotal: Int
+  callTotal: Int
+  serviceDescription: String
+  addOnLabor: Int
 }
+ 

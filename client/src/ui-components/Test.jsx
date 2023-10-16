@@ -6,22 +6,22 @@
 
 /* eslint-disable */
 import * as React from "react";
-import { Flex, Grid, SelectField } from "@aws-amplify/ui-react";
+import { Button, Flex, Grid, SelectField } from "@aws-amplify/ui-react";
 import { getOverrideProps } from "@aws-amplify/ui-react/internal";
 import { fetchByPath, validateField } from "./utils";
-export default function NewForm1(props) {
+export default function Test(props) {
   const { onSubmit, onValidate, onChange, overrides, ...rest } = props;
   const initialValues = {
-    Name: "",
+    Field0: "",
   };
-  const [Name, setName] = React.useState(initialValues.Name);
+  const [Field0, setField0] = React.useState(initialValues.Field0);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
-    setName(initialValues.Name);
+    setField0(initialValues.Field0);
     setErrors({});
   };
   const validations = {
-    Name: [],
+    Field0: [],
   };
   const runValidationTasks = async (
     fieldName,
@@ -49,7 +49,7 @@ export default function NewForm1(props) {
       onSubmit={async (event) => {
         event.preventDefault();
         const modelFields = {
-          Name,
+          Field0,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -72,41 +72,74 @@ export default function NewForm1(props) {
         }
         await onSubmit(modelFields);
       }}
-      {...getOverrideProps(overrides, "NewForm1")}
+      {...getOverrideProps(overrides, "Test")}
       {...rest}
     >
       <SelectField
-        label="Service Type"
-        descriptiveText=""
+        label="Label"
         placeholder="Please select an option"
-        value={Name}
+        value={Field0}
+        isMultiple={true}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
-              Name: value,
+              Field0: value,
             };
             const result = onChange(modelFields);
-            value = result?.Name ?? value;
+            value = result?.Field0 ?? value;
           }
-          if (errors.Name?.hasError) {
-            runValidationTasks("Name", value);
+          if (errors.Field0?.hasError) {
+            runValidationTasks("Field0", value);
           }
-          setName(value);
+          setField0(value);
         }}
-        onBlur={() => runValidationTasks("Name", Name)}
-        errorMessage={errors.Name?.errorMessage}
-        hasError={errors.Name?.hasError}
-        {...getOverrideProps(overrides, "Name")}
-      ></SelectField>
+        onBlur={() => runValidationTasks("Field0", Field0)}
+        errorMessage={errors.Field0?.errorMessage}
+        hasError={errors.Field0?.hasError}
+        {...getOverrideProps(overrides, "Field0")}
+      >
+        <option
+          children="bull"
+          value="bull"
+          {...getOverrideProps(overrides, "Field0option0")}
+        ></option>
+        <option
+          children="shit "
+          value="shit "
+          {...getOverrideProps(overrides, "Field0option1")}
+        ></option>
+        <option
+          children="ll"
+          value="ll"
+          {...getOverrideProps(overrides, "Field0option2")}
+        ></option>
+      </SelectField>
       <Flex
         justifyContent="space-between"
         {...getOverrideProps(overrides, "CTAFlex")}
       >
+        <Button
+          children="Clear"
+          type="reset"
+          onClick={(event) => {
+            event.preventDefault();
+            resetStateValues();
+          }}
+          {...getOverrideProps(overrides, "ClearButton")}
+        ></Button>
         <Flex
           gap="15px"
           {...getOverrideProps(overrides, "RightAlignCTASubFlex")}
-        ></Flex>
+        >
+          <Button
+            children="Submit"
+            type="submit"
+            variation="primary"
+            isDisabled={Object.values(errors).some((e) => e?.hasError)}
+            {...getOverrideProps(overrides, "SubmitButton")}
+          ></Button>
+        </Flex>
       </Flex>
     </Grid>
   );

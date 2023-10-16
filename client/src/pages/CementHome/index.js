@@ -1,20 +1,21 @@
 import React from 'react';
-import {
-	Estimate,
-	RequestMeasurements,
-	NewForm1
-} from '../../ui-components';
+import ServiceSelect from '../../components/ServiceSelect';
+import InputForm from '../../components/InputForm';
+import Estimate from '../../ui-components/Estimate';
 import math from '../../math';
 import { useState } from 'react';
-// import {
-// 	InputII 
-//    } from '../../ui-components';
-import { useQuery } from '@apollo/client';
-import { QUERY_NAMES, QUERY_SERVICE } from '../../utils/queries';
 
 function Home() {
 	const [showResults, setShowResults] = useState(false);
-	const [showRequests, setShowRequests] = useState(true);
+	const [showRequests, setShowRequests] = useState(false);
+	const [measurements, setMeasurements] = useState({
+		Depth: "",
+		Extra: "",
+		Main: "",
+		Sqft: ""
+	})
+	const [serviceInfo, setServiceInfo] = useState({});
+	const [service, setService] = useState();
 	const [results, setResults] = useState({
 		sqft: "",
 		depth: "",
@@ -30,82 +31,22 @@ function Home() {
 		vbRate: "",
 		wwmRate: ""
 	});
-	const { loading, data } = useQuery(QUERY_NAMES);
-	const serviceOptions = data?.services || [];
-	
 
-	// const handleType = async (event) => {
-		
-	// 	const { loading, data } = useQuery(QUERY_SERVICE, {
-	// 		variables: { serviceName: event.name },
-	// 	});
-	// 	setShowRequests(true);
-	// }
-
-
-	const handleFormSubmit = async (event) => {
-		let inputsObj = {
-			sqft: parseInt(event.sqft),
-			depth: parseInt(event.depth)
-		};
-		//save input into local storage
-		localStorage.setItem('inputs', JSON.stringify(inputsObj));
-		callRates();
-	}
-
-	const callRates = async () => {
+	async function calculations() {
 		try {
-			//call our servers to get the appopriate rates, will ignore for now
-			// const response = await fetch(
-			// 	`INSERT API URL`,
-			// 	{ method: 'POST' }
-			// );
-
-			// if (!response.ok) {
-			// 	throw new Error('something went wrong!');
-			// }
-
-			// const { rates } = await response.json();
-			//sample response from API call
-			let sampleRates = {
-				cPrice: 125.00,
-				m1Price: 200.00,
-				m1Coverage: 100,
-				m2Price: 7.00,
-				m2Coverage: 10
-			}
-			let calcRates = {
-				conPrice: sampleRates.cPrice,
-				mat1Price: sampleRates.m1Price,
-				mat1Coverage: sampleRates.m1Coverage,
-				mat2Price: sampleRates.m2Price,
-				mat2Coverage: sampleRates.m2Coverage
-			};
-			localStorage.setItem('ratesLocal', JSON.stringify(calcRates));
-			display();
-		} catch (err) {
-			console.error(err.message);
-		}
-	};
-
-	async function calculations(inputs, rates) {
-		try {
+			//expected object shape
 			let { depth, sqft } = inputs;
 			let { conPrice,
 				mat1Price,
 				mat1Coverage,
 				mat2Price,
 				mat2Coverage } = rates;
-			// object shapes
-			// {sqft: 3, depth: 4}
-			// {concrete: 125, vb: 100, wwm: 0.15}
 			let ftCubed = sqft * depth;
 			let ydsCubed = math.totalYardsCu(ftCubed);
 			let concreteCost = math.conCalc(ydsCubed, conPrice);
 			let vbCost = math.matCalc(sqft, mat1Price, mat1Coverage);
 			let wwmCost = math.matCalc(sqft, mat2Price, mat2Coverage);
 			let subtotal = concreteCost + vbCost + wwmCost;
-			console.log(subtotal);
 			let tax = subtotal * .085;
 			let total = subtotal + tax;
 
@@ -131,11 +72,6 @@ function Home() {
 			let ratesLocal = JSON.parse(localStorage.getItem('ratesLocal'));
 			calculations(inputs, ratesLocal);
 			let resultsLocal = JSON.parse(localStorage.getItem('resultsLocal'));
-			//save all info in local storage into states below are examples
-			// setstationsFUEL(stationsFuel);
-			// setLocationMap({ ...locationMap, lat: latlng.lat, lng: latlng.lng })
-			// setZipcodeInput(...zipcodeInput, "");
-			//display new page
 			setShowResults(true);
 			setShowRequests(false);
 			setResults({
@@ -160,26 +96,27 @@ function Home() {
 
 	return (
 		<>
-			{/* <InputII /> */}
-			{loading ? (
-				<div>Loading...</div>
-			) : ( 
-				<NewForm1
-					// onChange={handleType} 
-					overrides={{
-						options: {serviceOptions}
-					}}/>
-			)}
-			{showRequests ?
-				<RequestMeasurements
-					onSubmit={handleFormSubmit}
-					 />
-				: null}
+			<ServiceSelect
+				service={service}
+				setService={setService}
+				setShowRequests={setShowRequests}
+			/>
+			{showRequests ? <InputForm
+				service={service}
+				setMeasurements={setMeasurements}
+				measurements={measurements}
+				setServiceInfo={setServiceInfo}
+				serviceInfo={serviceInfo}
+				setShowResults={setShowResults}
+				calculations={calculations}
+			/> : null}
 			{showResults ? <Estimate
 				results={results}
+				setShowResults={setShowResults}
+				calculations={calculations}
 			/> : null}
 		</>
-	);
+	)
 }
 
 export default Home;

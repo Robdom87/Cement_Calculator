@@ -9,7 +9,7 @@ import * as React from "react";
 import { getOverrideProps } from "@aws-amplify/ui-react/internal";
 import { Button, TextField, View } from "@aws-amplify/ui-react";
 export default function SignUpII(props) {
-  const { overrides, ...rest } = props;
+  const { ouptut, overrides, ...rest } = props;
   return (
     <View
       width="1321px"
@@ -106,6 +106,7 @@ export default function SignUpII(props) {
         isDisabled={false}
         labelHidden={false}
         variation="default"
+        label={ouptut?.sqft}
         {...getOverrideProps(overrides, "First Name")}
       ></TextField>
       <TextField

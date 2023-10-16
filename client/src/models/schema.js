@@ -10,73 +10,52 @@ export const schema = {
                     "isRequired": true,
                     "attributes": []
                 },
-                "sqft": {
-                    "name": "sqft",
+                "lengthFT": {
+                    "name": "lengthFT",
                     "isArray": false,
-                    "type": "String",
+                    "type": "Int",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "widthFT": {
+                    "name": "widthFT",
+                    "isArray": false,
+                    "type": "Int",
                     "isRequired": false,
                     "attributes": []
                 },
                 "depth": {
                     "name": "depth",
                     "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
+                    "type": "Int",
+                    "isRequired": true,
                     "attributes": []
                 },
                 "ftCubed": {
                     "name": "ftCubed",
                     "isArray": false,
-                    "type": "String",
+                    "type": "Int",
                     "isRequired": false,
                     "attributes": []
                 },
                 "ydsCubed": {
                     "name": "ydsCubed",
                     "isArray": false,
-                    "type": "String",
+                    "type": "Int",
                     "isRequired": false,
                     "attributes": []
                 },
                 "concreteRate": {
                     "name": "concreteRate",
                     "isArray": false,
-                    "type": "String",
+                    "type": "Int",
                     "isRequired": false,
                     "attributes": []
                 },
-                "concreteCost": {
-                    "name": "concreteCost",
+                "concreteTCost": {
+                    "name": "concreteTCost",
                     "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "vbRate": {
-                    "name": "vbRate",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "vbCost": {
-                    "name": "vbCost",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "wwmRate": {
-                    "name": "wwmRate",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "wwmCost": {
-                    "name": "wwmCost",
-                    "isArray": false,
-                    "type": "String",
+                    "type": "Int",
                     "isRequired": false,
                     "attributes": []
                 },
@@ -91,6 +70,97 @@ export const schema = {
                     "name": "Total",
                     "isArray": false,
                     "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "sqft": {
+                    "name": "sqft",
+                    "isArray": false,
+                    "type": "Int",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "serviceName": {
+                    "name": "serviceName",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "description": {
+                    "name": "description",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "serviceType": {
+                    "name": "serviceType",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "typeName": {
+                    "name": "typeName",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "typeDescription": {
+                    "name": "typeDescription",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "addOnName": {
+                    "name": "addOnName",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "addOnDescription": {
+                    "name": "addOnDescription",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "addOnMaterial": {
+                    "name": "addOnMaterial",
+                    "isArray": false,
+                    "type": "Int",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "addOnTotal": {
+                    "name": "addOnTotal",
+                    "isArray": false,
+                    "type": "Int",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "callTotal": {
+                    "name": "callTotal",
+                    "isArray": false,
+                    "type": "Int",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "serviceDescription": {
+                    "name": "serviceDescription",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "addOnLabor": {
+                    "name": "addOnLabor",
+                    "isArray": false,
+                    "type": "Int",
                     "isRequired": false,
                     "attributes": []
                 },
@@ -140,5 +210,5 @@ export const schema = {
     "enums": {},
     "nonModels": {},
     "codegenVersion": "3.4.4",
-    "version": "3bfef9073a3cce457d3ee07a29e17629"
+    "version": "1aacb1e09a092efec7a771fa5e51ce8d"
 };
