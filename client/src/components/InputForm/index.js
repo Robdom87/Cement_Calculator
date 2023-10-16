@@ -27,8 +27,9 @@ function InputForm(props) {
             Main: event.Main,
             Sqft: event.Sqft
         })
+        props.setShowResults(true);
         props.setServiceInfo(data.service)
-        props.calculations();
+        // props.calculations();
     }
 
     return (
