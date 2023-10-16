@@ -438,8 +438,7 @@ export default function ResultsV2(props) {
         left="703px"
         padding="0px 0px 0px 0px"
         whiteSpace="pre-wrap"
-        results={results?.callTotal}
-        children="$"
+        children={results?.callTotal}
         {...getOverrideProps(overrides, "$")}
       ></Text>
       <View
@@ -602,8 +601,7 @@ export default function ResultsV2(props) {
           right="6.39%"
           padding="0px 0px 0px 0px"
           whiteSpace="pre-wrap"
-          results={results?.concreteTCost}
-          children="cementTotaL"
+          children={results?.concreteTCost}
           {...getOverrideProps(overrides, "cementTotaL")}
         ></Text>
       </View>
@@ -657,8 +655,7 @@ export default function ResultsV2(props) {
           right="10.5%"
           padding="0px 0px 0px 0px"
           whiteSpace="pre-wrap"
-          results={results?.ydsCubed}
-          children="totalCY"
+          children={results?.ydsCubed}
           {...getOverrideProps(overrides, "totalCY")}
         ></Text>
       </View>
@@ -712,8 +709,7 @@ export default function ResultsV2(props) {
           right="10.05%"
           padding="0px 0px 0px 0px"
           whiteSpace="pre-wrap"
-          results={results?.concreteRate}
-          children="Cement Rate:"
+          children={results?.concreteRate}
           {...getOverrideProps(overrides, "Cement Rate:4200265")}
         ></Text>
       </View>
@@ -1024,8 +1020,7 @@ export default function ResultsV2(props) {
         left="830px"
         padding="0px 0px 0px 0px"
         whiteSpace="pre-wrap"
-        results={results?.addOnTotal}
-        children="Add-On"
+        children={results?.addOnTotal}
         {...getOverrideProps(overrides, "Add-On4201252")}
       ></Text>
       <Text
@@ -1091,8 +1086,7 @@ export default function ResultsV2(props) {
         left="827px"
         padding="0px 0px 0px 0px"
         whiteSpace="pre-wrap"
-        results={results?.addOnLabor}
-        children="Material"
+        children={results?.addOnLabor}
         {...getOverrideProps(overrides, "Material4200290")}
       ></Text>
       <Text
@@ -1136,8 +1130,7 @@ export default function ResultsV2(props) {
         left="827px"
         padding="0px 0px 0px 0px"
         whiteSpace="pre-wrap"
-        results={results?.addOnMaterial}
-        children="Material"
+        children={results?.addOnMaterial}
         {...getOverrideProps(overrides, "Material4200291")}
       ></Text>
       <Text

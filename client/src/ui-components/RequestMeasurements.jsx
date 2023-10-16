@@ -11,6 +11,8 @@ import {
   Flex,
   Grid,
   Heading,
+  Radio,
+  RadioGroupField,
   SelectField,
   TextField,
 } from "@aws-amplify/ui-react";
@@ -22,17 +24,20 @@ export default function RequestMeasurements(props) {
     Sqft: "",
     Depth: "",
     Main: "",
-    Extra: [],
+    Field0: undefined,
+    Extra: "",
   };
   const [Sqft, setSqft] = React.useState(initialValues.Sqft);
   const [Depth, setDepth] = React.useState(initialValues.Depth);
   const [Main, setMain] = React.useState(initialValues.Main);
+  const [Field0, setField0] = React.useState(initialValues.Field0);
   const [Extra, setExtra] = React.useState(initialValues.Extra);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     setSqft(initialValues.Sqft);
     setDepth(initialValues.Depth);
     setMain(initialValues.Main);
+    setField0(initialValues.Field0);
     setExtra(initialValues.Extra);
     setErrors({});
   };
@@ -40,6 +45,7 @@ export default function RequestMeasurements(props) {
     Sqft: [],
     Depth: [],
     Main: [],
+    Field0: [],
     Extra: [],
   };
   const runValidationTasks = async (
@@ -71,6 +77,7 @@ export default function RequestMeasurements(props) {
           Sqft,
           Depth,
           Main,
+          Field0,
           Extra,
         };
         const validationResponses = await Promise.all(
@@ -114,6 +121,7 @@ export default function RequestMeasurements(props) {
               Sqft: value,
               Depth,
               Main,
+              Field0,
               Extra,
             };
             const result = onChange(modelFields);
@@ -141,6 +149,7 @@ export default function RequestMeasurements(props) {
               Sqft,
               Depth: value,
               Main,
+              Field0,
               Extra,
             };
             const result = onChange(modelFields);
@@ -167,6 +176,7 @@ export default function RequestMeasurements(props) {
               Sqft,
               Depth,
               Main: value,
+              Field0,
               Extra,
             };
             const result = onChange(modelFields);
@@ -182,6 +192,48 @@ export default function RequestMeasurements(props) {
         hasError={errors.Main?.hasError}
         {...getOverrideProps(overrides, "Main")}
       ></SelectField>
+      <RadioGroupField
+        label="Label"
+        name="fieldName"
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              Sqft,
+              Depth,
+              Main,
+              Field0: value,
+              Extra,
+            };
+            const result = onChange(modelFields);
+            value = result?.Field0 ?? value;
+          }
+          if (errors.Field0?.hasError) {
+            runValidationTasks("Field0", value);
+          }
+          setField0(value);
+        }}
+        onBlur={() => runValidationTasks("Field0", Field0)}
+        errorMessage={errors.Field0?.errorMessage}
+        hasError={errors.Field0?.hasError}
+        {...getOverrideProps(overrides, "Field0")}
+      >
+        <Radio
+          children="Option"
+          value="Option"
+          {...getOverrideProps(overrides, "Field0Radio0")}
+        ></Radio>
+        <Radio
+          children="option 2"
+          value="option 2"
+          {...getOverrideProps(overrides, "Field0Radio1")}
+        ></Radio>
+        <Radio
+          children="option 3"
+          value="option 3"
+          {...getOverrideProps(overrides, "Field0Radio2")}
+        ></Radio>
+      </RadioGroupField>
       <SelectField
         label="Extra Costs"
         placeholder="Please select an option"
@@ -193,6 +245,7 @@ export default function RequestMeasurements(props) {
               Sqft,
               Depth,
               Main,
+              Field0,
               Extra: value,
             };
             const result = onChange(modelFields);

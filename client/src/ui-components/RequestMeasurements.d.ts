@@ -5,7 +5,7 @@
  **************************************************************************/
 
 import * as React from "react";
-import { GridProps, HeadingProps, SelectFieldProps, TextFieldProps } from "@aws-amplify/ui-react";
+import { GridProps, HeadingProps, RadioGroupFieldProps, SelectFieldProps, TextFieldProps } from "@aws-amplify/ui-react";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
 export declare type ValidationResponse = {
     hasError: boolean;
@@ -16,12 +16,14 @@ export declare type RequestMeasurementsInputValues = {
     Sqft?: string;
     Depth?: string;
     Main?: string;
+    Field0?: string;
     Extra?: string;
 };
 export declare type RequestMeasurementsValidationValues = {
     Sqft?: ValidationFunction<string>;
     Depth?: ValidationFunction<string>;
     Main?: ValidationFunction<string>;
+    Field0?: ValidationFunction<string>;
     Extra?: ValidationFunction<string>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
@@ -31,6 +33,7 @@ export declare type RequestMeasurementsOverridesProps = {
     Sqft?: PrimitiveOverrideProps<TextFieldProps>;
     Depth?: PrimitiveOverrideProps<TextFieldProps>;
     Main?: PrimitiveOverrideProps<SelectFieldProps>;
+    Field0?: PrimitiveOverrideProps<RadioGroupFieldProps>;
     Extra?: PrimitiveOverrideProps<SelectFieldProps>;
 } & EscapeHatchProps;
 export declare type RequestMeasurementsProps = React.PropsWithChildren<{
