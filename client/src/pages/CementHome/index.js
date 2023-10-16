@@ -32,7 +32,7 @@ function Home() {
 		wwmRate: ""
 	});
 
-	async function calculations() {
+	async function calculations(inputs, rates) {
 		try {
 			//expected object shape
 			let { depth, sqft } = inputs;
