@@ -30,13 +30,14 @@ const math = {
 
     //EXAMPLE MATERIAL PRICE
     matCalc: async function (totalFtSq, matPrice, matCoverage) {
-        try {
+        try {   //miles traveled over 20 //1 mile
             let matAmount = (totalFtSq / matCoverage).toFixed(0)
+                            //price
             return parseInt((matPrice * matAmount).toFixed(2));
         } catch (err) {
             console.error(err);
         }
-    }
+   }    
 }
 export default math;
 

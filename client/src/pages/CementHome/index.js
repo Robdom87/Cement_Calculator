@@ -7,7 +7,7 @@ import { useState } from 'react';
 
 function Home() {
 	const [showResults, setShowResults] = useState(false);
-	const [showRequests, setShowRequests] = useState(false);
+	const [showRequests, setShowRequests] = useState(true);
 	const [measurements, setMeasurements] = useState({
 		Depth: "",
 		Extra: "",
@@ -41,6 +41,19 @@ function Home() {
 		// vbRate: "",
 		// wwmRate: ""
 	});
+
+	let sampleTest = {
+		serviceName: "Ready Mix Concrete",
+		typeDescription: "eady-Mix Concrete Ready-mix delivered by truck. Typical prices for most cities. Includes delivery up to 20 miles for 10 CY or more, 3in to 4in slump. Material cost only, no placing or pumping included. All concrete material costs in this manual are based on these figures.",
+		ydsCubed: 100,
+		concreteRate: 141,
+		concreteTCost: 1000,
+		addOnName: "Granite Aggregate",
+		addOnDescription: "Add for granite aggregate, typical",
+		addOnMaterial: 10,
+		addOnTotal: 300,
+		callTotal: 130
+	};
 
 	async function calculations() {
 		try {
@@ -175,7 +188,7 @@ function Home() {
 				calculations={calculations}
 			/> : null} */}
 			{showResults ? <ResultsV2
-				results={results}
+				results={sampleTest}
 
 			/> : null}
 		</>
