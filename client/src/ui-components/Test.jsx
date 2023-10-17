@@ -79,7 +79,6 @@ export default function Test(props) {
         label="Label"
         placeholder="Please select an option"
         value={Field0}
-        isMultiple={true}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {

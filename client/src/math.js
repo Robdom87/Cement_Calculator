@@ -15,20 +15,29 @@ const math = {
     totalYardsCu: function (totalFtCu) {
         // totalFtCu += 81;
         //add 3 because pumps use 1 cubic yard to start
-        let yardsCu = ((totalFtCu / 27.00)+3).toFixed(2);
-        return parseInt(yardsCu);
+            let yardsCu = ((totalFtCu / 27.00) + 3).toFixed(2);
+            return parseInt(yardsCu);
     },
 
     // CALCULATING CONCRETE PRICE
-    conCalc: function (totalFtCu, concretePrice) {
-        return parseInt((totalFtCu * concretePrice).toFixed(2));
+    conCalc: async function (totalFtCu, concretePrice) {
+        try {
+            return parseInt((totalFtCu * concretePrice).toFixed(2));
+        } catch (err) {
+            console.error(err);
+        }
     },
 
     //EXAMPLE MATERIAL PRICE
-    matCalc: function (totalFtSq, matPrice, matCoverage) {
-        let matAmount = (totalFtSq / matCoverage).toFixed(0)
-        return parseInt((matPrice * matAmount).toFixed(2));
-    }
+    matCalc: async function (totalFtSq, matPrice, matCoverage) {
+        try {   //miles traveled over 20 //1 mile
+            let matAmount = (totalFtSq / matCoverage).toFixed(0)
+                            //price
+            return parseInt((matPrice * matAmount).toFixed(2));
+        } catch (err) {
+            console.error(err);
+        }
+   }    
 }
 export default math;
 
