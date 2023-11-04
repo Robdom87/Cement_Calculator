@@ -5,8 +5,17 @@
  **************************************************************************/
 
 import * as React from "react";
-import { GridProps, HeadingProps, RadioGroupFieldProps, SelectFieldProps, TextFieldProps } from "@aws-amplify/ui-react";
-import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
+import { GridProps, HeadingProps, SelectFieldProps, TextFieldProps } from "@aws-amplify/ui-react";
+export declare type EscapeHatchProps = {
+    [elementHierarchy: string]: Record<string, unknown>;
+} | null;
+export declare type VariantValues = {
+    [key: string]: string;
+};
+export declare type Variant = {
+    variantValues: VariantValues;
+    overrides: EscapeHatchProps;
+};
 export declare type ValidationResponse = {
     hasError: boolean;
     errorMessage?: string;
@@ -15,15 +24,15 @@ export declare type ValidationFunction<T> = (value: T, validationResponse: Valid
 export declare type RequestMeasurementsInputValues = {
     Sqft?: string;
     Depth?: string;
+    Field0?: string[];
     Main?: string;
-    Field0?: string;
     Extra?: string;
 };
 export declare type RequestMeasurementsValidationValues = {
     Sqft?: ValidationFunction<string>;
     Depth?: ValidationFunction<string>;
-    Main?: ValidationFunction<string>;
     Field0?: ValidationFunction<string>;
+    Main?: ValidationFunction<string>;
     Extra?: ValidationFunction<string>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
@@ -32,8 +41,8 @@ export declare type RequestMeasurementsOverridesProps = {
     SectionalElement0?: PrimitiveOverrideProps<HeadingProps>;
     Sqft?: PrimitiveOverrideProps<TextFieldProps>;
     Depth?: PrimitiveOverrideProps<TextFieldProps>;
+    Field0?: PrimitiveOverrideProps<TextFieldProps>;
     Main?: PrimitiveOverrideProps<SelectFieldProps>;
-    Field0?: PrimitiveOverrideProps<RadioGroupFieldProps>;
     Extra?: PrimitiveOverrideProps<SelectFieldProps>;
 } & EscapeHatchProps;
 export declare type RequestMeasurementsProps = React.PropsWithChildren<{

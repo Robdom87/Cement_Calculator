@@ -6,8 +6,17 @@
 
 import * as React from "react";
 import { Results } from "../models";
-import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
 import { IconProps, TextProps, ViewProps } from "@aws-amplify/ui-react";
+export declare type EscapeHatchProps = {
+    [elementHierarchy: string]: Record<string, unknown>;
+} | null;
+export declare type VariantValues = {
+    [key: string]: string;
+};
+export declare type Variant = {
+    variantValues: VariantValues;
+    overrides: EscapeHatchProps;
+};
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type ResultsV2OverridesProps = {
     ResultsV2?: PrimitiveOverrideProps<ViewProps>;
@@ -18,7 +27,7 @@ export declare type ResultsV2OverridesProps = {
     "Rectangle 27"?: PrimitiveOverrideProps<IconProps>;
     "Rectangle 28"?: PrimitiveOverrideProps<IconProps>;
     "Rectangle 52"?: PrimitiveOverrideProps<IconProps>;
-    "Rectangle 29"?: PrimitiveOverrideProps<ViewProps>;
+    "Rectangle 29"?: PrimitiveOverrideProps<IconProps>;
     "Group Cost Breakdown 2"?: PrimitiveOverrideProps<ViewProps>;
     "Rectangle 34"?: PrimitiveOverrideProps<ViewProps>;
     "Cement Rate:4200263"?: PrimitiveOverrideProps<TextProps>;
@@ -32,15 +41,15 @@ export declare type ResultsV2OverridesProps = {
     "Rectangle 43"?: PrimitiveOverrideProps<ViewProps>;
     "Rectangle 47"?: PrimitiveOverrideProps<ViewProps>;
     "Rectangle 51"?: PrimitiveOverrideProps<ViewProps>;
-    "Rectangle 53"?: PrimitiveOverrideProps<ViewProps>;
+    "Rectangle 53"?: PrimitiveOverrideProps<IconProps>;
     $?: PrimitiveOverrideProps<TextProps>;
     "Rectangle 48"?: PrimitiveOverrideProps<ViewProps>;
     "Rectangle 49"?: PrimitiveOverrideProps<ViewProps>;
-    "Rectangle 50"?: PrimitiveOverrideProps<ViewProps>;
+    "Rectangle 50"?: PrimitiveOverrideProps<IconProps>;
     "Add on 1"?: PrimitiveOverrideProps<ViewProps>;
     "Rectangle 44"?: PrimitiveOverrideProps<ViewProps>;
     "Rectangle 45"?: PrimitiveOverrideProps<ViewProps>;
-    "Rectangle 46"?: PrimitiveOverrideProps<ViewProps>;
+    "Rectangle 46"?: PrimitiveOverrideProps<IconProps>;
     "Cost Breakdown 6"?: PrimitiveOverrideProps<ViewProps>;
     "Rectangle 41"?: PrimitiveOverrideProps<ViewProps>;
     cementTotaL?: PrimitiveOverrideProps<TextProps>;
@@ -59,17 +68,17 @@ export declare type ResultsV2OverridesProps = {
     "2000psi"?: PrimitiveOverrideProps<TextProps>;
     "Add-Ons:"?: PrimitiveOverrideProps<TextProps>;
     Total4200259?: PrimitiveOverrideProps<TextProps>;
-    "Cost Breakdown:"?: PrimitiveOverrideProps<TextProps>;
+    "Cost-\u2028Breakdown:"?: PrimitiveOverrideProps<TextProps>;
     "Add-On4200274"?: PrimitiveOverrideProps<TextProps>;
     "Add-On4201250"?: PrimitiveOverrideProps<TextProps>;
     "Add-On4201251"?: PrimitiveOverrideProps<TextProps>;
     "Add-On4201252"?: PrimitiveOverrideProps<TextProps>;
     Description?: PrimitiveOverrideProps<TextProps>;
-    Material4200276?: PrimitiveOverrideProps<TextProps>;
     Material4200290?: PrimitiveOverrideProps<TextProps>;
     Material4200282?: PrimitiveOverrideProps<TextProps>;
+    Material4211201?: PrimitiveOverrideProps<TextProps>;
+    Total4211202?: PrimitiveOverrideProps<TextProps>;
     Material4200291?: PrimitiveOverrideProps<TextProps>;
-    Total4200284?: PrimitiveOverrideProps<TextProps>;
 } & EscapeHatchProps;
 export declare type ResultsV2Props = React.PropsWithChildren<Partial<ViewProps> & {
     results?: Results;

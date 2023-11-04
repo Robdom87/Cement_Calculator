@@ -7,45 +7,206 @@
 /* eslint-disable */
 import * as React from "react";
 import {
+  Badge,
   Button,
+  Divider,
   Flex,
   Grid,
   Heading,
-  Radio,
-  RadioGroupField,
+  Icon,
+  ScrollView,
   SelectField,
+  Text,
   TextField,
+  useTheme,
 } from "@aws-amplify/ui-react";
-import { getOverrideProps } from "@aws-amplify/ui-react/internal";
-import { fetchByPath, validateField } from "./utils";
+import { fetchByPath, getOverrideProps, validateField } from "./utils";
+function ArrayField({
+  items = [],
+  onChange,
+  label,
+  inputFieldRef,
+  children,
+  hasError,
+  setFieldValue,
+  currentFieldValue,
+  defaultFieldValue,
+  lengthLimit,
+  getBadgeText,
+  runValidationTasks,
+  errorMessage,
+}) {
+  const labelElement = <Text>{label}</Text>;
+  const {
+    tokens: {
+      components: {
+        fieldmessages: { error: errorStyles },
+      },
+    },
+  } = useTheme();
+  const [selectedBadgeIndex, setSelectedBadgeIndex] = React.useState();
+  const [isEditing, setIsEditing] = React.useState();
+  React.useEffect(() => {
+    if (isEditing) {
+      inputFieldRef?.current?.focus();
+    }
+  }, [isEditing]);
+  const removeItem = async (removeIndex) => {
+    const newItems = items.filter((value, index) => index !== removeIndex);
+    await onChange(newItems);
+    setSelectedBadgeIndex(undefined);
+  };
+  const addItem = async () => {
+    const { hasError } = runValidationTasks();
+    if (
+      currentFieldValue !== undefined &&
+      currentFieldValue !== null &&
+      currentFieldValue !== "" &&
+      !hasError
+    ) {
+      const newItems = [...items];
+      if (selectedBadgeIndex !== undefined) {
+        newItems[selectedBadgeIndex] = currentFieldValue;
+        setSelectedBadgeIndex(undefined);
+      } else {
+        newItems.push(currentFieldValue);
+      }
+      await onChange(newItems);
+      setIsEditing(false);
+    }
+  };
+  const arraySection = (
+    <React.Fragment>
+      {!!items?.length && (
+        <ScrollView height="inherit" width="inherit" maxHeight={"7rem"}>
+          {items.map((value, index) => {
+            return (
+              <Badge
+                key={index}
+                style={{
+                  cursor: "pointer",
+                  alignItems: "center",
+                  marginRight: 3,
+                  marginTop: 3,
+                  backgroundColor:
+                    index === selectedBadgeIndex ? "#B8CEF9" : "",
+                }}
+                onClick={() => {
+                  setSelectedBadgeIndex(index);
+                  setFieldValue(items[index]);
+                  setIsEditing(true);
+                }}
+              >
+                {getBadgeText ? getBadgeText(value) : value.toString()}
+                <Icon
+                  style={{
+                    cursor: "pointer",
+                    paddingLeft: 3,
+                    width: 20,
+                    height: 20,
+                  }}
+                  viewBox={{ width: 20, height: 20 }}
+                  paths={[
+                    {
+                      d: "M10 10l5.09-5.09L10 10l5.09 5.09L10 10zm0 0L4.91 4.91 10 10l-5.09 5.09L10 10z",
+                      stroke: "black",
+                    },
+                  ]}
+                  ariaLabel="button"
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    removeItem(index);
+                  }}
+                />
+              </Badge>
+            );
+          })}
+        </ScrollView>
+      )}
+      <Divider orientation="horizontal" marginTop={5} />
+    </React.Fragment>
+  );
+  if (lengthLimit !== undefined && items.length >= lengthLimit && !isEditing) {
+    return (
+      <React.Fragment>
+        {labelElement}
+        {arraySection}
+      </React.Fragment>
+    );
+  }
+  return (
+    <React.Fragment>
+      {labelElement}
+      {isEditing && children}
+      {!isEditing ? (
+        <>
+          <Button
+            onClick={() => {
+              setIsEditing(true);
+            }}
+          >
+            Add item
+          </Button>
+          {errorMessage && hasError && (
+            <Text color={errorStyles.color} fontSize={errorStyles.fontSize}>
+              {errorMessage}
+            </Text>
+          )}
+        </>
+      ) : (
+        <Flex justifyContent="flex-end">
+          {(currentFieldValue || isEditing) && (
+            <Button
+              children="Cancel"
+              type="button"
+              size="small"
+              onClick={() => {
+                setFieldValue(defaultFieldValue);
+                setIsEditing(false);
+                setSelectedBadgeIndex(undefined);
+              }}
+            ></Button>
+          )}
+          <Button size="small" variation="link" onClick={addItem}>
+            {selectedBadgeIndex !== undefined ? "Save" : "Add"}
+          </Button>
+        </Flex>
+      )}
+      {arraySection}
+    </React.Fragment>
+  );
+}
 export default function RequestMeasurements(props) {
   const { onSubmit, onValidate, onChange, overrides, ...rest } = props;
   const initialValues = {
     Sqft: "",
     Depth: "",
+    Field0: [],
     Main: "",
-    Field0: undefined,
     Extra: "",
   };
   const [Sqft, setSqft] = React.useState(initialValues.Sqft);
   const [Depth, setDepth] = React.useState(initialValues.Depth);
-  const [Main, setMain] = React.useState(initialValues.Main);
   const [Field0, setField0] = React.useState(initialValues.Field0);
+  const [Main, setMain] = React.useState(initialValues.Main);
   const [Extra, setExtra] = React.useState(initialValues.Extra);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     setSqft(initialValues.Sqft);
     setDepth(initialValues.Depth);
-    setMain(initialValues.Main);
     setField0(initialValues.Field0);
+    setCurrentField0Value("");
+    setMain(initialValues.Main);
     setExtra(initialValues.Extra);
     setErrors({});
   };
+  const [currentField0Value, setCurrentField0Value] = React.useState("");
+  const Field0Ref = React.createRef();
   const validations = {
     Sqft: [],
     Depth: [],
-    Main: [],
     Field0: [],
+    Main: [],
     Extra: [],
   };
   const runValidationTasks = async (
@@ -76,8 +237,8 @@ export default function RequestMeasurements(props) {
         const modelFields = {
           Sqft,
           Depth,
-          Main,
           Field0,
+          Main,
           Extra,
         };
         const validationResponses = await Promise.all(
@@ -111,6 +272,7 @@ export default function RequestMeasurements(props) {
       ></Heading>
       <TextField
         label="Square Footage"
+        placeholder="Feet"
         type="number"
         step="any"
         value={Sqft}
@@ -120,8 +282,8 @@ export default function RequestMeasurements(props) {
             const modelFields = {
               Sqft: value,
               Depth,
-              Main,
               Field0,
+              Main,
               Extra,
             };
             const result = onChange(modelFields);
@@ -139,6 +301,8 @@ export default function RequestMeasurements(props) {
       ></TextField>
       <TextField
         label="Depth"
+        descriptiveText=""
+        placeholder="Inches"
         type="number"
         step="any"
         value={Depth}
@@ -148,8 +312,8 @@ export default function RequestMeasurements(props) {
             const modelFields = {
               Sqft,
               Depth: value,
-              Main,
               Field0,
+              Main,
               Extra,
             };
             const result = onChange(modelFields);
@@ -165,6 +329,54 @@ export default function RequestMeasurements(props) {
         hasError={errors.Depth?.hasError}
         {...getOverrideProps(overrides, "Depth")}
       ></TextField>
+      <ArrayField
+        onChange={async (items) => {
+          let values = items;
+          if (onChange) {
+            const modelFields = {
+              Sqft,
+              Depth,
+              Field0: values,
+              Main,
+              Extra,
+            };
+            const result = onChange(modelFields);
+            values = result?.Field0 ?? values;
+          }
+          setField0(values);
+          setCurrentField0Value("");
+        }}
+        currentFieldValue={currentField0Value}
+        label={"Label"}
+        items={Field0}
+        hasError={errors?.Field0?.hasError}
+        runValidationTasks={async () =>
+          await runValidationTasks("Field0", currentField0Value)
+        }
+        errorMessage={errors?.Field0?.errorMessage}
+        setFieldValue={setCurrentField0Value}
+        inputFieldRef={Field0Ref}
+        defaultFieldValue={""}
+      >
+        <TextField
+          label="Label"
+          type="datetime-local"
+          value={currentField0Value}
+          onChange={(e) => {
+          let { value } = e.target;
+            if (errors.Field0?.hasError) {
+              runValidationTasks("Field0", value);
+            }
+            setCurrentField0Value(value);
+          }}
+          onBlur={() => runValidationTasks("Field0", currentField0Value)}
+          errorMessage={errors.Field0?.errorMessage}
+          hasError={errors.Field0?.hasError}
+          ref={Field0Ref}
+          labelHidden={true}
+          {...getOverrideProps(overrides, "Field0")}
+        ></TextField>
+      </ArrayField>
       <SelectField
         label="Main Costs"
         placeholder="Please select an option"
@@ -175,8 +387,8 @@ export default function RequestMeasurements(props) {
             const modelFields = {
               Sqft,
               Depth,
-              Main: value,
               Field0,
+              Main: value,
               Extra,
             };
             const result = onChange(modelFields);
@@ -192,48 +404,6 @@ export default function RequestMeasurements(props) {
         hasError={errors.Main?.hasError}
         {...getOverrideProps(overrides, "Main")}
       ></SelectField>
-      <RadioGroupField
-        label="Label"
-        name="fieldName"
-        onChange={(e) => {
-          let { value } = e.target;
-          if (onChange) {
-            const modelFields = {
-              Sqft,
-              Depth,
-              Main,
-              Field0: value,
-              Extra,
-            };
-            const result = onChange(modelFields);
-            value = result?.Field0 ?? value;
-          }
-          if (errors.Field0?.hasError) {
-            runValidationTasks("Field0", value);
-          }
-          setField0(value);
-        }}
-        onBlur={() => runValidationTasks("Field0", Field0)}
-        errorMessage={errors.Field0?.errorMessage}
-        hasError={errors.Field0?.hasError}
-        {...getOverrideProps(overrides, "Field0")}
-      >
-        <Radio
-          children="Option"
-          value="Option"
-          {...getOverrideProps(overrides, "Field0Radio0")}
-        ></Radio>
-        <Radio
-          children="option 2"
-          value="option 2"
-          {...getOverrideProps(overrides, "Field0Radio1")}
-        ></Radio>
-        <Radio
-          children="option 3"
-          value="option 3"
-          {...getOverrideProps(overrides, "Field0Radio2")}
-        ></Radio>
-      </RadioGroupField>
       <SelectField
         label="Extra Costs"
         placeholder="Please select an option"
@@ -244,8 +414,8 @@ export default function RequestMeasurements(props) {
             const modelFields = {
               Sqft,
               Depth,
-              Main,
               Field0,
+              Main,
               Extra: value,
             };
             const result = onChange(modelFields);
