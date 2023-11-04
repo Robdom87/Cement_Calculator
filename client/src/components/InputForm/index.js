@@ -2,6 +2,9 @@ import React from 'react';
 import {
     RequestMeasurements,
 } from '../../ui-components';
+import {
+    RequestMeasurementsCopy
+} from '../../ui-comps-copy';
 import { useQuery } from '@apollo/client';
 import { QUERY_SERVICE } from '../../utils/queries';
 
@@ -35,7 +38,7 @@ function InputForm(props) {
         <>	{loading ? (
             <div>Loading...</div>
         ) : (
-            <RequestMeasurements
+            <RequestMeasurementsCopy
                 onSubmit={handleFormSubmit}
                 // overrides={{ "Main": {options: {serviceOptions} }}}
                 overrides={{
@@ -44,7 +47,7 @@ function InputForm(props) {
                     },
                     "Extra": {
                         options: ExtraCosts,
-                        isMultiple: true
+                        // isMultiple: true
                     },
                 }}
             />

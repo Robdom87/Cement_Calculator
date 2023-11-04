@@ -181,31 +181,36 @@ export default function RequestMeasurements(props) {
   const initialValues = {
     Sqft: "",
     Depth: "",
-    Field0: [],
+    // Field0: [],
     Main: "",
-    Extra: "",
+    Extra: [],
   };
   const [Sqft, setSqft] = React.useState(initialValues.Sqft);
   const [Depth, setDepth] = React.useState(initialValues.Depth);
-  const [Field0, setField0] = React.useState(initialValues.Field0);
+  // const [Field0, setField0] = React.useState(initialValues.Field0);
   const [Main, setMain] = React.useState(initialValues.Main);
   const [Extra, setExtra] = React.useState(initialValues.Extra);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     setSqft(initialValues.Sqft);
     setDepth(initialValues.Depth);
-    setField0(initialValues.Field0);
-    setCurrentField0Value("");
+    // setField0(initialValues.Field0);
+    // setCurrentField0Value("");
     setMain(initialValues.Main);
     setExtra(initialValues.Extra);
+    setCurrentExtraValue("");
     setErrors({});
   };
-  const [currentField0Value, setCurrentField0Value] = React.useState("");
-  const Field0Ref = React.createRef();
+  // const [currentField0Value, setCurrentField0Value] = React.useState("");
+  const [currentExtraValue, setCurrentExtraValue] = React.useState("");
+
+  // const Field0Ref = React.createRef();
+  const ExtraRef = React.createRef();
+
   const validations = {
     Sqft: [],
     Depth: [],
-    Field0: [],
+    // Field0: [],
     Main: [],
     Extra: [],
   };
@@ -237,7 +242,7 @@ export default function RequestMeasurements(props) {
         const modelFields = {
           Sqft,
           Depth,
-          Field0,
+          // Field0,
           Main,
           Extra,
         };
@@ -282,7 +287,7 @@ export default function RequestMeasurements(props) {
             const modelFields = {
               Sqft: value,
               Depth,
-              Field0,
+              // Field0,
               Main,
               Extra,
             };
@@ -312,7 +317,7 @@ export default function RequestMeasurements(props) {
             const modelFields = {
               Sqft,
               Depth: value,
-              Field0,
+              // Field0,
               Main,
               Extra,
             };
@@ -329,7 +334,7 @@ export default function RequestMeasurements(props) {
         hasError={errors.Depth?.hasError}
         {...getOverrideProps(overrides, "Depth")}
       ></TextField>
-      <ArrayField
+      {/* <ArrayField
         onChange={async (items) => {
           let values = items;
           if (onChange) {
@@ -360,7 +365,7 @@ export default function RequestMeasurements(props) {
       >
         <TextField
           label="Label"
-          type="select"
+          type="datetime-local"
           value={currentField0Value}
           onChange={(e) => {
             let { value } = e.target;
@@ -376,7 +381,7 @@ export default function RequestMeasurements(props) {
           labelHidden={true}
           {...getOverrideProps(overrides, "Field0")}
         ></TextField>
-      </ArrayField>
+      </ArrayField> */}
       <SelectField
         label="Main Costs"
         placeholder="Please select an option"
@@ -387,7 +392,7 @@ export default function RequestMeasurements(props) {
             const modelFields = {
               Sqft,
               Depth,
-              Field0,
+              // Field0,
               Main: value,
               Extra,
             };
@@ -404,33 +409,86 @@ export default function RequestMeasurements(props) {
         hasError={errors.Main?.hasError}
         {...getOverrideProps(overrides, "Main")}
       ></SelectField>
-      <SelectField
-        label="Extra Costs"
-        placeholder="Please select an option"
-        value={Extra}
-        onChange={(e) => {
-          let { value } = e.target;
+      <ArrayField
+        onChange={async (items) => {
+          let values = items;
           if (onChange) {
             const modelFields = {
               Sqft,
               Depth,
-              Field0,
+              // Field0: values,
               Main,
-              Extra: value,
+              Extra: values,
             };
             const result = onChange(modelFields);
-            value = result?.Extra ?? value;
+            values = result?.Extra ?? values;
           }
-          if (errors.Extra?.hasError) {
-            runValidationTasks("Extra", value);
-          }
-          setExtra(value);
+          setExtra(values);
+          setCurrentExtraValue("");
         }}
-        onBlur={() => runValidationTasks("Extra", Extra)}
-        errorMessage={errors.Extra?.errorMessage}
-        hasError={errors.Extra?.hasError}
-        {...getOverrideProps(overrides, "Extra")}
-      ></SelectField>
+        currentFieldValue={currentExtraValue}
+        label={"Label"}
+        items={Extra}
+        hasError={errors?.Extra?.hasError}
+        runValidationTasks={async () =>
+          await runValidationTasks("Extra", currentExtraValue)
+        }
+        errorMessage={errors?.Extra?.errorMessage}
+        setFieldValue={setCurrentExtraValue}
+        inputFieldRef={ExtraRef}
+        defaultFieldValue={""}
+      >
+        {/* <TextField
+          label="Label"
+          type="datetime-local"
+          value={currentField0Value}
+          onChange={(e) => {
+            let { value } = e.target;
+            if (errors.Field0?.hasError) {
+              runValidationTasks("Field0", value);
+            }
+            setCurrentField0Value(value);
+          }}
+          onBlur={() => runValidationTasks("Field0", currentField0Value)}
+          errorMessage={errors.Field0?.errorMessage}
+          hasError={errors.Field0?.hasError}
+          ref={Field0Ref}
+          labelHidden={true}
+          {...getOverrideProps(overrides, "Field0")}
+        ></TextField> */}
+        <SelectField
+          label="Extra Costs"
+          placeholder="Please select an option"
+          value={currentExtraValue}
+          onChange={(e) => {
+            let { value } = e.target;
+            if (errors.Extra?.hasError) {
+              runValidationTasks("Extra", value);
+            }
+            setCurrentExtraValue(value);
+
+            // if (onChange) {
+            //   const modelFields = {
+            //     Sqft,
+            //     Depth,
+            //     // Field0,
+            //     Main,
+            //     Extra: value,
+            //   };
+            //   const result = onChange(modelFields);
+            //   value = result?.Extra ?? value;
+            // }
+            
+            // setExtra(value);
+          }}
+          onBlur={() => runValidationTasks("Extra", Extra)}
+          errorMessage={errors.Extra?.errorMessage}
+          hasError={errors.Extra?.hasError}
+          {...getOverrideProps(overrides, "Extra")}
+        ></SelectField>
+      </ArrayField>
+
+
       <Flex
         justifyContent="space-between"
         {...getOverrideProps(overrides, "CTAFlex")}

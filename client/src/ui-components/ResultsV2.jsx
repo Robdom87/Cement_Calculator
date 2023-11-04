@@ -6,7 +6,7 @@
 
 /* eslint-disable */
 import * as React from "react";
-import { getOverrideProps } from "@aws-amplify/ui-react/internal";
+import { getOverrideProps } from "./utils";
 import { Icon, Text, View } from "@aws-amplify/ui-react";
 export default function ResultsV2(props) {
   const { results, overrides, ...rest } = props;
@@ -31,8 +31,8 @@ export default function ResultsV2(props) {
         alignItems="unset"
         justifyContent="unset"
         position="absolute"
-        top="0.56%"
-        bottom="-0.56%"
+        top="0%"
+        bottom="0%"
         left="0%"
         right="0%"
         padding="0px 0px 0px 0px"
@@ -86,17 +86,17 @@ export default function ResultsV2(props) {
         {...getOverrideProps(overrides, "RESULTS")}
       ></Text>
       <View
-        width="447px"
+        width="212px"
         height="54px"
         display="block"
         gap="unset"
         alignItems="unset"
         justifyContent="unset"
         position="absolute"
-        top="18.75%"
-        bottom="76.97%"
+        top="14.46%"
+        bottom="81.25%"
         left="4.83%"
-        right="54.46%"
+        right="75.87%"
         padding="0px 0px 0px 0px"
         backgroundColor="rgba(120,178,225,1)"
         {...getOverrideProps(overrides, "Rectangle 26")}
@@ -118,12 +118,12 @@ export default function ResultsV2(props) {
         {...getOverrideProps(overrides, "Rectangle 27")}
       ></Icon>
       <Icon
-        width="447px"
-        height="54px"
-        viewBox={{ minX: 0, minY: 0, width: 447, height: 54 }}
+        width="224px"
+        height="75px"
+        viewBox={{ minX: 0, minY: 0, width: 224, height: 75 }}
         paths={[
           {
-            d: "M0 0L447 0L447 54L0 54L0 0Z",
+            d: "M0 0L224 0L224 75L0 75L0 0Z",
             fill: "rgba(120,178,225,1)",
             fillRule: "nonzero",
           },
@@ -133,19 +133,19 @@ export default function ResultsV2(props) {
         alignItems="unset"
         justifyContent="unset"
         position="absolute"
-        top="53.46%"
-        bottom="42.26%"
-        left="4.83%"
-        right="54.46%"
+        top="52.42%"
+        bottom="41.62%"
+        left="3.73%"
+        right="75.87%"
         {...getOverrideProps(overrides, "Rectangle 28")}
       ></Icon>
       <Icon
-        width="447px"
+        width="212px"
         height="54px"
-        viewBox={{ minX: 0, minY: 0, width: 447, height: 54 }}
+        viewBox={{ minX: 0, minY: 0, width: 212, height: 54 }}
         paths={[
           {
-            d: "M0 0L447 0L447 54L0 54L0 0Z",
+            d: "M0 0L212 0L212 54L0 54L0 0Z",
             fill: "rgba(120,178,225,1)",
             fillRule: "nonzero",
           },
@@ -158,40 +158,46 @@ export default function ResultsV2(props) {
         top="89.36%"
         bottom="6.35%"
         left="4.83%"
-        right="54.46%"
+        right="75.87%"
         {...getOverrideProps(overrides, "Rectangle 52")}
       ></Icon>
-      <View
-        width="447px"
-        height="54px"
+      <Icon
+        width="218px"
+        height="113px"
+        viewBox={{ minX: 0, minY: 0, width: 218, height: 113 }}
+        paths={[
+          {
+            d: "M0 0L218 0L218 113L0 113L0 0Z",
+            fill: "rgba(120,178,225,1)",
+            fillRule: "nonzero",
+          },
+        ]}
         display="block"
         gap="unset"
         alignItems="unset"
         justifyContent="unset"
         position="absolute"
-        top="34.63%"
-        bottom="61.08%"
+        top="27.72%"
+        bottom="63.3%"
         left="4.83%"
-        right="54.46%"
-        padding="0px 0px 0px 0px"
-        backgroundColor="rgba(120,178,225,1)"
+        right="75.32%"
         {...getOverrideProps(overrides, "Rectangle 29")}
-      ></View>
+      ></Icon>
       <View
         padding="0px 0px 0px 0px"
-        width="219px"
+        width="168px"
         height="62px"
         display="block"
         gap="unset"
         alignItems="unset"
         justifyContent="unset"
         position="absolute"
-        top="430px"
-        left="592px"
+        top="343px"
+        left="356px"
         {...getOverrideProps(overrides, "Group Cost Breakdown 2")}
       >
         <View
-          width="219px"
+          width="168px"
           height="62px"
           display="block"
           gap="unset"
@@ -216,15 +222,15 @@ export default function ResultsV2(props) {
           display="block"
           direction="column"
           justifyContent="unset"
-          width="190px"
+          width="160px"
           height="45px"
           gap="unset"
           alignItems="unset"
           position="absolute"
           top="14.52%"
           bottom="12.9%"
-          left="3.65%"
-          right="9.59%"
+          left="4.76%"
+          right="0%"
           padding="0px 0px 0px 0px"
           whiteSpace="pre-wrap"
           children="Cement Rate:"
@@ -233,19 +239,19 @@ export default function ResultsV2(props) {
       </View>
       <View
         padding="0px 0px 0px 0px"
-        width="219px"
+        width="168px"
         height="62px"
         display="block"
         gap="unset"
         alignItems="unset"
         justifyContent="unset"
         position="absolute"
-        top="503px"
-        left="593px"
+        top="428px"
+        left="358px"
         {...getOverrideProps(overrides, "Cost Breakdown group 4")}
       >
         <View
-          width="219px"
+          width="168px"
           height="62px"
           display="block"
           gap="unset"
@@ -270,7 +276,7 @@ export default function ResultsV2(props) {
           display="block"
           direction="column"
           justifyContent="unset"
-          width="190px"
+          width="145.75px"
           height="45px"
           gap="unset"
           alignItems="unset"
@@ -287,19 +293,19 @@ export default function ResultsV2(props) {
       </View>
       <View
         padding="0px 0px 0px 0px"
-        width="219px"
+        width="170px"
         height="62px"
         display="block"
         gap="unset"
         alignItems="unset"
         justifyContent="unset"
         position="absolute"
-        top="574px"
-        left="592px"
+        top="513px"
+        left="354px"
         {...getOverrideProps(overrides, "Group Cost Breakdown 1")}
       >
         <View
-          width="219px"
+          width="168px"
           height="62px"
           display="block"
           gap="unset"
@@ -308,7 +314,7 @@ export default function ResultsV2(props) {
           position="absolute"
           top="0%"
           bottom="0%"
-          left="0%"
+          left="1.18%"
           right="0%"
           padding="0px 0px 0px 0px"
           backgroundColor="rgba(120,178,225,1)"
@@ -324,15 +330,15 @@ export default function ResultsV2(props) {
           display="block"
           direction="column"
           justifyContent="unset"
-          width="190px"
+          width="168px"
           height="45px"
           gap="unset"
           alignItems="unset"
           position="absolute"
-          top="1.61%"
-          bottom="25.81%"
-          left="4.57%"
-          right="8.68%"
+          top="14.52%"
+          bottom="12.9%"
+          left="0%"
+          right="1.18%"
           padding="0px 0px 0px 0px"
           whiteSpace="pre-wrap"
           children="Total: "
@@ -340,85 +346,91 @@ export default function ResultsV2(props) {
         ></Text>
       </View>
       <View
-        width="219px"
+        width="164px"
         height="62px"
         display="block"
         gap="unset"
         alignItems="unset"
         justifyContent="unset"
         position="absolute"
-        top="66%"
-        bottom="29.07%"
-        left="53.92%"
-        right="26.14%"
+        top="65.13%"
+        bottom="29.94%"
+        left="32.79%"
+        right="52.28%"
         padding="0px 0px 0px 0px"
         backgroundColor="rgba(120,178,225,1)"
         {...getOverrideProps(overrides, "Rectangle 42")}
       ></View>
       <View
-        width="219px"
+        width="492px"
         height="62px"
         display="block"
         gap="unset"
         alignItems="unset"
         justifyContent="unset"
         position="absolute"
-        top="59.81%"
-        bottom="35.27%"
-        left="74.41%"
-        right="5.65%"
+        top="58.54%"
+        bottom="36.54%"
+        left="50.18%"
+        right="5.01%"
         padding="0px 0px 0px 0px"
         backgroundColor="rgba(120,178,225,1)"
         {...getOverrideProps(overrides, "Rectangle 43")}
       ></View>
       <View
-        width="219px"
+        width="492px"
         height="62px"
         display="block"
         gap="unset"
         alignItems="unset"
         justifyContent="unset"
         position="absolute"
-        top="66%"
-        bottom="29.07%"
-        left="75.05%"
+        top="64.65%"
+        bottom="30.42%"
+        left="50.18%"
         right="5.01%"
         padding="0px 0px 0px 0px"
         backgroundColor="rgba(120,178,225,1)"
         {...getOverrideProps(overrides, "Rectangle 47")}
       ></View>
       <View
-        width="219px"
+        width="487px"
         height="62px"
         display="block"
         gap="unset"
         alignItems="unset"
         justifyContent="unset"
         position="absolute"
-        top="78.71%"
-        bottom="16.36%"
-        left="74.77%"
-        right="5.28%"
+        top="78.24%"
+        bottom="16.84%"
+        left="49.82%"
+        right="5.83%"
         padding="0px 0px 0px 0px"
         backgroundColor="rgba(120,178,225,1)"
         {...getOverrideProps(overrides, "Rectangle 51")}
       ></View>
-      <View
-        width="219px"
-        height="62px"
+      <Icon
+        width="598px"
+        height="54px"
+        viewBox={{ minX: 0, minY: 0, width: 598, height: 54 }}
+        paths={[
+          {
+            d: "M0 0L598 0L598 54L0 54L0 0Z",
+            fill: "rgba(120,178,225,1)",
+            fillRule: "nonzero",
+          },
+        ]}
         display="block"
         gap="unset"
         alignItems="unset"
         justifyContent="unset"
         position="absolute"
-        top="89.04%"
-        bottom="6.04%"
-        left="63.48%"
-        right="16.58%"
-        padding="0px 0px 0px 0px"
-        backgroundColor="rgba(120,178,225,1)"
+        top="89.36%"
+        bottom="6.35%"
+        left="37.16%"
+        right="8.38%"
         {...getOverrideProps(overrides, "Rectangle 53")}
-      ></View>
+      ></Icon>
       <Text
         fontFamily="Inter"
         fontSize="24px"
@@ -429,81 +441,87 @@ export default function ResultsV2(props) {
         display="block"
         direction="column"
         justifyContent="unset"
-        width="192px"
+        width="573px"
         height="23px"
         gap="unset"
         alignItems="unset"
         position="absolute"
-        top="1132px"
-        left="703px"
+        top="1141px"
+        left="433px"
         padding="0px 0px 0px 0px"
         whiteSpace="pre-wrap"
         children={results?.callTotal}
         {...getOverrideProps(overrides, "$")}
       ></Text>
       <View
-        width="219px"
+        width="490px"
         height="62px"
         display="block"
         gap="unset"
         alignItems="unset"
         justifyContent="unset"
         position="absolute"
-        top="72.44%"
-        bottom="22.64%"
-        left="75.05%"
-        right="5.01%"
+        top="71.49%"
+        bottom="23.59%"
+        left="49.73%"
+        right="5.65%"
         padding="0px 0px 0px 0px"
         backgroundColor="rgba(120,178,225,1)"
         {...getOverrideProps(overrides, "Rectangle 48")}
       ></View>
       <View
-        width="219px"
+        width="164px"
         height="62px"
         display="block"
         gap="unset"
         alignItems="unset"
         justifyContent="unset"
         position="absolute"
-        top="72.44%"
-        bottom="22.64%"
-        left="53.92%"
-        right="26.14%"
+        top="71.33%"
+        bottom="23.75%"
+        left="32.7%"
+        right="52.37%"
         padding="0px 0px 0px 0px"
         backgroundColor="rgba(120,178,225,1)"
         {...getOverrideProps(overrides, "Rectangle 49")}
       ></View>
-      <View
-        width="219px"
+      <Icon
+        width="164px"
         height="62px"
+        viewBox={{ minX: 0, minY: 0, width: 164, height: 62 }}
+        paths={[
+          {
+            d: "M0 0L164 0L164 62L83.5 62L0 62L0 0Z",
+            fill: "rgba(120,178,225,1)",
+            fillRule: "nonzero",
+          },
+        ]}
         display="block"
         gap="unset"
         alignItems="unset"
         justifyContent="unset"
         position="absolute"
-        top="79.11%"
-        bottom="15.97%"
-        left="53.46%"
-        right="26.59%"
-        padding="0px 0px 0px 0px"
-        backgroundColor="rgba(120,178,225,1)"
+        top="78.08%"
+        bottom="17%"
+        left="32.79%"
+        right="52.28%"
         {...getOverrideProps(overrides, "Rectangle 50")}
-      ></View>
+      ></Icon>
       <View
         padding="0px 0px 0px 0px"
-        width="219px"
+        width="163px"
         height="62px"
         display="block"
         gap="unset"
         alignItems="unset"
         justifyContent="unset"
         position="absolute"
-        top="750px"
-        left="592px"
+        top="736px"
+        left="360px"
         {...getOverrideProps(overrides, "Add on 1")}
       >
         <View
-          width="219px"
+          width="163px"
           height="62px"
           display="block"
           gap="unset"
@@ -520,52 +538,58 @@ export default function ResultsV2(props) {
         ></View>
       </View>
       <View
-        width="219px"
+        width="491px"
         height="62px"
         display="block"
         gap="unset"
         alignItems="unset"
         justifyContent="unset"
         position="absolute"
-        top="53.93%"
-        bottom="41.14%"
-        left="74.77%"
-        right="5.28%"
+        top="52.18%"
+        bottom="42.89%"
+        left="50.36%"
+        right="4.92%"
         padding="0px 0px 0px 0px"
         backgroundColor="rgba(120,178,225,1)"
         {...getOverrideProps(overrides, "Rectangle 45")}
       ></View>
-      <View
-        width="219px"
+      <Icon
+        width="168px"
         height="62px"
+        viewBox={{ minX: 0, minY: 0, width: 168, height: 62 }}
+        paths={[
+          {
+            d: "M0 0L168 0L168 62L0 62L0 0Z",
+            fill: "rgba(120,178,225,1)",
+            fillRule: "nonzero",
+          },
+        ]}
         display="block"
         gap="unset"
         alignItems="unset"
         justifyContent="unset"
         position="absolute"
-        top="53.77%"
-        bottom="41.3%"
-        left="54.01%"
-        right="26.05%"
-        padding="0px 0px 0px 0px"
-        backgroundColor="rgba(120,178,225,1)"
+        top="52.26%"
+        bottom="42.81%"
+        left="32.42%"
+        right="52.28%"
         {...getOverrideProps(overrides, "Rectangle 46")}
-      ></View>
+      ></Icon>
       <View
         padding="0px 0px 0px 0px"
-        width="219px"
+        width="483px"
         height="62px"
         display="block"
         gap="unset"
         alignItems="unset"
         justifyContent="unset"
         position="absolute"
-        top="574px"
-        left="817px"
+        top="513px"
+        left="561px"
         {...getOverrideProps(overrides, "Cost Breakdown 6")}
       >
         <View
-          width="219px"
+          width="483px"
           height="62px"
           display="block"
           gap="unset"
@@ -590,15 +614,15 @@ export default function ResultsV2(props) {
           display="block"
           direction="column"
           justifyContent="unset"
-          width="190px"
+          width="437px"
           height="45px"
           gap="unset"
           alignItems="unset"
           position="absolute"
           top="14.52%"
           bottom="12.9%"
-          left="6.85%"
-          right="6.39%"
+          left="3.11%"
+          right="6.42%"
           padding="0px 0px 0px 0px"
           whiteSpace="pre-wrap"
           children={results?.concreteTCost}
@@ -607,19 +631,19 @@ export default function ResultsV2(props) {
       </View>
       <View
         padding="0px 0px 0px 0px"
-        width="219px"
+        width="483px"
         height="62px"
         display="block"
         gap="unset"
         alignItems="unset"
         justifyContent="unset"
         position="absolute"
-        top="503px"
-        left="821px"
+        top="428px"
+        left="561px"
         {...getOverrideProps(overrides, "Cost Breakdown Group 5")}
       >
         <View
-          width="219px"
+          width="483px"
           height="62px"
           display="block"
           gap="unset"
@@ -644,7 +668,7 @@ export default function ResultsV2(props) {
           display="block"
           direction="column"
           justifyContent="unset"
-          width="190px"
+          width="419.04px"
           height="45px"
           gap="unset"
           alignItems="unset"
@@ -661,19 +685,19 @@ export default function ResultsV2(props) {
       </View>
       <View
         padding="0px 0px 0px 0px"
-        width="219px"
+        width="483px"
         height="62px"
         display="block"
         gap="unset"
         alignItems="unset"
         justifyContent="unset"
         position="absolute"
-        top="429px"
-        left="817px"
+        top="342px"
+        left="561px"
         {...getOverrideProps(overrides, "Cost Breakdown Group 3")}
       >
         <View
-          width="219px"
+          width="483px"
           height="62px"
           display="block"
           gap="unset"
@@ -698,15 +722,15 @@ export default function ResultsV2(props) {
           display="block"
           direction="column"
           justifyContent="unset"
-          width="190px"
+          width="459.17px"
           height="45px"
           gap="unset"
           alignItems="unset"
           position="absolute"
           top="14.52%"
           bottom="12.9%"
-          left="3.2%"
-          right="10.05%"
+          left="3.14%"
+          right="1.79%"
           padding="0px 0px 0px 0px"
           whiteSpace="pre-wrap"
           children={results?.concreteRate}
@@ -714,12 +738,12 @@ export default function ResultsV2(props) {
         ></Text>
       </View>
       <Icon
-        width="447px"
-        height="54px"
-        viewBox={{ minX: 0, minY: 0, width: 447, height: 54 }}
+        width="684px"
+        height="49px"
+        viewBox={{ minX: 0, minY: 0, width: 684, height: 49 }}
         paths={[
           {
-            d: "M0 0L447 0L447 54L0 54L0 0Z",
+            d: "M0 0L684 0L684 49L0 49L0 0Z",
             fill: "rgba(120,178,225,1)",
             fillRule: "nonzero",
           },
@@ -729,63 +753,63 @@ export default function ResultsV2(props) {
         alignItems="unset"
         justifyContent="unset"
         position="absolute"
-        top="25.89%"
-        bottom="69.82%"
-        left="54.37%"
+        top="20.17%"
+        bottom="75.93%"
+        left="32.79%"
         right="4.92%"
         {...getOverrideProps(overrides, "Rectangle 35")}
       ></Icon>
       <View
-        width="447px"
-        height="54px"
+        width="685px"
+        height="48px"
         display="block"
         gap="unset"
         alignItems="unset"
         justifyContent="unset"
         position="absolute"
-        top="18.75%"
-        bottom="76.97%"
-        left="54.37%"
+        top="14.22%"
+        bottom="81.97%"
+        left="32.7%"
         right="4.92%"
         padding="0px 0px 0px 0px"
         backgroundColor="rgba(120,178,225,1)"
         {...getOverrideProps(overrides, "Rectangle 36")}
       ></View>
       <View
-        width="447px"
-        height="54px"
+        width="212px"
+        height="53px"
         display="block"
         gap="unset"
         alignItems="unset"
         justifyContent="unset"
         position="absolute"
-        top="25.97%"
-        bottom="69.74%"
+        top="20.17%"
+        bottom="75.62%"
         left="4.83%"
-        right="54.46%"
+        right="75.87%"
         padding="0px 0px 0px 0px"
         backgroundColor="rgba(120,178,225,1)"
         {...getOverrideProps(overrides, "Rectangle 30")}
       ></View>
       <Text
         fontFamily="Inter"
-        fontSize="48px"
-        fontWeight="300"
+        fontSize="32px"
+        fontWeight="500"
         color="rgba(0,0,0,1)"
-        lineHeight="60px"
+        lineHeight="40px"
         textAlign="center"
         display="block"
         direction="column"
         justifyContent="unset"
-        width="371px"
-        height="36px"
+        width="207px"
+        height="45px"
         gap="unset"
         alignItems="unset"
         position="absolute"
-        top="19.46%"
-        bottom="77.68%"
-        left="8.29%"
-        right="57.92%"
+        top="14.85%"
+        bottom="81.57%"
+        left="4.83%"
+        right="76.32%"
         padding="0px 0px 0px 0px"
         whiteSpace="pre-wrap"
         children="Service:"
@@ -793,23 +817,23 @@ export default function ResultsV2(props) {
       ></Text>
       <Text
         fontFamily="Inter"
-        fontSize="48px"
-        fontWeight="300"
+        fontSize="24px"
+        fontWeight="600"
         color="rgba(0,0,0,1)"
-        lineHeight="60px"
+        lineHeight="30px"
         textAlign="center"
         display="block"
         direction="column"
         justifyContent="unset"
-        width="371px"
+        width="659px"
         height="36px"
         gap="unset"
         alignItems="unset"
         position="absolute"
-        top="19.38%"
-        bottom="77.76%"
-        left="57.83%"
-        right="8.38%"
+        top="14.69%"
+        bottom="82.45%"
+        left="34.34%"
+        right="5.65%"
         padding="0px 0px 0px 0px"
         whiteSpace="pre-wrap"
         children={results?.serviceName}
@@ -817,23 +841,23 @@ export default function ResultsV2(props) {
       ></Text>
       <Text
         fontFamily="Inter"
-        fontSize="48px"
-        fontWeight="300"
+        fontSize="32px"
+        fontWeight="500"
         color="rgba(0,0,0,1)"
-        lineHeight="60px"
+        lineHeight="40px"
         textAlign="center"
         display="block"
         direction="column"
         justifyContent="unset"
-        width="371px"
-        height="36px"
+        width="334px"
+        height="46px"
         gap="unset"
         alignItems="unset"
         position="absolute"
-        top="26.69%"
-        bottom="70.45%"
-        left="8.29%"
-        right="57.92%"
+        top="20.41%"
+        bottom="75.93%"
+        left="-0.73%"
+        right="70.31%"
         padding="0px 0px 0px 0px"
         whiteSpace="pre-wrap"
         children="Description:"
@@ -841,23 +865,23 @@ export default function ResultsV2(props) {
       ></Text>
       <Text
         fontFamily="Inter"
-        fontSize="48px"
-        fontWeight="300"
+        fontSize="24px"
+        fontWeight="600"
         color="rgba(0,0,0,1)"
-        lineHeight="60px"
+        lineHeight="30px"
         textAlign="center"
         display="block"
         direction="column"
         justifyContent="unset"
-        width="371px"
-        height="36px"
+        width="659px"
+        height="32px"
         gap="unset"
         alignItems="unset"
         position="absolute"
-        top="26.61%"
-        bottom="70.53%"
-        left="57.47%"
-        right="8.74%"
+        top="20.65%"
+        bottom="76.81%"
+        left="34.34%"
+        right="5.65%"
         padding="0px 0px 0px 0px"
         whiteSpace="pre-wrap"
         children={results?.typeDescription}
@@ -865,10 +889,10 @@ export default function ResultsV2(props) {
       ></Text>
       <Text
         fontFamily="Inter"
-        fontSize="48px"
-        fontWeight="300"
+        fontSize="32px"
+        fontWeight="500"
         color="rgba(0,0,0,1)"
-        lineHeight="60px"
+        lineHeight="40px"
         textAlign="center"
         display="block"
         direction="column"
@@ -878,10 +902,10 @@ export default function ResultsV2(props) {
         gap="unset"
         alignItems="unset"
         position="absolute"
-        top="54.17%"
-        bottom="42.97%"
-        left="8.29%"
-        right="57.92%"
+        top="54.01%"
+        bottom="43.13%"
+        left="-4.1%"
+        right="70.31%"
         padding="0px 0px 0px 0px"
         whiteSpace="pre-wrap"
         children="Add-Ons:"
@@ -889,15 +913,15 @@ export default function ResultsV2(props) {
       ></Text>
       <Text
         fontFamily="Inter"
-        fontSize="48px"
-        fontWeight="300"
+        fontSize="32px"
+        fontWeight="500"
         color="rgba(0,0,0,1)"
-        lineHeight="60px"
+        lineHeight="40px"
         textAlign="center"
         display="block"
         direction="column"
         justifyContent="unset"
-        width="371px"
+        width="133px"
         height="36px"
         gap="unset"
         alignItems="unset"
@@ -905,7 +929,7 @@ export default function ResultsV2(props) {
         top="90.07%"
         bottom="7.07%"
         left="8.29%"
-        right="57.92%"
+        right="79.6%"
         padding="0px 0px 0px 0px"
         whiteSpace="pre-wrap"
         children="Total"
@@ -913,10 +937,10 @@ export default function ResultsV2(props) {
       ></Text>
       <Text
         fontFamily="Inter"
-        fontSize="48px"
-        fontWeight="300"
+        fontSize="32px"
+        fontWeight="500"
         color="rgba(0,0,0,1)"
-        lineHeight="60px"
+        lineHeight="40px"
         textAlign="center"
         display="block"
         direction="column"
@@ -926,14 +950,14 @@ export default function ResultsV2(props) {
         gap="unset"
         alignItems="unset"
         position="absolute"
-        top="34.15%"
-        bottom="61.08%"
-        left="7.38%"
-        right="57.92%"
+        top="28.91%"
+        bottom="64.73%"
+        left="6.1%"
+        right="77.41%"
         padding="0px 0px 0px 0px"
         whiteSpace="pre-wrap"
-        children="Cost Breakdown:"
-        {...getOverrideProps(overrides, "Cost Breakdown:")}
+        children="Cost-&#x2028;Breakdown:"
+        {...getOverrideProps(overrides, "Cost-\u2028Breakdown:")}
       ></Text>
       <Text
         fontFamily="Inter"
@@ -950,8 +974,8 @@ export default function ResultsV2(props) {
         gap="unset"
         alignItems="unset"
         position="absolute"
-        top="699px"
-        left="611px"
+        top="675px"
+        left="342px"
         padding="0px 0px 0px 0px"
         whiteSpace="pre-wrap"
         children="Add-On"
@@ -967,13 +991,13 @@ export default function ResultsV2(props) {
         display="block"
         direction="column"
         justifyContent="unset"
-        width="192px"
-        height="23px"
+        width="467px"
+        height="33px"
         gap="unset"
         alignItems="unset"
         position="absolute"
-        top="697px"
-        left="832px"
+        top="677px"
+        left="568px"
         padding="0px 0px 0px 0px"
         whiteSpace="pre-wrap"
         children={results?.addOnName}
@@ -989,13 +1013,13 @@ export default function ResultsV2(props) {
         display="block"
         direction="column"
         justifyContent="unset"
-        width="192px"
-        height="23px"
+        width="501px"
+        height="52px"
         gap="unset"
         alignItems="unset"
         position="absolute"
-        top="770px"
-        left="826px"
+        top="746px"
+        left="544px"
         padding="0px 0px 0px 0px"
         whiteSpace="pre-wrap"
         children={results?.addOnDescription}
@@ -1016,8 +1040,8 @@ export default function ResultsV2(props) {
         gap="unset"
         alignItems="unset"
         position="absolute"
-        top="1010px"
-        left="830px"
+        top="1003px"
+        left="682px"
         padding="0px 0px 0px 0px"
         whiteSpace="pre-wrap"
         children={results?.addOnTotal}
@@ -1033,13 +1057,13 @@ export default function ResultsV2(props) {
         display="block"
         direction="column"
         justifyContent="unset"
-        width="192px"
+        width="160px"
         height="23px"
         gap="unset"
         alignItems="unset"
         position="absolute"
-        top="770px"
-        left="611px"
+        top="756px"
+        left="362px"
         padding="0px 0px 0px 0px"
         whiteSpace="pre-wrap"
         children="Description"
@@ -1055,35 +1079,13 @@ export default function ResultsV2(props) {
         display="block"
         direction="column"
         justifyContent="unset"
-        width="192px"
-        height="23px"
+        width="472px"
+        height="44px"
         gap="unset"
         alignItems="unset"
         position="absolute"
-        top="932px"
-        left="606px"
-        padding="0px 0px 0px 0px"
-        whiteSpace="pre-wrap"
-        children="Material"
-        {...getOverrideProps(overrides, "Material4200276")}
-      ></Text>
-      <Text
-        fontFamily="Inter"
-        fontSize="24px"
-        fontWeight="600"
-        color="rgba(0,0,0,1)"
-        lineHeight="30px"
-        textAlign="center"
-        display="block"
-        direction="column"
-        justifyContent="unset"
-        width="192px"
-        height="23px"
-        gap="unset"
-        alignItems="unset"
-        position="absolute"
-        top="932px"
-        left="827px"
+        top="907px"
+        left="555px"
         padding="0px 0px 0px 0px"
         whiteSpace="pre-wrap"
         children={results?.addOnLabor}
@@ -1099,13 +1101,13 @@ export default function ResultsV2(props) {
         display="block"
         direction="column"
         justifyContent="unset"
-        width="192px"
-        height="23px"
+        width="148px"
+        height="26px"
         gap="unset"
         alignItems="unset"
         position="absolute"
-        top="858px"
-        left="611px"
+        top="836px"
+        left="370px"
         padding="0px 0px 0px 0px"
         whiteSpace="pre-wrap"
         children="Material"
@@ -1121,17 +1123,17 @@ export default function ResultsV2(props) {
         display="block"
         direction="column"
         justifyContent="unset"
-        width="192px"
-        height="23px"
+        width="148px"
+        height="26px"
         gap="unset"
         alignItems="unset"
         position="absolute"
-        top="848px"
-        left="827px"
+        top="918px"
+        left="369px"
         padding="0px 0px 0px 0px"
         whiteSpace="pre-wrap"
-        children={results?.addOnMaterial}
-        {...getOverrideProps(overrides, "Material4200291")}
+        children="Material"
+        {...getOverrideProps(overrides, "Material4211201")}
       ></Text>
       <Text
         fontFamily="Inter"
@@ -1143,17 +1145,39 @@ export default function ResultsV2(props) {
         display="block"
         direction="column"
         justifyContent="unset"
-        width="192px"
-        height="23px"
+        width="148px"
+        height="26px"
         gap="unset"
         alignItems="unset"
         position="absolute"
-        top="1019px"
-        left="605px"
+        top="1003px"
+        left="362px"
         padding="0px 0px 0px 0px"
         whiteSpace="pre-wrap"
         children="Total"
-        {...getOverrideProps(overrides, "Total4200284")}
+        {...getOverrideProps(overrides, "Total4211202")}
+      ></Text>
+      <Text
+        fontFamily="Inter"
+        fontSize="24px"
+        fontWeight="600"
+        color="rgba(0,0,0,1)"
+        lineHeight="30px"
+        textAlign="center"
+        display="block"
+        direction="column"
+        justifyContent="unset"
+        width="464px"
+        height="40px"
+        gap="unset"
+        alignItems="unset"
+        position="absolute"
+        top="830px"
+        left="561px"
+        padding="0px 0px 0px 0px"
+        whiteSpace="pre-wrap"
+        children={results?.addOnMaterial}
+        {...getOverrideProps(overrides, "Material4200291")}
       ></Text>
     </View>
   );

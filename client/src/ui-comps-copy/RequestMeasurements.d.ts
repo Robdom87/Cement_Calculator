@@ -26,7 +26,7 @@ export declare type RequestMeasurementsInputValues = {
     Depth?: string;
     Field0?: string[];
     Main?: string;
-    Extra?: string;
+    Extra?: string[];
 };
 export declare type RequestMeasurementsValidationValues = {
     Sqft?: ValidationFunction<string>;

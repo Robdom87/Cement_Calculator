@@ -1,7 +1,7 @@
 import React from 'react';
 import ServiceSelect from '../../components/ServiceSelect';
 import InputForm from '../../components/InputForm';
-import { Estimate, ResultsV2 } from '../../ui-components';
+import { ResultsV2, AddOnsPC, HomePage, NavBarPC, ResultsPC } from '../../ui-components';
 import math from '../../math';
 import { useState } from 'react';
 
@@ -42,18 +42,18 @@ function Home() {
 		// wwmRate: ""
 	});
 
-	let sampleTest = {
-		serviceName: "Ready Mix Concrete",
-		typeDescription: "eady-Mix Concrete Ready-mix delivered by truck. Typical prices for most cities. Includes delivery up to 20 miles for 10 CY or more, 3in to 4in slump. Material cost only, no placing or pumping included. All concrete material costs in this manual are based on these figures.",
-		ydsCubed: 100,
-		concreteRate: 141,
-		concreteTCost: 1000,
-		addOnName: "Granite Aggregate",
-		addOnDescription: "Add for granite aggregate, typical",
-		addOnMaterial: 10,
-		addOnTotal: 300,
-		callTotal: 130
-	};
+	// let sampleTest = {
+	// 	serviceName: "Ready Mix Concrete",
+	// 	typeDescription: "Ready-Mix Concrete Ready-mix delivered by truck. Typical prices for most cities. Includes delivery up to 20 miles for 10 CY or more, 3in to 4in slump. Material cost only, no placing or pumping included. All concrete material costs in this manual are based on these figures.",
+	// 	ydsCubed: 100,
+	// 	concreteRate: 141,
+	// 	concreteTCost: 1000,
+	// 	addOnName: "Granite Aggregate",
+	// 	addOnDescription: "Add for granite aggregate, typical",
+	// 	addOnMaterial: 10,
+	// 	addOnTotal: 300,
+	// 	callTotal: 130
+	// };
 
 	async function calculations() {
 		try {
@@ -104,18 +104,18 @@ function Home() {
 	}
 
 	function findRate(costArray, costName) {
-		
-			// console.log(costArray);
-			let length = costArray.length;
-			console.log(length)
-			let rate = 0;
 
-			for (let i = 0; i < length; i++) {
-				if (costArray[i].typeName === costName) {
-					rate = costArray[i].total;
-				}
+		// console.log(costArray);
+		let length = costArray.length;
+		console.log(length)
+		let rate = 0;
+
+		for (let i = 0; i < length; i++) {
+			if (costArray[i].typeName === costName) {
+				rate = costArray[i].total;
 			}
-			return rate;
+		}
+		return rate;
 	}
 
 	async function findCost(costArray, costName) {
@@ -168,6 +168,19 @@ function Home() {
 
 	return (
 		<>
+			<NavBarPC
+				style={{
+					width: '100%',
+				}} />
+			{/* <HomePage /> */}
+			{/* <ResultsPC
+				style={{
+					width: '100%',
+				}} />
+			<AddOnsPC
+				style={{
+					width: '100%',
+				}} /> */}
 			<ServiceSelect
 				service={service}
 				setService={setService}
@@ -188,7 +201,7 @@ function Home() {
 				calculations={calculations}
 			/> : null} */}
 			{showResults ? <ResultsV2
-				results={sampleTest}
+				results={results}
 
 			/> : null}
 		</>

@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-    NewForm1,
+    RequestService,
 } from '../../ui-components';
 import { useQuery } from '@apollo/client';
 import { QUERY_NAMES } from '../../utils/queries';
@@ -17,7 +17,7 @@ export default  function ServiceSelect(props) {
         <>	{loading ? (
             <div>Loading...</div>
         ) : (
-            <NewForm1
+            <RequestService
                 onChange={handleType}
                 overrides={{
                     "Name": {

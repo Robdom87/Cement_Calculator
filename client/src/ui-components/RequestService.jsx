@@ -7,9 +7,8 @@
 /* eslint-disable */
 import * as React from "react";
 import { Flex, Grid, SelectField } from "@aws-amplify/ui-react";
-import { getOverrideProps } from "@aws-amplify/ui-react/internal";
-import { fetchByPath, validateField } from "./utils";
-export default function NewForm1(props) {
+import { fetchByPath, getOverrideProps, validateField } from "./utils";
+export default function RequestService(props) {
   const { onSubmit, onValidate, onChange, overrides, ...rest } = props;
   const initialValues = {
     Name: "",
@@ -72,12 +71,11 @@ export default function NewForm1(props) {
         }
         await onSubmit(modelFields);
       }}
-      {...getOverrideProps(overrides, "NewForm1")}
+      {...getOverrideProps(overrides, "RequestService")}
       {...rest}
     >
       <SelectField
-        label="Service Type"
-        descriptiveText=""
+        label="Label"
         placeholder="Please select an option"
         value={Name}
         onChange={(e) => {
