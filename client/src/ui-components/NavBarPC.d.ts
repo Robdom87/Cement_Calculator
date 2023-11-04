@@ -5,7 +5,7 @@
  **************************************************************************/
 
 import * as React from "react";
-import { ButtonProps, TextProps, ViewProps } from "@aws-amplify/ui-react";
+import { ButtonProps, FlexProps, TextProps } from "@aws-amplify/ui-react";
 export declare type EscapeHatchProps = {
     [elementHierarchy: string]: Record<string, unknown>;
 } | null;
@@ -18,7 +18,7 @@ export declare type Variant = {
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type NavBarPCOverridesProps = {
-    NavBarPC?: PrimitiveOverrideProps<ViewProps>;
+    NavBarPC?: PrimitiveOverrideProps<FlexProps>;
     "@@"?: PrimitiveOverrideProps<TextProps>;
     HOME?: PrimitiveOverrideProps<TextProps>;
     PRODUCTS?: PrimitiveOverrideProps<TextProps>;
@@ -28,7 +28,7 @@ export declare type NavBarPCOverridesProps = {
     Button4224291?: PrimitiveOverrideProps<ButtonProps>;
     Button4224899?: PrimitiveOverrideProps<ButtonProps>;
 } & EscapeHatchProps;
-export declare type NavBarPCProps = React.PropsWithChildren<Partial<ViewProps> & {
+export declare type NavBarPCProps = React.PropsWithChildren<Partial<FlexProps> & {
     overrides?: NavBarPCOverridesProps | undefined | null;
 }>;
 export default function NavBarPC(props: NavBarPCProps): React.ReactElement;

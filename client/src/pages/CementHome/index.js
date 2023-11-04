@@ -1,7 +1,7 @@
 import React from 'react';
 import ServiceSelect from '../../components/ServiceSelect';
 import InputForm from '../../components/InputForm';
-import { Estimate, ResultsV2 } from '../../ui-components';
+import { ResultsV2, AddOnsPC, HomePage, NavBarPC, ResultsPC } from '../../ui-components';
 import math from '../../math';
 import { useState } from 'react';
 
@@ -104,18 +104,18 @@ function Home() {
 	}
 
 	function findRate(costArray, costName) {
-		
-			// console.log(costArray);
-			let length = costArray.length;
-			console.log(length)
-			let rate = 0;
 
-			for (let i = 0; i < length; i++) {
-				if (costArray[i].typeName === costName) {
-					rate = costArray[i].total;
-				}
+		// console.log(costArray);
+		let length = costArray.length;
+		console.log(length)
+		let rate = 0;
+
+		for (let i = 0; i < length; i++) {
+			if (costArray[i].typeName === costName) {
+				rate = costArray[i].total;
 			}
-			return rate;
+		}
+		return rate;
 	}
 
 	async function findCost(costArray, costName) {
@@ -168,6 +168,19 @@ function Home() {
 
 	return (
 		<>
+			<NavBarPC
+				style={{
+					width: '100%',
+				}} />
+			{/* <HomePage /> */}
+			{/* <ResultsPC
+				style={{
+					width: '100%',
+				}} />
+			<AddOnsPC
+				style={{
+					width: '100%',
+				}} /> */}
 			<ServiceSelect
 				service={service}
 				setService={setService}

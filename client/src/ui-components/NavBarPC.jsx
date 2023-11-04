@@ -7,19 +7,19 @@
 /* eslint-disable */
 import * as React from "react";
 import { getOverrideProps } from "./utils";
-import { Button, Text, View } from "@aws-amplify/ui-react";
+import { Button, Flex, Text } from "@aws-amplify/ui-react";
 export default function NavBarPC(props) {
   const { overrides, ...rest } = props;
   return (
-    <View
-      width="1519px"
-      height="84px"
-      display="block"
-      gap="unset"
-      alignItems="unset"
-      justifyContent="unset"
+    <Flex
+      gap="63px"
+      direction="row"
+      width="unset"
+      height="unset"
+      justifyContent="flex-start"
+      alignItems="flex-end"
       position="relative"
-      padding="0px 0px 0px 0px"
+      padding="19px 0px 19px 0px"
       backgroundColor="rgba(13,27,42,1)"
       {...getOverrideProps(overrides, "NavBarPC")}
       {...rest}
@@ -38,9 +38,8 @@ export default function NavBarPC(props) {
         height="54px"
         gap="unset"
         alignItems="unset"
-        position="absolute"
-        top="15px"
-        left="0px"
+        shrink="0"
+        position="relative"
         padding="0px 0px 0px 0px"
         whiteSpace="pre-wrap"
         children="@@"
@@ -60,9 +59,8 @@ export default function NavBarPC(props) {
         height="54px"
         gap="unset"
         alignItems="unset"
-        position="absolute"
-        top="15px"
-        left="156px"
+        shrink="0"
+        position="relative"
         padding="0px 0px 0px 0px"
         whiteSpace="pre-wrap"
         children="HOME"
@@ -82,9 +80,8 @@ export default function NavBarPC(props) {
         height="54px"
         gap="unset"
         alignItems="unset"
-        position="absolute"
-        top="15px"
-        left="311px"
+        shrink="0"
+        position="relative"
         padding="0px 0px 0px 0px"
         whiteSpace="pre-wrap"
         children="PRODUCTS"
@@ -104,9 +101,8 @@ export default function NavBarPC(props) {
         height="54px"
         gap="unset"
         alignItems="unset"
-        position="absolute"
-        top="15px"
-        left="531px"
+        shrink="0"
+        position="relative"
         padding="0px 0px 0px 0px"
         whiteSpace="pre-wrap"
         children="PRICING"
@@ -126,9 +122,8 @@ export default function NavBarPC(props) {
         height="54px"
         gap="unset"
         alignItems="unset"
-        position="absolute"
-        top="15px"
-        left="723px"
+        shrink="0"
+        position="relative"
         padding="0px 0px 0px 0px"
         whiteSpace="pre-wrap"
         children="CONTACT"
@@ -148,9 +143,8 @@ export default function NavBarPC(props) {
         height="54px"
         gap="unset"
         alignItems="unset"
-        position="absolute"
-        top="15px"
-        left="931px"
+        shrink="0"
+        position="relative"
         padding="0px 0px 0px 0px"
         whiteSpace="pre-wrap"
         children="ABOUT US"
@@ -159,10 +153,8 @@ export default function NavBarPC(props) {
       <Button
         width="156px"
         height="49px"
-        position="absolute"
         borderRadius="11px"
-        top="18px"
-        left="1200px"
+        shrink="0"
         backgroundColor="rgba(119,141,169,1)"
         size="default"
         isDisabled={false}
@@ -173,10 +165,8 @@ export default function NavBarPC(props) {
       <Button
         width="156px"
         height="49px"
-        position="absolute"
         borderRadius="11px"
-        top="17.5px"
-        left="1364px"
+        shrink="0"
         backgroundColor="rgba(119,141,169,1)"
         size="default"
         isDisabled={false}
@@ -184,6 +174,6 @@ export default function NavBarPC(props) {
         children="Sign Up"
         {...getOverrideProps(overrides, "Button4224899")}
       ></Button>
-    </View>
+    </Flex>
   );
 }
