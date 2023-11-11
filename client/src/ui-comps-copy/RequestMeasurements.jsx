@@ -427,7 +427,7 @@ export default function RequestMeasurements(props) {
           setCurrentExtraValue("");
         }}
         currentFieldValue={currentExtraValue}
-        label={"Label"}
+        label={"Extra Costs"}
         items={Extra}
         hasError={errors?.Extra?.hasError}
         runValidationTasks={async () =>

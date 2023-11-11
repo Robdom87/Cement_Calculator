@@ -164,6 +164,27 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
+                "addOnUnit": {
+                    "name": "addOnUnit",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "addOnPrice": {
+                    "name": "addOnPrice",
+                    "isArray": false,
+                    "type": "Float",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "addOnCost": {
+                    "name": "addOnCost",
+                    "isArray": false,
+                    "type": "Float",
+                    "isRequired": false,
+                    "attributes": []
+                },
                 "createdAt": {
                     "name": "createdAt",
                     "isArray": false,
@@ -210,5 +231,5 @@ export const schema = {
     "enums": {},
     "nonModels": {},
     "codegenVersion": "3.4.4",
-    "version": "1aacb1e09a092efec7a771fa5e51ce8d"
+    "version": "7e6608e26d26d0b5c85b616d3bd9d45d"
 };

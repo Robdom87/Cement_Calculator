@@ -34,6 +34,9 @@ type EagerResults = {
   readonly callTotal?: number | null;
   readonly serviceDescription?: string | null;
   readonly addOnLabor?: number | null;
+  readonly addOnUnit?: string | null;
+  readonly addOnPrice?: number | null;
+  readonly addOnCost?: number | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -66,6 +69,9 @@ type LazyResults = {
   readonly callTotal?: number | null;
   readonly serviceDescription?: string | null;
   readonly addOnLabor?: number | null;
+  readonly addOnUnit?: string | null;
+  readonly addOnPrice?: number | null;
+  readonly addOnCost?: number | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }

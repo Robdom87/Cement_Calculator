@@ -44,6 +44,9 @@ export default function ResultsCreateForm(props) {
     callTotal: "",
     serviceDescription: "",
     addOnLabor: "",
+    addOnUnit: "",
+    addOnPrice: "",
+    addOnCost: "",
   };
   const [lengthFT, setLengthFT] = React.useState(initialValues.lengthFT);
   const [widthFT, setWidthFT] = React.useState(initialValues.widthFT);
@@ -85,6 +88,9 @@ export default function ResultsCreateForm(props) {
     initialValues.serviceDescription
   );
   const [addOnLabor, setAddOnLabor] = React.useState(initialValues.addOnLabor);
+  const [addOnUnit, setAddOnUnit] = React.useState(initialValues.addOnUnit);
+  const [addOnPrice, setAddOnPrice] = React.useState(initialValues.addOnPrice);
+  const [addOnCost, setAddOnCost] = React.useState(initialValues.addOnCost);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     setLengthFT(initialValues.lengthFT);
@@ -109,6 +115,9 @@ export default function ResultsCreateForm(props) {
     setCallTotal(initialValues.callTotal);
     setServiceDescription(initialValues.serviceDescription);
     setAddOnLabor(initialValues.addOnLabor);
+    setAddOnUnit(initialValues.addOnUnit);
+    setAddOnPrice(initialValues.addOnPrice);
+    setAddOnCost(initialValues.addOnCost);
     setErrors({});
   };
   const validations = {
@@ -134,6 +143,9 @@ export default function ResultsCreateForm(props) {
     callTotal: [],
     serviceDescription: [],
     addOnLabor: [],
+    addOnUnit: [],
+    addOnPrice: [],
+    addOnCost: [],
   };
   const runValidationTasks = async (
     fieldName,
@@ -183,6 +195,9 @@ export default function ResultsCreateForm(props) {
           callTotal,
           serviceDescription,
           addOnLabor,
+          addOnUnit,
+          addOnPrice,
+          addOnCost,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -263,6 +278,9 @@ export default function ResultsCreateForm(props) {
               callTotal,
               serviceDescription,
               addOnLabor,
+              addOnUnit,
+              addOnPrice,
+              addOnCost,
             };
             const result = onChange(modelFields);
             value = result?.lengthFT ?? value;
@@ -312,6 +330,9 @@ export default function ResultsCreateForm(props) {
               callTotal,
               serviceDescription,
               addOnLabor,
+              addOnUnit,
+              addOnPrice,
+              addOnCost,
             };
             const result = onChange(modelFields);
             value = result?.widthFT ?? value;
@@ -361,6 +382,9 @@ export default function ResultsCreateForm(props) {
               callTotal,
               serviceDescription,
               addOnLabor,
+              addOnUnit,
+              addOnPrice,
+              addOnCost,
             };
             const result = onChange(modelFields);
             value = result?.depth ?? value;
@@ -410,6 +434,9 @@ export default function ResultsCreateForm(props) {
               callTotal,
               serviceDescription,
               addOnLabor,
+              addOnUnit,
+              addOnPrice,
+              addOnCost,
             };
             const result = onChange(modelFields);
             value = result?.ftCubed ?? value;
@@ -459,6 +486,9 @@ export default function ResultsCreateForm(props) {
               callTotal,
               serviceDescription,
               addOnLabor,
+              addOnUnit,
+              addOnPrice,
+              addOnCost,
             };
             const result = onChange(modelFields);
             value = result?.ydsCubed ?? value;
@@ -508,6 +538,9 @@ export default function ResultsCreateForm(props) {
               callTotal,
               serviceDescription,
               addOnLabor,
+              addOnUnit,
+              addOnPrice,
+              addOnCost,
             };
             const result = onChange(modelFields);
             value = result?.concreteRate ?? value;
@@ -557,6 +590,9 @@ export default function ResultsCreateForm(props) {
               callTotal,
               serviceDescription,
               addOnLabor,
+              addOnUnit,
+              addOnPrice,
+              addOnCost,
             };
             const result = onChange(modelFields);
             value = result?.concreteTCost ?? value;
@@ -602,6 +638,9 @@ export default function ResultsCreateForm(props) {
               callTotal,
               serviceDescription,
               addOnLabor,
+              addOnUnit,
+              addOnPrice,
+              addOnCost,
             };
             const result = onChange(modelFields);
             value = result?.Tax ?? value;
@@ -647,6 +686,9 @@ export default function ResultsCreateForm(props) {
               callTotal,
               serviceDescription,
               addOnLabor,
+              addOnUnit,
+              addOnPrice,
+              addOnCost,
             };
             const result = onChange(modelFields);
             value = result?.Total ?? value;
@@ -696,6 +738,9 @@ export default function ResultsCreateForm(props) {
               callTotal,
               serviceDescription,
               addOnLabor,
+              addOnUnit,
+              addOnPrice,
+              addOnCost,
             };
             const result = onChange(modelFields);
             value = result?.sqft ?? value;
@@ -741,6 +786,9 @@ export default function ResultsCreateForm(props) {
               callTotal,
               serviceDescription,
               addOnLabor,
+              addOnUnit,
+              addOnPrice,
+              addOnCost,
             };
             const result = onChange(modelFields);
             value = result?.serviceName ?? value;
@@ -786,6 +834,9 @@ export default function ResultsCreateForm(props) {
               callTotal,
               serviceDescription,
               addOnLabor,
+              addOnUnit,
+              addOnPrice,
+              addOnCost,
             };
             const result = onChange(modelFields);
             value = result?.description ?? value;
@@ -831,6 +882,9 @@ export default function ResultsCreateForm(props) {
               callTotal,
               serviceDescription,
               addOnLabor,
+              addOnUnit,
+              addOnPrice,
+              addOnCost,
             };
             const result = onChange(modelFields);
             value = result?.serviceType ?? value;
@@ -876,6 +930,9 @@ export default function ResultsCreateForm(props) {
               callTotal,
               serviceDescription,
               addOnLabor,
+              addOnUnit,
+              addOnPrice,
+              addOnCost,
             };
             const result = onChange(modelFields);
             value = result?.typeName ?? value;
@@ -921,6 +978,9 @@ export default function ResultsCreateForm(props) {
               callTotal,
               serviceDescription,
               addOnLabor,
+              addOnUnit,
+              addOnPrice,
+              addOnCost,
             };
             const result = onChange(modelFields);
             value = result?.typeDescription ?? value;
@@ -966,6 +1026,9 @@ export default function ResultsCreateForm(props) {
               callTotal,
               serviceDescription,
               addOnLabor,
+              addOnUnit,
+              addOnPrice,
+              addOnCost,
             };
             const result = onChange(modelFields);
             value = result?.addOnName ?? value;
@@ -1011,6 +1074,9 @@ export default function ResultsCreateForm(props) {
               callTotal,
               serviceDescription,
               addOnLabor,
+              addOnUnit,
+              addOnPrice,
+              addOnCost,
             };
             const result = onChange(modelFields);
             value = result?.addOnDescription ?? value;
@@ -1060,6 +1126,9 @@ export default function ResultsCreateForm(props) {
               callTotal,
               serviceDescription,
               addOnLabor,
+              addOnUnit,
+              addOnPrice,
+              addOnCost,
             };
             const result = onChange(modelFields);
             value = result?.addOnMaterial ?? value;
@@ -1109,6 +1178,9 @@ export default function ResultsCreateForm(props) {
               callTotal,
               serviceDescription,
               addOnLabor,
+              addOnUnit,
+              addOnPrice,
+              addOnCost,
             };
             const result = onChange(modelFields);
             value = result?.addOnTotal ?? value;
@@ -1158,6 +1230,9 @@ export default function ResultsCreateForm(props) {
               callTotal: value,
               serviceDescription,
               addOnLabor,
+              addOnUnit,
+              addOnPrice,
+              addOnCost,
             };
             const result = onChange(modelFields);
             value = result?.callTotal ?? value;
@@ -1203,6 +1278,9 @@ export default function ResultsCreateForm(props) {
               callTotal,
               serviceDescription: value,
               addOnLabor,
+              addOnUnit,
+              addOnPrice,
+              addOnCost,
             };
             const result = onChange(modelFields);
             value = result?.serviceDescription ?? value;
@@ -1254,6 +1332,9 @@ export default function ResultsCreateForm(props) {
               callTotal,
               serviceDescription,
               addOnLabor: value,
+              addOnUnit,
+              addOnPrice,
+              addOnCost,
             };
             const result = onChange(modelFields);
             value = result?.addOnLabor ?? value;
@@ -1267,6 +1348,158 @@ export default function ResultsCreateForm(props) {
         errorMessage={errors.addOnLabor?.errorMessage}
         hasError={errors.addOnLabor?.hasError}
         {...getOverrideProps(overrides, "addOnLabor")}
+      ></TextField>
+      <TextField
+        label="Add on unit"
+        isRequired={false}
+        isReadOnly={false}
+        value={addOnUnit}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              lengthFT,
+              widthFT,
+              depth,
+              ftCubed,
+              ydsCubed,
+              concreteRate,
+              concreteTCost,
+              Tax,
+              Total,
+              sqft,
+              serviceName,
+              description,
+              serviceType,
+              typeName,
+              typeDescription,
+              addOnName,
+              addOnDescription,
+              addOnMaterial,
+              addOnTotal,
+              callTotal,
+              serviceDescription,
+              addOnLabor,
+              addOnUnit: value,
+              addOnPrice,
+              addOnCost,
+            };
+            const result = onChange(modelFields);
+            value = result?.addOnUnit ?? value;
+          }
+          if (errors.addOnUnit?.hasError) {
+            runValidationTasks("addOnUnit", value);
+          }
+          setAddOnUnit(value);
+        }}
+        onBlur={() => runValidationTasks("addOnUnit", addOnUnit)}
+        errorMessage={errors.addOnUnit?.errorMessage}
+        hasError={errors.addOnUnit?.hasError}
+        {...getOverrideProps(overrides, "addOnUnit")}
+      ></TextField>
+      <TextField
+        label="Add on price"
+        isRequired={false}
+        isReadOnly={false}
+        type="number"
+        step="any"
+        value={addOnPrice}
+        onChange={(e) => {
+          let value = isNaN(parseFloat(e.target.value))
+            ? e.target.value
+            : parseFloat(e.target.value);
+          if (onChange) {
+            const modelFields = {
+              lengthFT,
+              widthFT,
+              depth,
+              ftCubed,
+              ydsCubed,
+              concreteRate,
+              concreteTCost,
+              Tax,
+              Total,
+              sqft,
+              serviceName,
+              description,
+              serviceType,
+              typeName,
+              typeDescription,
+              addOnName,
+              addOnDescription,
+              addOnMaterial,
+              addOnTotal,
+              callTotal,
+              serviceDescription,
+              addOnLabor,
+              addOnUnit,
+              addOnPrice: value,
+              addOnCost,
+            };
+            const result = onChange(modelFields);
+            value = result?.addOnPrice ?? value;
+          }
+          if (errors.addOnPrice?.hasError) {
+            runValidationTasks("addOnPrice", value);
+          }
+          setAddOnPrice(value);
+        }}
+        onBlur={() => runValidationTasks("addOnPrice", addOnPrice)}
+        errorMessage={errors.addOnPrice?.errorMessage}
+        hasError={errors.addOnPrice?.hasError}
+        {...getOverrideProps(overrides, "addOnPrice")}
+      ></TextField>
+      <TextField
+        label="Add on cost"
+        isRequired={false}
+        isReadOnly={false}
+        type="number"
+        step="any"
+        value={addOnCost}
+        onChange={(e) => {
+          let value = isNaN(parseFloat(e.target.value))
+            ? e.target.value
+            : parseFloat(e.target.value);
+          if (onChange) {
+            const modelFields = {
+              lengthFT,
+              widthFT,
+              depth,
+              ftCubed,
+              ydsCubed,
+              concreteRate,
+              concreteTCost,
+              Tax,
+              Total,
+              sqft,
+              serviceName,
+              description,
+              serviceType,
+              typeName,
+              typeDescription,
+              addOnName,
+              addOnDescription,
+              addOnMaterial,
+              addOnTotal,
+              callTotal,
+              serviceDescription,
+              addOnLabor,
+              addOnUnit,
+              addOnPrice,
+              addOnCost: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.addOnCost ?? value;
+          }
+          if (errors.addOnCost?.hasError) {
+            runValidationTasks("addOnCost", value);
+          }
+          setAddOnCost(value);
+        }}
+        onBlur={() => runValidationTasks("addOnCost", addOnCost)}
+        errorMessage={errors.addOnCost?.errorMessage}
+        hasError={errors.addOnCost?.hasError}
+        {...getOverrideProps(overrides, "addOnCost")}
       ></TextField>
       <Flex
         justifyContent="space-between"

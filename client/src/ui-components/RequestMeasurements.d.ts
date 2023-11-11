@@ -24,7 +24,7 @@ export declare type ValidationFunction<T> = (value: T, validationResponse: Valid
 export declare type RequestMeasurementsInputValues = {
     Sqft?: string;
     Depth?: string;
-    Field0?: string[];
+    Field0?: string;
     Main?: string;
     Extra?: string;
 };

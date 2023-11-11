@@ -22,4 +22,8 @@ type Results @model @auth(rules: [{allow: public}]) {
   callTotal: Int
   serviceDescription: String
   addOnLabor: Int
-} 
+  addOnUnit: String
+  addOnPrice: Float
+  addOnCost: Float
+}
+ 

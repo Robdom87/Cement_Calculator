@@ -9,12 +9,12 @@ import * as React from "react";
 import { getOverrideProps } from "./utils";
 import { Button, Flex, Text } from "@aws-amplify/ui-react";
 export default function NavBarPC(props) {
-  const { overrides, ...rest } = props;
+  const { Login, overrides, ...rest } = props;
   return (
     <Flex
       gap="63px"
       direction="row"
-      width="unset"
+      width="1545px"
       height="unset"
       justifyContent="flex-start"
       alignItems="flex-end"

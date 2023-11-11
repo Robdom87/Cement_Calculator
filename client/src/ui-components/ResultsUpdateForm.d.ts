@@ -45,6 +45,9 @@ export declare type ResultsUpdateFormInputValues = {
     callTotal?: number;
     serviceDescription?: string;
     addOnLabor?: number;
+    addOnUnit?: string;
+    addOnPrice?: number;
+    addOnCost?: number;
 };
 export declare type ResultsUpdateFormValidationValues = {
     lengthFT?: ValidationFunction<number>;
@@ -69,6 +72,9 @@ export declare type ResultsUpdateFormValidationValues = {
     callTotal?: ValidationFunction<number>;
     serviceDescription?: ValidationFunction<string>;
     addOnLabor?: ValidationFunction<number>;
+    addOnUnit?: ValidationFunction<string>;
+    addOnPrice?: ValidationFunction<number>;
+    addOnCost?: ValidationFunction<number>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type ResultsUpdateFormOverridesProps = {
@@ -95,6 +101,9 @@ export declare type ResultsUpdateFormOverridesProps = {
     callTotal?: PrimitiveOverrideProps<TextFieldProps>;
     serviceDescription?: PrimitiveOverrideProps<TextFieldProps>;
     addOnLabor?: PrimitiveOverrideProps<TextFieldProps>;
+    addOnUnit?: PrimitiveOverrideProps<TextFieldProps>;
+    addOnPrice?: PrimitiveOverrideProps<TextFieldProps>;
+    addOnCost?: PrimitiveOverrideProps<TextFieldProps>;
 } & EscapeHatchProps;
 export declare type ResultsUpdateFormProps = React.PropsWithChildren<{
     overrides?: ResultsUpdateFormOverridesProps | undefined | null;

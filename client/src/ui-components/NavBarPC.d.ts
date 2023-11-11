@@ -6,6 +6,7 @@
 
 import * as React from "react";
 import { ButtonProps, FlexProps, TextProps } from "@aws-amplify/ui-react";
+import { SyntheticEvent } from "react";
 export declare type EscapeHatchProps = {
     [elementHierarchy: string]: Record<string, unknown>;
 } | null;
@@ -29,6 +30,8 @@ export declare type NavBarPCOverridesProps = {
     Button4224899?: PrimitiveOverrideProps<ButtonProps>;
 } & EscapeHatchProps;
 export declare type NavBarPCProps = React.PropsWithChildren<Partial<FlexProps> & {
+    Login?: (event: SyntheticEvent) => void;
+} & {
     overrides?: NavBarPCOverridesProps | undefined | null;
 }>;
 export default function NavBarPC(props: NavBarPCProps): React.ReactElement;

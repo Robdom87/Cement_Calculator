@@ -41,11 +41,11 @@ export default function ResultsV2(props) {
       ></View>
       <Icon
         width="991px"
-        height="132px"
-        viewBox={{ minX: 0, minY: 0, width: 991, height: 132 }}
+        height="92px"
+        viewBox={{ minX: 0, minY: 0, width: 991, height: 92 }}
         paths={[
           {
-            d: "M0 0L991 0L991 132L0 132L0 0Z",
+            d: "M0 0L991 0L991 92L0 92L0 0Z",
             fill: "rgba(120,178,225,1)",
             fillRule: "nonzero",
           },
@@ -56,7 +56,7 @@ export default function ResultsV2(props) {
         justifyContent="unset"
         position="absolute"
         top="2.94%"
-        bottom="86.58%"
+        bottom="89.75%"
         left="4.83%"
         right="4.92%"
         {...getOverrideProps(overrides, "Rectangle 25")}
@@ -76,10 +76,10 @@ export default function ResultsV2(props) {
         gap="unset"
         alignItems="unset"
         position="absolute"
-        top="6.99%"
-        bottom="86.58%"
-        left="20.4%"
-        right="20.4%"
+        top="6.04%"
+        bottom="87.53%"
+        left="19.03%"
+        right="21.77%"
         padding="0px 0px 0px 0px"
         whiteSpace="pre-wrap"
         children="RESULTS&#xA;"
@@ -429,6 +429,7 @@ export default function ResultsV2(props) {
         bottom="6.35%"
         left="37.16%"
         right="8.38%"
+        aria-labelledby=""
         {...getOverrideProps(overrides, "Rectangle 53")}
       ></Icon>
       <Text
@@ -1000,7 +1001,7 @@ export default function ResultsV2(props) {
         left="568px"
         padding="0px 0px 0px 0px"
         whiteSpace="pre-wrap"
-        children={results?.addOnName}
+        children="Add-On"
         {...getOverrideProps(overrides, "Add-On4201250")}
       ></Text>
       <Text
@@ -1022,7 +1023,7 @@ export default function ResultsV2(props) {
         left="544px"
         padding="0px 0px 0px 0px"
         whiteSpace="pre-wrap"
-        children={results?.addOnDescription}
+        children="Add-On"
         {...getOverrideProps(overrides, "Add-On4201251")}
       ></Text>
       <Text
@@ -1044,7 +1045,7 @@ export default function ResultsV2(props) {
         left="682px"
         padding="0px 0px 0px 0px"
         whiteSpace="pre-wrap"
-        children={results?.addOnTotal}
+        children="Add-On"
         {...getOverrideProps(overrides, "Add-On4201252")}
       ></Text>
       <Text
@@ -1088,7 +1089,7 @@ export default function ResultsV2(props) {
         left="555px"
         padding="0px 0px 0px 0px"
         whiteSpace="pre-wrap"
-        children={results?.addOnLabor}
+        children="Material"
         {...getOverrideProps(overrides, "Material4200290")}
       ></Text>
       <Text
@@ -1176,7 +1177,7 @@ export default function ResultsV2(props) {
         left="561px"
         padding="0px 0px 0px 0px"
         whiteSpace="pre-wrap"
-        children={results?.addOnMaterial}
+        children="Material"
         {...getOverrideProps(overrides, "Material4200291")}
       ></Text>
     </View>
